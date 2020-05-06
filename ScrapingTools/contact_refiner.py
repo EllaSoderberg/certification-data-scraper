@@ -1,4 +1,3 @@
-"""
 contact_list = []
 file = open("TED_contacts.csv", "r")
 for row in file.readlines():
@@ -28,3 +27,4 @@ for row in file.readlines():
     contact_list.append(row.strip())
 
 save_pickle(contact_list, "TED_contacts.p")
+"""

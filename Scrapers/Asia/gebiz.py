@@ -1,58 +1,79 @@
 from FileHandleler import HandleFiles
 from DataUploader import Sheet
+from ScrapingTools import read_write
 import time
 import pickle
 import winsound
 
-from selenium import webdriver
-
-driver = webdriver.Chrome('C:/Users/Ella/Desktop/Drivers/chromedriver')
 doc_folder_id = "1ckD74zWxLjDJSpNuJYu1MAQT1KtwlPrG"
 
 
 def pagination(driver):
-    try:
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(5)
-        nav = driver.find_element_by_class_name("formRepeatPagination2_NAVIGATION-BUTTONS-DIV")
-        nav.find_element_by_xpath("//*[@value='Next']").click()
-        time.sleep(20)
-        return False
-    except Exception as e:
-        print(e)
-        return True
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(5)
+    nav = driver.find_element_by_class_name("formRepeatPagination2_NAVIGATION-BUTTONS-DIV")
+    nav.find_element_by_xpath("//*[@value='Next']").click()
+    time.sleep(20)
 
 
-def enter_gebiz(link, username, password):
-    data_list = []
+def enter_gebiz(driver, link, username, password, is_rerun, num_pages, stop_opp, start_opp=1):
+    if is_rerun:
+        data_list = read_write.read_pickle("gebiz.pickle")
+    else:
+        data_list = []
+
     driver.get(link)
-    time.sleep(5)  # Let the user actually see something!
+
+    # Login part
+    time.sleep(5)
     user_box = driver.find_element_by_id("contentForm:j_idt139_inputText")
     user_box.send_keys(username)
     password_box = driver.find_element_by_id('contentForm:j_idt140_inputText')
     password_box.send_keys(password)
     time.sleep(5)
     driver.find_element_by_id("contentForm:buttonSubmit").click()
-    time.sleep(10)  # Let the user actually see something!
+    time.sleep(10)
 
+    # Go to opportunities page
     driver.find_element_by_id("contentForm:j_id56").click()
     time.sleep(5)
 
-    done = False
+    first_page = True
+    at_page = 1
+    at_opp = start_opp
 
-    while done is not True:
+    while num_pages >= at_page:
         tenders = len(driver.find_elements_by_class_name("commandLink_TITLE-BLUE"))
-        for tender_no in range(tenders):
-            tenders = driver.find_elements_by_class_name("commandLink_TITLE-BLUE")
-            reference = driver.find_elements_by_class_name("formSectionHeader6_TEXT")[tender_no].text
-            title = tenders[tender_no].text
-            tenders[tender_no].click()
-            time.sleep(10)
-            data = extract_gebiz_info(driver, title, reference)
-            data_list.append(data)
-            time.sleep(10)
-            print(tender_no, "of", range(tenders), "done")
-        done = pagination(driver)
+        if first_page and num_pages == at_page:
+            run_range = range(start_opp-1, stop_opp-1)
+        elif first_page:
+            run_range = range(start_opp-1, tenders)
+        elif num_pages == at_page:
+            run_range = range(stop_opp-1)
+        else:
+            run_range = range(tenders)
+
+        for tender_no in run_range:
+            try:
+                tenders = driver.find_elements_by_class_name("commandLink_TITLE-BLUE")
+                reference = driver.find_elements_by_class_name("formSectionHeader6_TEXT")[tender_no].text
+                title = tenders[tender_no].text
+                tenders[tender_no].click()
+                time.sleep(10)
+                data = extract_gebiz_info(driver, title, reference)
+                data_list.append(data)
+                time.sleep(10)
+                at_opp += 1
+                print(tender_no, "of", range(tenders), "done")
+            except Exception as e:
+                print(e)
+                print("Stopped at page {} and on opportunity {}".format(at_page, at_opp))
+                read_write.save_pickle(data_list, "gebiz.pickle")
+
+        pagination(driver)
+        first_page = False
+        at_page += 1
+
     driver.close()
     return data_list
 
@@ -118,49 +139,14 @@ def extract_gebiz_info(driver, title, reference):
     return info_list
 
 
-def get_final_data(link, username, password):
-    global start_height
-
-    driver.get(link)
-    time.sleep(5)  # Let the user actually see something!
-    user_box = driver.find_element_by_id("contentForm:j_idt139_inputText")
-    user_box.send_keys(username)
-    password_box = driver.find_element_by_id('contentForm:j_idt140_inputText')
-    password_box.send_keys(password)
-    time.sleep(5)
-    driver.find_element_by_id("contentForm:buttonSubmit").click()
-    time.sleep(10)  # Let the user actually see something!
-
-    driver.find_element_by_id("contentForm:j_id56").click()
-    time.sleep(5)
-
-    pagination(driver)
-
-    tenders = len(driver.find_elements_by_class_name("commandLink_TITLE-BLUE"))
-    for tender_no in range(2, tenders):
-        tenders = driver.find_elements_by_class_name("commandLink_TITLE-BLUE")
-        reference = driver.find_elements_by_class_name("formSectionHeader6_TEXT")[tender_no].text
-        title = tenders[tender_no].text
-        driver.execute_script("window.scrollTo(0, {});".format(start_height))
-        start_height += 300
-        time.sleep(5)
-        tenders[tender_no].click()
-        time.sleep(10)
-        extract_gebiz_info(driver, title, reference)
-        time.sleep(10)
-
-    driver.close()
-
-
-def run_gebiz(date):
-    link = "https://www.gebiz.gov.sg/ptn/loginGeBIZID.xhtml"
+def run_gebiz(driver, link, date, is_rerun, num_pages, stop_opp, start_opp):
     username = "301776080"
     password = "TcoDevelopment"
     header = ["Title", "Reference",	"Reference number", "Agency", "Published", "Procurement type", "Category",
               "Contact person", "Email", "Mobile phone number", "Address", "Found words", "Link to files"]
 
+    request_list = enter_gebiz(driver, link, username, password, is_rerun, num_pages, stop_opp, start_opp)
     gebiz_sheet = Sheet("1_3CkwtS6EMUdD3WRUQ7B3jhgUn3T1v-y", "Gebiz", date)
     gebiz_sheet.init_sheet(header)
-
-    request_list = enter_gebiz(link, username, password)
+    print("time to upload...")
     gebiz_sheet.append_row(request_list)

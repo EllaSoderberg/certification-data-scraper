@@ -17,8 +17,7 @@ class Sheet:
         self.sheet_id = self.new_sheet()
         self.add_banded_range()
 
-    @staticmethod
-    def check_credentials():
+    def check_credentials(self):
         creds = None
         # The file token.pickle stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
@@ -32,7 +31,7 @@ class Sheet:
                 creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'DataUploader/credentials.json', SCOPES)
+                    'credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
             with open('token.pickle', 'wb') as token:

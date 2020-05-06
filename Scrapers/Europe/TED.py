@@ -3,29 +3,28 @@ from DataUploader import Sheet
 import time
 import re
 import requests
-from selenium import webdriver
 from bs4 import BeautifulSoup
 
 rlv_cpv_codes = ["30231000", "30214000", "30213000", "30213100",
-                     "30213200", "30213300", "30213500", "38652000", "32551300"]
+                 "30213200", "30213300", "30213500", "38652000", "32551300"]
 
-interesting_words = ["energy", "efficiency", "environment", "environmental", "tco", "sustainability", "life",
-                         "cycle",
-                         "ergonomic", "ecological", "circular", "economy", "circulaire", "economie", "certification",
-                         "certificates"]
-driver = webdriver.Chrome('C:/Users/Ella/Desktop/Drivers/chromedriver')
+interesting_words = ["energy", "efficiency", "environment", "environmental", "tco", "sustainability", "life", "cycle",
+                     "ergonomic", "ecological", "circular", "economy", "circulaire", "economie", "certification",
+                     "certificates"]
 
 
-def tedlinks(link, search):
+def tedlinks(driver, link, search, num_pages):
     """
     Get the link to each tender
+    :param num_pages:
     :param link: The link to the tender database
     :param search: The string to put into the expert search box
     :return: A list of all the links
     """
     link_list = []
-
     driver.get(link)
+
+    # Perform search
     time.sleep(5)  # Let the user actually see something!
     search_box = driver.find_element_by_xpath(
         '//*[@title="Go to the expert search form"]')
@@ -40,28 +39,17 @@ def tedlinks(link, search):
     search_button.click()
     time.sleep(2)
 
-    """
-    links = driver.find_elements_by_xpath("//*[@title='View this notice']")
-    for lin in links:
-        info_dict["link"] = lin.get_attribute("href")
-        info_list.append(info_dict)
-    """
-
-    last_page_text = driver.find_element_by_xpath(
-        '//div[@class="pagelinks float-right"]').text
-    last_page = max(last_page_text.split("\n")[2].split(" "))
-
     address = driver.current_url
 
-    i = 1
-    while i < (int(last_page) + 1):
-        time.sleep(2)
-        new_address = address + '?page=' + str(i)
+    at_page = 1
+    while at_page <= num_pages:
+        time.sleep(3)
+        new_address = address + '?page=' + str(at_page)
         driver.get(new_address)
         links = driver.find_elements_by_xpath("//*[@title='View this notice']")
         for lin in links:
             link_list.append(lin.get_attribute("href"))
-        i += 1
+        at_page += 1
 
     return link_list
 
@@ -87,6 +75,10 @@ def extract_ted_info(link_list, contact_list):
             contact_info = soup.find("span", string='Name and addresses').next_sibling.strings
         except Exception:
             contact_info = soup.find("span", string='Name, addresses and contact point(s)').next_sibling.strings
+
+        name = None
+        country = None
+        responsible = None
 
         # Loop thought contact info
         for info in contact_info:
@@ -251,20 +243,17 @@ def get_sibling(parent, name):
     return sibling
 
 
-def run_ted(searchdate, date):
-    link = "https://ted.europa.eu/TED/browse/browseByMap.do"
+def run_ted(driver, link, searchdate, date, num_pages):
     search = "PD=[{}] AND PC=[30231000 or 38652000 or 32551300 or 30214000 or 30213000 or 30213100 or " \
              "30213200 or 30213300 or 30213500] AND TD=[3]".format(searchdate)
-    header = ["Link", "Date published", "Authority name", "Country", "Contact person", "E-mail", "Is duplicate", "Website", "Title", "CPV nr", "CPV text",
-              "Secondary CPV", "S CPV text", "Total value", "Award criteria", "Found words", "EU funding", "Documents",
-              "TCOC mentioned", "EPEAT mentioned"]
+    header = ["Link", "Date published", "Authority name", "Country", "Contact person", "E-mail", "Is duplicate",
+              "Website", "Title", "CPV nr", "CPV text", "Secondary CPV", "S CPV text", "Total value", "Award criteria",
+              "Found words", "EU funding", "Documents", "TCOC mentioned", "EPEAT mentioned"]
+
     contact_list = read_write.read_pickle("ScrapingTools/TED_contacts.p")
+    links = tedlinks(driver, link, search, num_pages)
+    request_list = extract_ted_info(links, contact_list)
     ted_sheet = Sheet("1LoN1ufjKEGyMhEtC-cGdUqDDE465DDml", "TED", date)
     ted_sheet.init_sheet(header)
-    links = tedlinks(link, search)
-    request_list = extract_ted_info(links, contact_list)
     print("time to upload...")
     ted_sheet.append_row(request_list)
-
-    #read_write.save_pickle(contact_list, "TED_contacts.p")
-

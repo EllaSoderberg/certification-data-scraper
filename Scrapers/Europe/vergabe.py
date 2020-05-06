@@ -1,9 +1,9 @@
 import time
-from selenium import webdriver
 from DataUploader import Sheet
 from FileHandleler import HandleFiles
+from ScrapingTools import read_write
 
-driver = webdriver.Chrome('C:/Users/Ella/Desktop/Drivers/chromedriver')
+
 # ausschreibungen_folder_ID = "18agl3lrZSmynIWAvdAiIMPcgGayPyLcL"
 
 
@@ -16,8 +16,12 @@ def try_extraction(driver, xpath):
     return extraction
 
 
-def evergabe(link):
-    all_info = []
+def evergabe(driver, link, is_rerun, stop_opp, start_opp=1):
+    if is_rerun:
+        all_info = read_write.read_pickle("evergabe.pickle")
+    else:
+        all_info = []
+
     driver.get(link)
 
     time.sleep(3)
@@ -25,19 +29,25 @@ def evergabe(link):
 
     documents = table.find_elements_by_class_name("noTextDecorationLink")
 
-    doc_range = documents[:2]
+    at_opp = start_opp
 
-    progress = 1
+    doc_range = documents[start_opp:stop_opp+1]
+
     for document in doc_range:
-        document.click()
-        handles = driver.window_handles
-        done, info_list = extract_info(driver, handles)
-        all_info.append(info_list)
-        while not done:
-            time.sleep(15)
-        driver.switch_to.window(handles[0])
-        print(progress, "of", len(doc_range), "done")
-        progress += 1
+        try:
+            document.click()
+            handles = driver.window_handles
+            done, info_list = extract_info(driver, handles)
+            all_info.append(info_list)
+            while not done:
+                time.sleep(15)
+            driver.switch_to.window(handles[0])
+            print(at_opp, "of", len(doc_range), "done")
+            at_opp += 1
+        except Exception as e:
+            print(e)
+            print("Stopped at opportunity {}".format(at_opp))
+            read_write.save_pickle(all_info, "evergabe.pickle")
 
     driver.close()
     return all_info
@@ -91,13 +101,12 @@ def extract_info(driver, handles):
     return True, info_list
 
 
-def run_evergabe(date):
-    link = "https://www.evergabe.nrw.de/VMPCenter/common/project/search.do?method=showExtendedSearch&fromExternal=true#eyJjcHZDb2RlcyI6W3sibmFtZSI6IkFyYmVpdHNwbMOkdHplIiwiY29kZSI6IjMwMjE0MDAwLTIifSx7Im5hbWUiOiJCaWxkc2NoaXJtZSIsImNvZGUiOiIzMDIzMTMwMC0wIn0seyJuYW1lIjoiQ29tcHV0ZXJiaWxkc2NoaXJtZSB1bmQgS29uc29sZW4iLCJjb2RlIjoiMzAyMzEwMDAtNyJ9LHsibmFtZSI6IkZlcm5zcHJlY2hrb3BmaMO2cmVyZ2Fybml0dXJlbiIsImNvZGUiOiIzMjU1MTMwMC0zIn0seyJuYW1lIjoiRmlsbXZvcmbDvGhyZ2Vyw6R0ZSIsImNvZGUiOiIzODY1MjAwMC0wIn0seyJuYW1lIjoiUGVyc29uYWxjb21wdXRlciIsImNvZGUiOiIzMDIxMzAwMC01In0seyJuYW1lIjoiVGFibGV0dGNvbXB1dGVyIiwiY29kZSI6IjMwMjEzMjAwLTcifSx7Im5hbWUiOiJUYXNjaGVuY29tcHV0ZXIiLCJjb2RlIjoiMzAyMTM1MDAtMCJ9LHsibmFtZSI6IlRpc2NoY29tcHV0ZXIiLCJjb2RlIjoiMzAyMTMzMDAtOCJ9LHsibmFtZSI6IlRyYWdiYXJlIENvbXB1dGVyIiwiY29kZSI6IjMwMjEzMTAwLTYifV0sImNvbnRyYWN0aW5nUnVsZXMiOlsiVk9MIiwiVk9CIiwiVlNWR1YiLCJTRUtUVk8iLCJPVEhFUiJdLCJwdWJsaWNhdGlvblR5cGVzIjpbIlRlbmRlciJdLCJkaXN0YW5jZSI6MCwicG9zdGFsQ29kZSI6IiIsIm9yZGVyIjoiMCIsInBhZ2UiOiIxIiwic2VhcmNoVGV4dCI6IiIsInNvcnRGaWVsZCI6IlBST0pFQ1RfUFVCTElDQVRJT05fREFURV9MTkcifQ"
-    header = ["ID",	"Title", "Offizielle Bezeichnung", "Kontaktstelle", "zu Händen von", "Telefon",
-                              "E-Mail", "Internet-Adresse (URL)", "Keywords Found", "Link to folder"]
+def run_evergabe(driver, date, link, is_rerun, stop_opp, start_opp):
+    header = ["ID", "Title", "Offizielle Bezeichnung", "Kontaktstelle", "zu Händen von", "Telefon",
+              "E-Mail", "Internet-Adresse (URL)", "Keywords Found", "Link to folder"]
+
+    request_list = evergabe(driver, link, is_rerun, stop_opp, start_opp)
     evergabe_sheet = Sheet("1wfNNoTwJyXzCEIinJnRe8lLduMw1VAzd", "Evergabe", date)
     evergabe_sheet.init_sheet(header)
-    request_list = evergabe(link)
     print("time to upload...")
     evergabe_sheet.append_row(request_list)
-
