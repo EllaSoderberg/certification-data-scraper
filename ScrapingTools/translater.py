@@ -1,23 +1,16 @@
 
-from googletrans import Translator
-from textblob import TextBlob
+#from googletrans import Translator
 import goslate
 
 
-class Trans:
-    def __init__(self, lang=None, dest='en'):
-        self.lang = lang
+class Trans():
+    def __init__(self, dest='en'):
         self.dest = dest
-        self.translater = Translator()
-
-    def identify_lang(self, to_translate):
-        self.lang = self.translater.detect(to_translate).lang
 
     def translate(self, to_translate):
-        if self.lang is None:
-            self.identify_lang(to_translate)
+        translater = goslate.Goslate()
         try:
-            translated_string = self.translater.translate(to_translate, src=self.lang, dest=self.dest).text
+            translated_string = translater.translate(to_translate, self.dest)
         except Exception:
             translated_string = to_translate
         return translated_string

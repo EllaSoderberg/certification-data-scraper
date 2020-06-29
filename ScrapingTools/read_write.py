@@ -1,4 +1,7 @@
 import pickle
+import os
+
+proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
 
 
 def save_csv(link_list, file_name):
@@ -6,7 +9,7 @@ def save_csv(link_list, file_name):
     file = open(file_name, 'w', encoding="utf8")
     for link in link_list:
         file.write(str(link) + "\n")
-    file.close
+    file.close()
 
 
 def read_csv(file_name):
@@ -19,11 +22,14 @@ def read_csv(file_name):
 
 
 def save_pickle(to_save, file_name):
+    os.chdir(proj_path)
     pickle_file = open(file_name, 'wb')
+    print(type(to_save))
     pickle.dump(to_save, pickle_file)
 
 
 def read_pickle(file_name):
+    os.chdir(proj_path)
     load_pickle = open(file_name, 'rb')
     open_pickle = pickle.load(load_pickle)
     return open_pickle

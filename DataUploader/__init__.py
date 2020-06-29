@@ -7,6 +7,7 @@ from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets']
+proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
 
 
 class Sheet:
@@ -22,6 +23,7 @@ class Sheet:
         # The file token.pickle stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
+        os.chdir(proj_path)
         if os.path.exists('token.pickle'):
             with open('token.pickle', 'rb') as token:
                 creds = pickle.load(token)
@@ -140,5 +142,5 @@ class Sheet:
             'values': values
         }
         service.spreadsheets().values().append(
-            spreadsheetId=self.sheet_id, range="Blad1", valueInputOption="USER_ENTERED", body=sheet_header,
+            spreadsheetId=self.sheet_id, range="Blad1", valueInputOption="RAW", body=sheet_header,
             fields="tableRange").execute()

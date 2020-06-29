@@ -4,9 +4,11 @@ import os
 from FileHandleler import extractor, readPDF, analysePDF, drive_upload, read_doc
 import patoolib
 
+downloads_path = "C:\\Users\\Movie Computer\\Downloads"
+
 
 class HandleFiles:
-    def __init__(self, project_name, dest_folder, path="C:\\Users\\Ella\\Downloads"):
+    def __init__(self, project_name, dest_folder, path=downloads_path):
         self.path = path
         self.project_name = project_name
         self.dest_folder = dest_folder
@@ -78,10 +80,10 @@ class HandleFiles:
             if words is not None:
                 if len(words) != 0:
                     self.found_words += words
-        return self.found_words
+        return str(self.found_words)
 
     def read_docx(self):
-        read_doc.convert_doc_to_docx()
+        #read_doc.convert_doc_to_docx()
         doc_list = self.get_files("docx")
         doc_list = doc_list + self.get_folder_files("docx")
         self.file_list = self.file_list + doc_list
@@ -92,7 +94,7 @@ class HandleFiles:
             if words is not None:
                 if len(words) != 0:
                     self.found_words += words
-        return self.found_words
+        return str(self.found_words)
 
     def upload_files(self):
         """
@@ -122,3 +124,4 @@ class HandleFiles:
         self.file_list = []
         self.ext_files = []
         self.folder_list = []
+

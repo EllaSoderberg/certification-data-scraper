@@ -8,7 +8,7 @@ import winsound
 doc_folder_ID = "1ZiyNH8ADT4rQsOv0qaX9IY_-LgtwucIU"
 
 
-def eprocure_links(driver, link, is_rerun, num_pages, stop_opp, start_opp=1):
+def eprocure_links(driver, link, is_rerun, num_pages, start_page, stop_opp, start_opp=1):
     """
     Visits the eprocure site and extracts the data and downloads the files
     :param start_opp:
@@ -22,26 +22,26 @@ def eprocure_links(driver, link, is_rerun, num_pages, stop_opp, start_opp=1):
         data_list = read_write.read_pickle("eprocure.pickle")
     else:
         data_list = []
+    print(data_list)
 
-    driver.get(link)
+    new_link = link + "?page={}".format(start_page)
+
+    driver.get(new_link)
     time.sleep(5)
 
-    new_link = link
-
     first_page = True
-    at_page = 1
-    at_opp = start_opp
+    at_page = start_page
 
     while num_pages >= at_page:
         table = driver.find_element_by_tag_name("tbody")
         t_rows = table.find_elements_by_tag_name("tr")
         tenders = len(t_rows)
         if first_page and num_pages == at_page:
-            run_range = range(start_opp-1, stop_opp-1)
+            run_range = range(start_opp-1, stop_opp)
         elif first_page:
             run_range = range(start_opp-1, tenders)
         elif num_pages == at_page:
-            run_range = range(stop_opp-1)
+            run_range = range(stop_opp)
         else:
             run_range = range(tenders)
 
@@ -57,10 +57,12 @@ def eprocure_links(driver, link, is_rerun, num_pages, stop_opp, start_opp=1):
                 time.sleep(20)
                 data = eprocure_search(driver, driver)
                 data_list.append(data)
+                print("data: ", len(data_list))
                 driver.get(new_link)
+                print("at", tender_no+1, "of", run_range)
             except Exception as e:
                 print(e)
-                print("Stopped at page {} and on opportunity {}".format(at_page, at_opp))
+                print("Stopped at page {} and on opportunity {}".format(at_page, tender_no+1))
                 read_write.save_pickle(data_list, "eprocure.pickle")
 
         first_page = False
@@ -68,6 +70,7 @@ def eprocure_links(driver, link, is_rerun, num_pages, stop_opp, start_opp=1):
         new_link = link + "?page={}".format(at_page)
         driver.get(new_link)
 
+    read_write.save_pickle(data_list, "eprocure.pickle")
     driver.close()
     return data_list
 
@@ -138,11 +141,11 @@ def download_file(driver, link):
         pass
 
 
-def run_eprocurein(driver, date, link, is_rerun, num_pages, stop_opp, start_opp):
+def run_eprocurein(driver, date, link, is_rerun, num_pages, start_page, stop_opp, start_opp):
     header = ["Date published", "Organisation Name", "Tender Title", "Reference Number", "Product Category",
               "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"]
 
-    request_list = eprocure_links(driver, link, is_rerun, num_pages, stop_opp, start_opp)
+    request_list = eprocure_links(driver, link, is_rerun, num_pages, start_page, stop_opp, start_opp)
     epocure_sheet = Sheet("1Q9dT-AaNlExuFZMtkn2WPRFWzdye0KWy", "Eprocure India", date)
     epocure_sheet.init_sheet(header)
     print("time to upload...")

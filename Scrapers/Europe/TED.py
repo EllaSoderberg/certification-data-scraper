@@ -41,6 +41,7 @@ def tedlinks(driver, link, search, num_pages):
 
     address = driver.current_url
 
+    # Loop trough pages and save the link to each opportunity in a list
     at_page = 1
     while at_page <= num_pages:
         time.sleep(3)
@@ -56,8 +57,11 @@ def tedlinks(driver, link, search, num_pages):
 
 def extract_ted_info(link_list, contact_list):
     total = len(link_list)
+    print("total", total)
+    new_contacts = contact_list
     request_list = []
     progress = 1
+    print("starter contacts", len(contact_list))
     for link in link_list:
         info_list = []
 
@@ -65,16 +69,19 @@ def extract_ted_info(link_list, contact_list):
         link_html = requests.get(link)
         soup = BeautifulSoup(link_html.content, 'html.parser')
         info_list.append(link)
+        print("got the link!")
 
         # Find date published
         date = soup.find('span', class_="date").text
         info_list.append(date)
+        print("found the date")
 
         # Get the info under headline Name and addresses
         try:
             contact_info = soup.find("span", string='Name and addresses').next_sibling.strings
         except Exception:
             contact_info = soup.find("span", string='Name, addresses and contact point(s)').next_sibling.strings
+        print("got the contact info")
 
         name = None
         country = None
@@ -91,21 +98,19 @@ def extract_ted_info(link_list, contact_list):
             responsible_found = re.search('Contact person:', info)
             if responsible_found is not None:
                 responsible = info[responsible_found.span()[1]:]
+        print("contact info extracted")
 
         # Add contact info to document
         info_list.append(name)
         info_list.append(country)
         info_list.append(responsible)
 
-        responsible = None
-        country = None
-        name = None
-
         # Add email
+        email = None
         email = soup.find("a", class_='ojsmailto').string
         e_mail = email
         info_list.append(email)
-        email = None
+        print("email extracted")
 
         # See if the contact is a duplicate
         is_duplicate = False
@@ -114,62 +119,58 @@ def extract_ted_info(link_list, contact_list):
             if e_mail[3:-3] in contact:
                 is_duplicate = True
 
+        new_contacts.append(e_mail)
+
+        print("duplicate done")
+
         if is_duplicate:
             info_list.append("YES")
         else:
             info_list.append("NO")
 
         # Add website
+        website = None
+
         website = soup.find('a', class_="ojshref").text
         info_list.append(website)
-        website = None
+        print("website done")
 
         # Find section two
         info = soup.find("span", id='id1-II.').parent.parent
+        print("time to translate")
 
         transl = translater.Trans()
         # Get the title of the project
         try:
             title = get_sibling(info, "Title:").text.strip()
+        except Exception:
+            title = " "
+
+        try:
             # Translate title to english and add to file
             eng_title = transl.translate(title).replace(";", ",")
         except Exception:
-            eng_title = None
+            eng_title = title
 
         info_list.append(eng_title)
+        print("title found")
 
         # Find cpv code and add code and description
-        cpv_codes = []
-        try:
-            cpv = get_sibling(info, 'Main CPV code')
-            cpv_nr = cpv.span.text
-            cpv_codes.append(cpv_nr)
-            cpv_text = cpv.span['title'].replace(";", ",")
-        except Exception:
-            cpv_nr = None
-            cpv_text = None
+        cpv_codes = soup.find_all("span", class_="cpvCode")
+        print(cpv_codes)
 
-        info_list.append(cpv_nr)
-        info_list.append(cpv_text)
+        main_cpv = None
+        main_cpv = cpv_codes[0].text
+        print(main_cpv)
 
-        # Find secondary CPV codes
-        try:
-            cpv_nrs = info.find(
-                "span", string='Additional CPV code(s)').find_next_siblings("div")
-            cpv_string = ""
-            cpv_text_string = ""
-            for cpv in cpv_nrs:
-                cpv_codes.append(cpv.text)
-                text = cpv.text + ", "
-                cpv_string += text
-                text = cpv.span['title'] + ", "
-                cpv_text_string += text
-        except Exception:
-            cpv_string = None
-            cpv_text_string = None
+        info_list.append(main_cpv)
 
-        info_list.append(cpv_string)
-        info_list.append(cpv_text_string)
+        add_cpv = None
+        add_cpv = ""
+        for cpv in cpv_codes[1:]:
+            add_cpv += cpv.text + ","
+        print(add_cpv)
+        info_list.append(add_cpv)
 
         # Find total value and add it
         try:
@@ -183,14 +184,23 @@ def extract_ted_info(link_list, contact_list):
         # Find, translate, write and save award criteria
         award_string = ""
         try:
-            award_criteria = info.find(
-                "span", string='Award criteria').find_next_siblings("div")
+            award_criteria = soup.find_all(
+                "span", string='Award criteria')
+            print(award_criteria)
             for award in award_criteria:
-                eng = transl.translate(award.text)
-                award_string += str(eng)
-                award_string += " "
+                awards = award.find_next_siblings("div")
+                print(awards)
+                for a in awards:
+                    try:
+                        eng = transl.translate(a.text)
+                    except Exception:
+                        eng = a.text
+                    award_string += str(eng)
+                    award_string += " "
         except Exception:
             award_string = None
+
+        print(award_string)
         info_list.append(award_string)
 
         # Analyze the Award criteria
@@ -226,10 +236,12 @@ def extract_ted_info(link_list, contact_list):
         request_list.append(info_list)
         print(progress, "of", total, "done")
         progress += 1
-    return request_list
+
+    return request_list, new_contacts
 
 
 def find_text(soup, regex):
+    print(str(soup(text=(re.compile(regex)))))
     matchobj = re.search(regex, str(soup(text=(re.compile(regex)))))
     if matchobj:
         item = matchobj.group()
@@ -247,13 +259,16 @@ def run_ted(driver, link, searchdate, date, num_pages):
     search = "PD=[{}] AND PC=[30231000 or 38652000 or 32551300 or 30214000 or 30213000 or 30213100 or " \
              "30213200 or 30213300 or 30213500] AND TD=[3]".format(searchdate)
     header = ["Link", "Date published", "Authority name", "Country", "Contact person", "E-mail", "Is duplicate",
-              "Website", "Title", "CPV nr", "CPV text", "Secondary CPV", "S CPV text", "Total value", "Award criteria",
+              "Website", "Title", "CPV", "Secondary CPV", "Total value", "Award criteria",
               "Found words", "EU funding", "Documents", "TCOC mentioned", "EPEAT mentioned"]
 
     contact_list = read_write.read_pickle("ScrapingTools/TED_contacts.p")
     links = tedlinks(driver, link, search, num_pages)
-    request_list = extract_ted_info(links, contact_list)
+    request_list, new_contacts = extract_ted_info(links, contact_list)
+
     ted_sheet = Sheet("1LoN1ufjKEGyMhEtC-cGdUqDDE465DDml", "TED", date)
     ted_sheet.init_sheet(header)
     print("time to upload...")
     ted_sheet.append_row(request_list)
+
+    return new_contacts

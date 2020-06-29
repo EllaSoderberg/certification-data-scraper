@@ -1,4 +1,5 @@
 import time
+import os
 from DataUploader import Sheet
 from FileHandleler import HandleFiles
 from ScrapingTools import read_write
@@ -16,7 +17,11 @@ def try_extraction(driver, xpath):
     return extraction
 
 
+proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
+
+
 def evergabe(driver, link, is_rerun, stop_opp, start_opp=1):
+
     if is_rerun:
         all_info = read_write.read_pickle("evergabe.pickle")
     else:
@@ -47,9 +52,13 @@ def evergabe(driver, link, is_rerun, stop_opp, start_opp=1):
         except Exception as e:
             print(e)
             print("Stopped at opportunity {}".format(at_opp))
+            os.chdir(proj_path)
             read_write.save_pickle(all_info, "evergabe.pickle")
+            quit(1)
 
     driver.close()
+    read_write.save_pickle(all_info, "evergabe.pickle")
+    print(all_info)
     return all_info
 
 

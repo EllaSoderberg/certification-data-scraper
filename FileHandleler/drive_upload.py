@@ -9,15 +9,17 @@ from apiclient.http import MediaIoBaseDownload
 import io
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/drive']
+SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets']
+proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
 
 
 def check_creds(creds=None):
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('C:/Users/Ella/Desktop/Spara/Jobb/Tenders/Demo0320/token.pickle'):
-        with open('C:/Users/Ella/Desktop/Spara/Jobb/Tenders/Demo0320/token.pickle', 'rb') as token:
+    os.chdir(proj_path)
+    if os.path.exists('token.pickle'):
+        with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
@@ -25,10 +27,10 @@ def check_creds(creds=None):
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'C:/Users/Ella/Desktop/Spara/Jobb/Tenders/Demo0320/credentials.json', SCOPES)
+                'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('C:/Users/Ella/Desktop/Spara/Jobb/Tenders/Demo0320/token.pickle', 'wb') as token:
+        with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
     return creds
 
@@ -72,7 +74,7 @@ def upload_files(service, folder, files):
                                fields='id').execute()
 
 
-def upload_to_drive(folder_name, dest_folder, file_names, path="C:\\Users\\Ella\\Downloads"):
+def upload_to_drive(folder_name, dest_folder, file_names, path="C:\\Users\\Movie Computer\\Downloads"):
     """
     Creates a new folder and uploads files to drive
     :param folder_name: The name of the new folder
