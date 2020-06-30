@@ -3,6 +3,7 @@ from DataUploader import Sheet
 from ScrapingTools import read_write
 import time
 import winsound
+import logging
 
 doc_folder_id = "1ckD74zWxLjDJSpNuJYu1MAQT1KtwlPrG"
 
@@ -21,10 +22,8 @@ def enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_pag
     else:
         data_list = []
 
-    read_write.save_csv(data_list, "backup.csv")
-    print(len(data_list))
-
     driver.get(link)
+    logging.info("Starting at:", link)
 
     # Login part
     time.sleep(5)
@@ -39,13 +38,6 @@ def enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_pag
     # Go to opportunities page
     driver.find_element_by_id("contentForm:j_id56").click()
     time.sleep(5)
-
-    """
-    frequency = 2500  # Set Frequency To 2500 Hertz
-    duration = 1000  # Set Duration To 1000 ms == 1 second
-    winsound.Beep(frequency, duration)
-    time.sleep(40)
-    """
 
     first_page = True
     at_page = 1
@@ -66,8 +58,6 @@ def enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_pag
         else:
             run_range = range(tenders)
 
-        print(run_range)
-
         for tender_no in run_range:
             try:
                 tenders = driver.find_elements_by_class_name("commandLink_TITLE-BLUE")
@@ -80,12 +70,15 @@ def enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_pag
                 data_list.append(data)
                 time.sleep(10)
                 at_opp += 1
-                print(tender_no, "of", run_range, "done")
+                logging.info("Number of datapoints:", len(data_list))
+                logging.info("Currently at", tender_no+1, "of 10")
+                read_write.save_pickle(data_list, "gebiz_temp.pickle")
             except Exception as e:
-                print(e)
+                logging.error("Exception occurred", exc_info=True)
                 print("Stopped at page {} and on opportunity {}".format(at_page, at_opp))
                 read_write.save_pickle(data_list, "gebiz_temp.pickle")
                 quit(1)
+
         pagination(driver)
         first_page = False
         at_page += 1
@@ -100,10 +93,9 @@ def try_extraction(driver, xpath):
     try:
         extraction = driver.find_element_by_xpath(xpath).find_element_by_class_name("formOutputText_VALUE-DIV ").text
     except Exception as e:
-        print(e)
+        logging.error("Exception occurred", exc_info=True)
         extraction = None
     return extraction
-
 
 
 def extract_gebiz_info(driver, title, reference):
@@ -117,7 +109,7 @@ def extract_gebiz_info(driver, title, reference):
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         driver.find_element_by_class_name("formAttachmentsList_DOWNLOAD-BUTTON").click()
     except Exception as e:
-        print(e)
+        logging.error("Exception occurred", exc_info=True)
         frequency = 2500  # Set Frequency To 2500 Hertz
         duration = 1000  # Set Duration To 1000 ms == 1 second
         winsound.Beep(frequency, duration)
@@ -150,7 +142,6 @@ def extract_gebiz_info(driver, title, reference):
 
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
     driver.find_element_by_xpath("//input[@value='Back to Search Results']").click()
-    #driver.find_element_by_class_name("commandButton_BACK-BLUE-TEXT").click()
 
     return info_list
 
@@ -164,7 +155,7 @@ def run_gebiz(driver, link, date, is_rerun, num_pages, start_page, stop_opp, sta
     request_list = enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_page, stop_opp, start_opp)
     gebiz_sheet = Sheet("1_3CkwtS6EMUdD3WRUQ7B3jhgUn3T1v-y", "Gebiz", date)
     gebiz_sheet.init_sheet(header)
-    print("time to upload...")
+    logging.info("Time to upload...")
     gebiz_sheet.append_row(request_list)
 
 

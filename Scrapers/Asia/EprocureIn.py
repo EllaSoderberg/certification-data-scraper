@@ -1,14 +1,16 @@
-from ScrapingTools import read_write
+from ScrapingTools import read_write, failproof
 from FileHandleler import HandleFiles
 from DataUploader import Sheet
 import time
 from bs4 import BeautifulSoup
 import winsound
 
+import logging
+
 doc_folder_ID = "1ZiyNH8ADT4rQsOv0qaX9IY_-LgtwucIU"
 
 
-def eprocure_links(driver, link, is_rerun, num_pages, start_page, stop_opp, start_opp=1):
+def eprocure_links(driver, link, end_opp, end_page):
     """
     Visits the eprocure site and extracts the data and downloads the files
     :param start_opp:
@@ -18,71 +20,63 @@ def eprocure_links(driver, link, is_rerun, num_pages, start_page, stop_opp, star
     :param driver:
     :param link: a link to the search result
     """
-    if is_rerun:
-        data_list = read_write.read_pickle("eprocure.pickle")
-    else:
-        data_list = []
-    print(data_list)
 
-    new_link = link + "?page={}".format(start_page)
+    eprocure_runner = failproof.Runner(project="eprocure", end_opp=end_opp, end_page=end_page)
 
-    driver.get(new_link)
-    time.sleep(5)
+    while eprocure_runner.reruns <= 5:
+        try:
+            new_link = link + "?page={}".format(eprocure_runner.start_page)
+            logging.info("Starting at:", new_link)
 
-    first_page = True
-    at_page = start_page
+            driver.get(new_link)
+            time.sleep(5)
 
-    while num_pages >= at_page:
-        table = driver.find_element_by_tag_name("tbody")
-        t_rows = table.find_elements_by_tag_name("tr")
-        tenders = len(t_rows)
-        if first_page and num_pages == at_page:
-            run_range = range(start_opp-1, stop_opp)
-        elif first_page:
-            run_range = range(start_opp-1, tenders)
-        elif num_pages == at_page:
-            run_range = range(stop_opp)
-        else:
-            run_range = range(tenders)
+            table = driver.find_element_by_tag_name("tbody")
+            t_rows = table.find_elements_by_tag_name("tr")
+            eprocure_runner.table_len = len(t_rows)
 
-        for tender_no in run_range:
-            try:
-                table = driver.find_element_by_tag_name("tbody")
-                t_rows = table.find_elements_by_tag_name("tr")
-                columns = t_rows[tender_no].find_elements_by_tag_name("td")
-                columns[4].find_element_by_tag_name("a").click()
-                frequency = 2500  # Set Frequency To 2500 Hertz
-                duration = 1000  # Set Duration To 1000 ms == 1 second
-                winsound.Beep(frequency, duration)
-                time.sleep(20)
-                data = eprocure_search(driver, driver)
-                data_list.append(data)
-                print("data: ", len(data_list))
-                driver.get(new_link)
-                print("at", tender_no+1, "of", run_range)
-            except Exception as e:
-                print(e)
-                print("Stopped at page {} and on opportunity {}".format(at_page, tender_no+1))
-                read_write.save_pickle(data_list, "eprocure.pickle")
+            while eprocure_runner.end_page >= eprocure_runner.at_page:
+                run_range = eprocure_runner.calc_range()
+                for tender_no in run_range:
+                    eprocure_runner.at_opp = tender_no
+                    table = driver.find_element_by_tag_name("tbody")
+                    t_rows = table.find_elements_by_tag_name("tr")
+                    columns = t_rows[tender_no].find_elements_by_tag_name("td")
+                    columns[4].find_element_by_tag_name("a").click()
+                    frequency = 2500  # Set Frequency To 2500 Hertz
+                    duration = 1000  # Set Duration To 1000 ms == 1 second
+                    winsound.Beep(frequency, duration)
+                    time.sleep(20)
+                    data = eprocure_search(driver)
+                    eprocure_runner.data_list.append(data)
+                    driver.get(new_link)
+                    logging.info("Number of datapoints:", len(eprocure_runner.data_list))
+                    logging.info("Currently at", tender_no+1, "of", eprocure_runner.table_len)
+                    read_write.save_pickle(data_list, "eprocure.pickle")
 
-        first_page = False
-        at_page += 1
-        new_link = link + "?page={}".format(at_page)
-        driver.get(new_link)
+            eprocure_runner.first_page = False
+            eprocure_runner.at_page += 1
+            new_link = link + "?page={}".format(eprocure_runner.at_page)
+            driver.get(new_link)
+
+        except Exception as e:
+            logging.error("Exception occurred", exc_info=True)
+            print("Stopped at page {} and on opportunity {}".format(eprocure_runner.at_opp, tender_no+1))
+            eprocure_runner.reruns += 1
 
     read_write.save_pickle(data_list, "eprocure.pickle")
     driver.close()
     return data_list
 
 
-def eprocure_search(driver, web_element):
+def eprocure_search(driver):
     """
     Search for information on the page with the data
     :param driver:
     :param web_element: the web element containing all the data
     """
     info_list = []
-    soup = BeautifulSoup(web_element.page_source, 'html.parser')
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
 
     info_list.append(soup.find('td', string="ePublished Date").find_next_siblings(width="20%")[0].text.strip())
     info_list.append(soup.find('td', string="Organisation Name").find_next_siblings(id="tenderDetailDivTd")[0]
@@ -105,10 +99,9 @@ def eprocure_search(driver, web_element):
         info_list.append(file_operator.upload_files())
         file_operator.delete_all_files()
     else:
+        logging.info("This tender does not have any files")
         info_list.append(None)
         info_list.append(None)
-
-    read_write.save_pickle(info_list, "india_info_2.p")
 
     driver.execute_script("window.history.go(-3)")
     time.sleep(20)
@@ -138,15 +131,16 @@ def download_file(driver, link):
         driver.find_element_by_xpath("//*[contains(text(), 'Tendernotice_1')]").click()
         time.sleep(20)
     except Exception:
+        logging.error("Exception occurred", exc_info=True)
         pass
 
 
-def run_eprocurein(driver, date, link, is_rerun, num_pages, start_page, stop_opp, start_opp):
+def run_eprocurein(driver, date, link, end_opp, end_page):
     header = ["Date published", "Organisation Name", "Tender Title", "Reference Number", "Product Category",
               "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"]
 
-    request_list = eprocure_links(driver, link, is_rerun, num_pages, start_page, stop_opp, start_opp)
+    request_list = eprocure_links(driver, link, end_opp, end_page)
     epocure_sheet = Sheet("1Q9dT-AaNlExuFZMtkn2WPRFWzdye0KWy", "Eprocure India", date)
     epocure_sheet.init_sheet(header)
-    print("time to upload...")
+    logging.info("time to upload...")
     epocure_sheet.append_row(request_list)

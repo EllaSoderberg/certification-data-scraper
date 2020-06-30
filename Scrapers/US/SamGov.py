@@ -7,25 +7,10 @@ import time
 import re
 import winsound
 from selenium import webdriver
-
-this_week = "https://beta.sam.gov/search?index=opp&sort=-relevance&page=1&keywords=%22all-in-one%22%20laptop%20laptops%20computer%20workstation%20hp%20philips%20dell%20lenovo%20desktop%20display&inactive_filter_values=false&naics=334&notice_type=k&opp_inactive_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_publish_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%222020-06-11%22,%22endDate%22:%222020-06-18%22%7D%7D&opp_modified_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0"
-#this_week="https://beta.sam.gov/search?index=opp&sort=-relevance&page=1&keywords=%22all-in-one%22%20laptop%20laptops%20computer%20workstation%20hp%20philips%20dell%20lenovo%20desktop%20display&inactive_filter_values=false&naics=334&opp_inactive_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_publish_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%222020-06-04%22,%22endDate%22:%222020-06-11%22%7D%7D&opp_modified_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0&notice_type=k"
-#this_week="https://beta.sam.gov/search?index=opp&sort=-relevance&page=1&keywords=%22all-in-one%22%20laptop%20laptops%20computer%20workstation%20hp%20philips%20dell%20lenovo%20desktop%20Display&inactive_filter_values=false&opp_inactive_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_publish_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%222020-05-30%22,%22endDate%22:%222020-06-03%22%7D%7D&opp_modified_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0&naics=334"
-#this_week = "https://beta.sam.gov/search?index=opp&page=1&keywords=laptops%20laptop%20computer%20datacenter%20tablet%20tablets%20dell%20lenovo%20samsung%20hp%20epeat%20projector&inactive_filter_values=false&sort=-relevance&notice_type=k&naics=334,541519&psc=&opp_inactive_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_publish_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%222020-05-19%22,%22endDate%22:%22%22%7D%7D&opp_modified_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0"
-
-lap_link ="https://beta.sam.gov/search?index=opp&page=1&keywords=laptop%20laptops%20notebook%20notchebooks&inactive" \
-          "_filter_values=false&naics=&sort=-relevance&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22" \
-          "startDate%22:%222020-01-01%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0"
-
-naics_link = "https://beta.sam.gov/search?index=opp&page=1&keywords=&opp_response_date_filter_model=%7B%22dateRange" \
-       "%22:%7B%22startDate%22:%222020-01-01%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0&" \
-       "inactive_filter_values=false&naics=334118,334111,334112"
-
-pages = 8
+import logging
 
 folder_id = "1bupED_ONXjdQ7yhb_Q9denAHVVk3KCQh"
 
-info_list = read_write.read_pickle("samgov.pickle")
 
 def pagination(driver):
     nav = driver.find_element_by_class_name("page-next")
@@ -33,25 +18,21 @@ def pagination(driver):
     time.sleep(10)
 
 
-def samlinks(driver, link, is_rerun, num_pages, start_opp, stop_opp):
-    """if is_rerun:
+def samlinks(driver, link, is_rerun, num_pages, start_page, start_opp, stop_opp):
+    if is_rerun:
         info_list = []
         info_list += read_write.read_pickle("samgov.pickle")
-        #info_list = read_write.read_csv("samfile.csv")
     else:
         info_list = []
-    """
-
-    global info_list
-    print(len(info_list))
 
     driver.get(link)
+    logging.info("Starting at:", link)
 
     # Perform search
     time.sleep(30)  # Let the user actually see something!
 
     first_page = True
-    start_page = 3
+    start_page = start_page
     at_page = 1
 
     while start_page > at_page:
@@ -79,16 +60,14 @@ def samlinks(driver, link, is_rerun, num_pages, start_opp, stop_opp):
             opportunity[opp].find_element_by_tag_name("a").click()
             time.sleep(10)
             info = extract_sam_info(driver)
-            for ii in info:
-                print(type(ii))
             info_list.append(info)
-            print("At opp {} of {} on page {}".format(i, len(opportunity), at_page))
+            logging.info("Number of datapoints:", len(info_list))
+            logging.info("Currently at", i + 1, "of 10 on page", at_page)
             i += 1
-            #read_write.save_csv(info_list, "../../ScrapingTools/samfile.csv")
             read_write.save_pickle(info_list, "samgov.pickle")
             driver.execute_script("window.history.go(-1)")
             time.sleep(10)
-        read_write.save_csv(info_list, "samfile.csv")
+        read_write.save_pickle(info_list, "samgov.pickle")
         pagination(driver)
         first_page = False
         at_page += 1
@@ -99,6 +78,7 @@ def try_by_id(driver, id):
     try:
         result = driver.find_element_by_id(id)
     except NoSuchElementException:
+        logging.error("Exception occurred", exc_info=True)
         result = None
     return result
 
@@ -107,8 +87,10 @@ def try_extraction(query):
     try:
         extraction = query.text
     except Exception as e:
+        logging.error("Exception occurred", exc_info=True)
         extraction = None
     return extraction
+
 
 def split_text(ext):
     if ext is not None:
@@ -117,13 +99,13 @@ def split_text(ext):
 
 
 def extract_sam_info(driver):
-
     title = try_extraction(driver.find_element_by_xpath('//h1[@class="\'sam-ui-header"]'))
     reference_id = try_extraction(try_by_id(driver, "header-solicitation-number")
                                   .find_element_by_class_name("description"))
     try:
         description = try_extraction(try_by_id(driver, "description").find_element_by_class_name("ng-star-inserted"))
     except Exception:
+        logging.error("Exception occurred", exc_info=True)
         description = None
     published = split_text(try_extraction(try_by_id(driver, "general-original-published-date")))
     gen_type = split_text(try_extraction(try_by_id(driver, "general-type")))
@@ -148,8 +130,6 @@ def extract_sam_info(driver):
         find_tco = None
         find_epeat = None
 
-
-
     info = [driver.current_url,
                  published,
                  gen_type,
@@ -168,17 +148,14 @@ def extract_sam_info(driver):
                  find_epeat
                  ]
 
-    print(info)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight/3);")
-    time.sleep(5)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight/2);")
-    time.sleep(5)
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(5)
+    for height in range(10):
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight/{});".format(height))
+        time.sleep(5)
+
     try:
         driver.find_element_by_xpath("//*[@class='fa fa-cloud-download']").click()
     except Exception as e:
-        print(e)
+        logging.error("Exception occurred", exc_info=True)
         frequency = 2500  # Set Frequency To 2500 Hertz
         duration = 1000  # Set Duration To 1000 ms == 1 second
         winsound.Beep(frequency, duration)
@@ -201,7 +178,6 @@ def extract_sam_info(driver):
 
     info.append(words)
     info.append(drive_link)
-    print(info)
 
     return info
 
@@ -215,13 +191,13 @@ def find_text(soup, regex):
     return item
 
 
-def run_sam(driver, link, date, num_pages):
+def run_sam(driver, link, date, is_rerun, num_pages, start_page, start_opp, stop_opp):
 
     header = ["Link", "Published", "Type", "Title", "Notice ID", "Agency", "NAICS", "PSC", "Description",
               "Postal Address", "Contact Person", "Phone number", "Email address", "TCO mentioned",
               "EPEAT mentioned", "Interesting words", "Link to documents"]
 
-    request_list = read_write.read_pickle("samgov.pickle")#samlinks(driver, link, True, num_pages, 1, 10) ##
+    request_list = samlinks(driver, link, is_rerun, num_pages, start_page, start_opp, stop_opp) #read_write.read_pickle("samgov.pickle")#samlinks(driver, link, True, num_pages, 1, 10) ##
 
     i = 0
     for data in request_list:
@@ -237,11 +213,5 @@ def run_sam(driver, link, date, num_pages):
 
     sam_sheet = Sheet("155JpRxPZv25UHq7gG-o3kOzDsy7VbS0u", "Sam.gov", date)
     sam_sheet.init_sheet(header)
-    print("time to upload...")
+    logging.info("time to upload...")
     sam_sheet.append_row(request_list)
-
-
-
-#driver = webdriver.Chrome(executable_path='C:/Users/Movie Computer/Desktop/drivers/chromedriver.exe')
-run_sam(webdriver.Chrome("C:/Users/Movie Computer/Desktop/drivers/chromedriver.exe"), this_week, "2020-06-25", pages)
-

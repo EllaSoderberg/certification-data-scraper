@@ -4,6 +4,7 @@ import time
 import re
 import requests
 from bs4 import BeautifulSoup
+import logging
 
 rlv_cpv_codes = ["30231000", "30214000", "30213000", "30213100",
                  "30213200", "30213300", "30213500", "38652000", "32551300"]
@@ -57,11 +58,11 @@ def tedlinks(driver, link, search, num_pages):
 
 def extract_ted_info(link_list, contact_list):
     total = len(link_list)
-    print("total", total)
+    logging.info("Total datapoints to scrape:", total)
     new_contacts = contact_list
     request_list = []
     progress = 1
-    print("starter contacts", len(contact_list))
+    logging.info("Number of contacts initially:", len(contact_list))
     for link in link_list:
         info_list = []
 
@@ -69,19 +70,16 @@ def extract_ted_info(link_list, contact_list):
         link_html = requests.get(link)
         soup = BeautifulSoup(link_html.content, 'html.parser')
         info_list.append(link)
-        print("got the link!")
 
         # Find date published
         date = soup.find('span', class_="date").text
         info_list.append(date)
-        print("found the date")
 
         # Get the info under headline Name and addresses
         try:
             contact_info = soup.find("span", string='Name and addresses').next_sibling.strings
         except Exception:
             contact_info = soup.find("span", string='Name, addresses and contact point(s)').next_sibling.strings
-        print("got the contact info")
 
         name = None
         country = None
@@ -98,7 +96,6 @@ def extract_ted_info(link_list, contact_list):
             responsible_found = re.search('Contact person:', info)
             if responsible_found is not None:
                 responsible = info[responsible_found.span()[1]:]
-        print("contact info extracted")
 
         # Add contact info to document
         info_list.append(name)
@@ -110,7 +107,6 @@ def extract_ted_info(link_list, contact_list):
         email = soup.find("a", class_='ojsmailto').string
         e_mail = email
         info_list.append(email)
-        print("email extracted")
 
         # See if the contact is a duplicate
         is_duplicate = False
@@ -120,8 +116,6 @@ def extract_ted_info(link_list, contact_list):
                 is_duplicate = True
 
         new_contacts.append(e_mail)
-
-        print("duplicate done")
 
         if is_duplicate:
             info_list.append("YES")
@@ -133,7 +127,6 @@ def extract_ted_info(link_list, contact_list):
 
         website = soup.find('a', class_="ojshref").text
         info_list.append(website)
-        print("website done")
 
         # Find section two
         info = soup.find("span", id='id1-II.').parent.parent
@@ -268,7 +261,7 @@ def run_ted(driver, link, searchdate, date, num_pages):
 
     ted_sheet = Sheet("1LoN1ufjKEGyMhEtC-cGdUqDDE465DDml", "TED", date)
     ted_sheet.init_sheet(header)
-    print("time to upload...")
+    logging.info("Time to upload...")
     ted_sheet.append_row(request_list)
 
     return new_contacts
