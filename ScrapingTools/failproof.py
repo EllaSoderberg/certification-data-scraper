@@ -6,24 +6,20 @@ class Runner:
     def __init__(self, project, end_opp, end_page):
         self.project = project
         self.data_list = []
-        self.first_run = first_run
+        self.first_run = True
         self.table_len = 10
         self.start_opp = 1
-        self.at_opp = 1
+        self.at_opp = self.start_opp
         self.end_opp = end_opp
         self.start_page = 1
-        self.at_page = 1
+        self.at_page = self.start_page
         self.end_page = end_page
         self.retries = 0
         self.first_page = True
 
     def calc_range(self):
-        if self.first_page and self.end_page == self.at_page:
-            run_range = range(self.start_opp - 1, self.stop_opp)
-        elif self.first_page:
-            run_range = range(self.start_opp - 1, self.table_len)
-        elif self.end_page == self.at_page:
-            run_range = range(self.end_opp)
+        if self.at_page == self.end_page:
+            run_range = range(self.at_opp - 1, self.end_opp - 1)
         else:
-            run_range = range(self.table_len)
+            run_range = range(self.at_opp - 1, self.table_len)
         return run_range

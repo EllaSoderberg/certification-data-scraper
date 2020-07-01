@@ -1,0 +1,207 @@
+2020-06-30 16:46:40,543 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 34, in eprocure_links
+    table = driver.find_element_by_tag_name("tbody")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 530, in find_element_by_tag_name
+    return self.find_element(by=By.TAG_NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"tbody"}
+  (Session info: chrome=83.0.4103.116)
+
+2020-06-30 16:46:40,552 - WARNING - Retry no. 1
+2020-06-30 16:46:46,001 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 34, in eprocure_links
+    table = driver.find_element_by_tag_name("tbody")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 530, in find_element_by_tag_name
+    return self.find_element(by=By.TAG_NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"tbody"}
+  (Session info: chrome=83.0.4103.116)
+
+2020-06-30 16:46:46,004 - WARNING - Retry no. 2
+2020-06-30 16:48:19,422 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 50, in eprocure_links
+    data = eprocure_search(driver)
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 88, in eprocure_search
+    info_list.append(soup.find('td', string="ePublished Date").find_next_siblings(width="20%")[0].text.strip())
+AttributeError: 'NoneType' object has no attribute 'find_next_siblings'
+2020-06-30 16:48:19,426 - WARNING - Retry no. 1
+2020-06-30 16:50:28,995 - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google.appengine'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 42, in autodetect
+    from . import file_cache
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 40, in <module>
+    raise ImportError(
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+2020-06-30 16:51:36,077 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 50, in eprocure_links
+    data = eprocure_search(driver)
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 88, in eprocure_search
+    info_list.append(soup.find('td', string="ePublished Date").find_next_siblings(width="20%")[0].text.strip())
+AttributeError: 'NoneType' object has no attribute 'find_next_siblings'
+2020-06-30 16:51:36,079 - WARNING - Retry no. 2
+2020-06-30 16:53:34,664 - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google.appengine'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 42, in autodetect
+    from . import file_cache
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 40, in <module>
+    raise ImportError(
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+2020-06-30 16:58:55,328 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 34, in eprocure_links
+    table = driver.find_element_by_tag_name("tbody")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 530, in find_element_by_tag_name
+    return self.find_element(by=By.TAG_NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"tbody"}
+  (Session info: chrome=83.0.4103.116)
+
+2020-06-30 16:58:55,343 - WARNING - Retry no. 1
+2020-06-30 16:58:56,550 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 31, in eprocure_links
+    driver.get(new_link)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from disconnected: received Inspector.detached event
+  (Session info: chrome=83.0.4103.116)
+
+2020-06-30 16:58:56,556 - WARNING - Retry no. 2
+2020-06-30 17:01:37,255 - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google.appengine'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 42, in autodetect
+    from . import file_cache
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 40, in <module>
+    raise ImportError(
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+2020-06-30 17:02:44,882 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 50, in eprocure_links
+    data = eprocure_search(driver)
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 87, in eprocure_search
+    info_list.append(soup.find('td', string="ePublished Date").find_next_siblings(width="20%")[0].text.strip())
+AttributeError: 'NoneType' object has no attribute 'find_next_siblings'
+2020-06-30 17:02:44,884 - WARNING - Retry no. 1
+2020-06-30 17:03:29,857 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 50, in eprocure_links
+    data = eprocure_search(driver)
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\EprocureIn.py", line 87, in eprocure_search
+    info_list.append(soup.find('td', string="ePublished Date").find_next_siblings(width="20%")[0].text.strip())
+AttributeError: 'NoneType' object has no attribute 'find_next_siblings'
+2020-06-30 17:03:29,859 - WARNING - Retry no. 2
+2020-06-30 17:05:03,287 - WARNING - file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 36, in autodetect
+    from google.appengine.api import memcache
+ModuleNotFoundError: No module named 'google.appengine'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 42, in autodetect
+    from . import file_cache
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 40, in <module>
+    raise ImportError(
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth

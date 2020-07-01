@@ -36,9 +36,9 @@ logging.basicConfig(filename='{}.log'.format(today), filemode='a', format='%(asc
 def main():
     driver = webdriver.Chrome(executable_path='C:/Users/Movie Computer/Desktop/drivers/chromedriver.exe')
     logging.info("Running Eprocure...")
-    run_eprocurein(driver, today, eprocure_link, is_rerun=False, num_pages=3, start_page=1, stop_opp=1,
-                   start_opp=4)  # 12 rows
+    run_eprocurein(driver, today, eprocure_link, end_opp=2, end_page=1)  # 12 rows
     logging.info("Done with Eprocure...")
+    """
     logging.info("Running Gebiz...")
     run_gebiz(driver, gebiz_link, today, is_rerun=False, num_pages=2, start_page=1, stop_opp=1, start_opp=8)
     logging.info("Done with Gebiz...")
@@ -54,9 +54,10 @@ def main():
     unique = list(set(contacts))
     logging.info("len unique", len(unique))
     read_write.save_pickle(unique, "temp_files/TED_contacts_new.p")
+    """
 
 
 if __name__ == '__main__':
-    run_main()
+    main()
 
 

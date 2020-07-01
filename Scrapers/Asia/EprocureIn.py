@@ -23,7 +23,7 @@ def eprocure_links(driver, link, end_opp, end_page):
 
     eprocure_runner = failproof.Runner(project="eprocure", end_opp=end_opp, end_page=end_page)
 
-    while eprocure_runner.reruns <= 5:
+    while eprocure_runner.retries < 5:
         try:
             new_link = link + "?page={}".format(eprocure_runner.start_page)
             logging.info("Starting at:", new_link)
@@ -52,7 +52,7 @@ def eprocure_links(driver, link, end_opp, end_page):
                     driver.get(new_link)
                     logging.info("Number of datapoints:", len(eprocure_runner.data_list))
                     logging.info("Currently at", tender_no+1, "of", eprocure_runner.table_len)
-                    read_write.save_pickle(data_list, "eprocure.pickle")
+                    read_write.save_pickle(eprocure_runner.data_list, "eprocure.pickle")
 
             eprocure_runner.first_page = False
             eprocure_runner.at_page += 1
@@ -61,12 +61,18 @@ def eprocure_links(driver, link, end_opp, end_page):
 
         except Exception as e:
             logging.error("Exception occurred", exc_info=True)
-            print("Stopped at page {} and on opportunity {}".format(eprocure_runner.at_opp, tender_no+1))
-            eprocure_runner.reruns += 1
+            print("Stopped at page {} and on opportunity {}".format(eprocure_runner.at_page, eprocure_runner.at_opp+1))
+            eprocure_runner.retries += 1
+            logging.warning("Retry no. {}".format(eprocure_runner.retries))
 
-    read_write.save_pickle(data_list, "eprocure.pickle")
+    if eprocure_runner.retries == 5:
+        logging.warning("Maximum retries exceeded, quitting program and saving logs.")
+        read_write.save_pickle(eprocure_runner, "runner.p")
+        quit(1)
+
+    read_write.save_pickle(eprocure_runner.data_list, "eprocure.pickle")
     driver.close()
-    return data_list
+    return eprocure_runner.data_list
 
 
 def eprocure_search(driver):
@@ -140,7 +146,7 @@ def run_eprocurein(driver, date, link, end_opp, end_page):
               "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"]
 
     request_list = eprocure_links(driver, link, end_opp, end_page)
-    epocure_sheet = Sheet("1Q9dT-AaNlExuFZMtkn2WPRFWzdye0KWy", "Eprocure India", date)
+    epocure_sheet = Sheet("1Q9dT-AaNlExuFZMtkn2WPRFWzdye0KWy", "Eprocure India TEST", date)
     epocure_sheet.init_sheet(header)
     logging.info("time to upload...")
     epocure_sheet.append_row(request_list)
