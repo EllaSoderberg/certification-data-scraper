@@ -25,7 +25,7 @@ def eprocure_links(driver, link, end_opp, end_page):
 
     while eprocure_runner.retries < 5:
         try:
-            new_link = link + "?page={}".format(eprocure_runner.start_page)
+            new_link =
             logging.info("Starting at:", new_link)
 
             driver.get(new_link)
