@@ -6,7 +6,6 @@ from Scrapers.Asia.eprocure import Eprocure
 from Scrapers.Asia.gebiz import run_gebiz, save_gebiz
 from Scrapers.US.SamGov import run_sam
 #from Scrapers.Asia.gebiz_full import run_gebiz, save_gebiz
-from selenium import webdriver
 from ScrapingTools import read_write
 import logging
 from datetime import date
@@ -36,7 +35,7 @@ logging.basicConfig(filename='{}.log'.format(today), filemode='a',
 
 
 def main():
-    eprocure = Eprocure(end_opp=2, end_page=1)
+    eprocure = Eprocure(end_opp=1, end_page=1)
     eprocure.run()
     """
     run_eprocurein(driver, today, eprocure_link, end_opp=2, end_page=1)  # 12 rows

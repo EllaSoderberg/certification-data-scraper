@@ -13,7 +13,7 @@ proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
 class Sheet:
     def __init__(self, folder_id, project, date):
         self.folder_id = folder_id
-        self.project_name = project + " " + date
+        self.project_name = project + " " + str(date)
         self.creds = self.check_credentials()
         self.sheet_id = self.new_sheet()
         self.add_banded_range()

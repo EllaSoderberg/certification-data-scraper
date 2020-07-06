@@ -1,19 +1,23 @@
-import Scrapers.base_scraper
+import logging
+import time
+
+from FileHandleler import HandleFiles
+from Scrapers.base_scraper import BaseScraper
 from bs4 import BeautifulSoup
 
 
-class Eprocure(base_scraper.BaseScraper):
+class Eprocure(BaseScraper):
     def __init__(self, end_opp, end_page):
         super(Eprocure, self).__init__(
             link="https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2"
                  "gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09",
             folder_id="1ZiyNH8ADT4rQsOv0qaX9IY_-LgtwucIU",
-            project="Eprocure India",
+            project="Eprocure-India",
             header=["Date published", "Organisation Name", "Tender Title", "Reference Number", "Product Category",
-                       "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"],
-                   end_opp=end_opp,
+                    "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"],
+            end_opp=end_opp,
             end_page=end_page)
-        self.new_link = self.link + "?page={}".format(self.start_page)
+        self.new_link = self.link + "?page={}".format(self.at_page)
 
     def get_table(self):
         table = self.driver.find_element_by_tag_name("tbody")
@@ -27,11 +31,14 @@ class Eprocure(base_scraper.BaseScraper):
         self.warning_sound()
         time.sleep(20)
         data = self.get_data()
-        eprocure_runner.data_list.append(data)
         return data
 
     def go_back(self):
-        driver.get(self.new_link)
+        self.driver.get(self.new_link)
+
+    def pagination(self):
+        self.new_link = self.link + "?page={}".format(self.at_page)
+        self.driver.get(self.new_link)
 
     def get_data(self):
         info_list = []
@@ -54,7 +61,7 @@ class Eprocure(base_scraper.BaseScraper):
         link_text = soup.find('td', string="Tender Document").find_next_siblings(id="tenderDetailDivTd")[0].text.strip()
         if "FrontEndTenderDetailsExternal" in link_text:
             self.download(link_text)
-            file_operator = HandleFiles(self.project, self.folder_id)
+            file_operator = HandleFiles(reference_number, self.folder_id)
             file_operator.extract_files(["zip"])
             info_list.append(file_operator.read_pdfs())
             info_list.append(file_operator.upload_files())
@@ -69,20 +76,20 @@ class Eprocure(base_scraper.BaseScraper):
         return info_list
 
     def download(self, link_text):
-        driver.find_element_by_xpath("//*[contains(text(), '{}')]".format(link_text)).click()
+        self.driver.find_element_by_xpath("//*[contains(text(), '{}')]".format(link_text)).click()
         try:
-            driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]").click()
+            self.driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]").click()
             try:
-                driver.find_element_by_xpath("//button[@id='captcha']")
+                self.driver.find_element_by_xpath("//button[@id='captcha']")
             except Exception:
                 logging.error("Exception occurred", exc_info=True)
                 pass
             else:
                 self.warning_sound()
                 time.sleep(20)
-                driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]").click()
+                self.driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]").click()
 
-            driver.find_element_by_xpath("//*[contains(text(), 'Tendernotice_1')]").click()
+            self.driver.find_element_by_xpath("//*[contains(text(), 'Tendernotice_1')]").click()
             time.sleep(20)
         except Exception:
             logging.error("Exception occurred", exc_info=True)
