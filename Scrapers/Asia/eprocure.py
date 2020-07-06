@@ -2,8 +2,9 @@ import logging
 import time
 
 from FileHandleler import HandleFiles
-from Scrapers.base_scraper import BaseScraper
 from bs4 import BeautifulSoup
+
+from Scrapers.base_scraper import BaseScraper
 
 
 class Eprocure(BaseScraper):
@@ -12,12 +13,16 @@ class Eprocure(BaseScraper):
             link="https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2"
                  "gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09",
             folder_id="1ZiyNH8ADT4rQsOv0qaX9IY_-LgtwucIU",
+            sheet_folder_id="1Q9dT-AaNlExuFZMtkn2WPRFWzdye0KWy",
             project="Eprocure-India",
             header=["Date published", "Organisation Name", "Tender Title", "Reference Number", "Product Category",
                     "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"],
             end_opp=end_opp,
             end_page=end_page)
         self.new_link = self.link + "?page={}".format(self.at_page)
+
+    def go_to_start_page(self):
+        self.driver.get(self.new_link)
 
     def get_table(self):
         table = self.driver.find_element_by_tag_name("tbody")

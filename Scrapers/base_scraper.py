@@ -8,9 +8,10 @@ import logging
 
 
 class BaseScraper:
-    def __init__(self, link, folder_id, project, header, end_opp, end_page, username="", password=""):
+    def __init__(self, link, doc_folder_id, sheet_folder_id, project, header, end_opp, end_page, username="", password=""):
         self.link = link
-        self.folder_id = folder_id
+        self.doc_folder_id = doc_folder_id
+        self.sheet_folder_id = sheet_folder_id
         self.project = project
         self.header = header
         self.end_opp = end_opp
@@ -39,9 +40,11 @@ class BaseScraper:
                 self.driver.get(self.link)
                 logging.info("Starting at:", self.link)
 
-                self.login(self.username, self.password)
+                self.login()
 
                 self.opp_page()
+
+                self.go_to_start_page()
 
                 # While there are still pages to go trough
                 while self.end_page >= self.at_page:
@@ -54,6 +57,7 @@ class BaseScraper:
                         self.at_opp = tender_no
                         self.data_list.append(self.click_links())
                         self.go_back()
+                        self.at_opp += 1
 
                         logging.info("Number of datapoints:", len(self.data_list))
                         logging.info("Currently at", tender_no + 1, "of", self.table_len)
@@ -67,12 +71,12 @@ class BaseScraper:
                     print(self.at_page)
                     self.at_opp = 0
 
-
             except Exception:
                 logging.error("Exception occurred", exc_info=True)
                 logging.info("Stopped at page {} and on opportunity {}".format(self.at_page, self.at_opp + 1))
                 self.retries += 1
                 self.purge()
+                self.start_page = self.at_page
                 logging.warning("Retry no. {}".format(self.retries))
 
         if self.retries == 5:
@@ -90,7 +94,7 @@ class BaseScraper:
         logging.info("Done with {}!".format(self.project))
         self.purge()
 
-    def login(self, username, password):
+    def login(self):
         pass
 
     def opp_page(self):
@@ -103,6 +107,9 @@ class BaseScraper:
         return
 
     def pagination(self):
+        pass
+
+    def go_to_start_page(self):
         pass
 
     def click_links(self):
@@ -123,7 +130,7 @@ class BaseScraper:
         file_deleter.delete_files(file_deleter.get_files("xlsx"))
 
     def upload(self):
-        sheet = Sheet(self.folder_id, self.project, self.today)
+        sheet = Sheet(self.sheet_folder_id, self.project, self.today)
         sheet.init_sheet(self.header)
         logging.info("Time to upload...")
         sheet.append_row(self.data_list)
