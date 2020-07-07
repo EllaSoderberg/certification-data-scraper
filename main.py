@@ -35,12 +35,12 @@ gebiz_link = "https://www.gebiz.gov.sg/ptn/loginGeBIZID.xhtml"
 today = date.today()
 
 logging.basicConfig(filename='{}.log'.format(today), filemode='a',
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+                    format='%(asctime)s - %(levelname)s - %(message)s', level=logging.DEBUG)
 
 
 def main():
     #eprocure = Eprocure(end_opp=1, end_page=1)
-    ted = TED(end_page=2)
+    ted = TED(end_page=2, date_range="20200620 <> 20200626")
     ted.run()
     #eprocure.run()
     """

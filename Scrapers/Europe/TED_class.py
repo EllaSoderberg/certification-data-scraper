@@ -6,8 +6,9 @@ from bs4 import BeautifulSoup
 
 from Scrapers.base_scraper import BaseScraper
 
+
 class TED(BaseScraper):
-    def __init__(self, end_page):
+    def __init__(self, end_page, date_range):
         super(TED, self).__init__(
             link="https://ted.europa.eu/TED/browse/browseByMap.do",
             sheet_folder_id="1LoN1ufjKEGyMhEtC-cGdUqDDE465DDml",
@@ -19,7 +20,7 @@ class TED(BaseScraper):
             end_opp=10,
             end_page=end_page)
         self.search = "PD=[{}] AND PC=[30231000 or 38652000 or 32551300 or 30214000 or 30213000 or 30213100 or " \
-                      "30213200 or 30213300 or 30213500] AND TD=[3]".format("20200620 <> 20200626")
+                      "30213200 or 30213300 or 30213500] AND TD=[3]".format(date_range)
         self.rlv_cpv_codes = ["30231000", "30214000", "30213000", "30213100",
                               "30213200", "30213300", "30213500", "38652000", "32551300"]
         self.interesting_words = ["energy", "efficiency", "environment", "environmental", "tco", "sustainability",
@@ -55,7 +56,8 @@ class TED(BaseScraper):
 
     def click_links(self):
         links = self.get_table()
-        self.get_data(links[self.at_opp].get_attribute("href"))
+        return self.get_data(links[self.at_opp].get_attribute("href"))
+
 
     def get_sibling(self, parent, name):
         sibling = parent.find('span', string=name).next_sibling
