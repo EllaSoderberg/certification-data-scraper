@@ -1,3 +1,4 @@
+"""
 from Scrapers.Europe.TED import run_ted
 from Scrapers.Europe.vergabe import run_evergabe
 from Scrapers.Asia.EprocureIn import run_eprocurein
@@ -7,8 +8,11 @@ from Scrapers.Asia.gebiz import run_gebiz, save_gebiz
 from Scrapers.US.SamGov import run_sam
 #from Scrapers.Asia.gebiz_full import run_gebiz, save_gebiz
 from ScrapingTools import read_write
+"""
 import logging
 from datetime import date
+from Scrapers.Europe.TED_class import TED
+
 
 this_week = "https://beta.sam.gov/search?index=opp&sort=-relevance&page=1&keywords=%22all-in-one%22%20laptop%20laptops%20computer%20workstation%20hp%20philips%20dell%20lenovo%20desktop%20display&inactive_filter_values=false&naics=334&notice_type=k&opp_inactive_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_publish_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%222020-06-11%22,%22endDate%22:%222020-06-18%22%7D%7D&opp_modified_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0"
 #this_week="https://beta.sam.gov/search?index=opp&sort=-relevance&page=1&keywords=%22all-in-one%22%20laptop%20laptops%20computer%20workstation%20hp%20philips%20dell%20lenovo%20desktop%20display&inactive_filter_values=false&naics=334&opp_inactive_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_publish_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%222020-06-04%22,%22endDate%22:%222020-06-11%22%7D%7D&opp_modified_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&opp_response_date_filter_model=%7B%22dateRange%22:%7B%22startDate%22:%22%22,%22endDate%22:%22%22%7D%7D&date_filter_index=0&notice_type=k"
@@ -35,8 +39,10 @@ logging.basicConfig(filename='{}.log'.format(today), filemode='a',
 
 
 def main():
-    eprocure = Eprocure(end_opp=1, end_page=1)
-    eprocure.run()
+    #eprocure = Eprocure(end_opp=1, end_page=1)
+    ted = TED(end_page=2)
+    ted.run()
+    #eprocure.run()
     """
     run_eprocurein(driver, today, eprocure_link, end_opp=2, end_page=1)  # 12 rows
     

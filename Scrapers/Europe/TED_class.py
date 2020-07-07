@@ -1,20 +1,17 @@
-from ScrapingTools import read_write, translater, analyze_text
-from DataUploader import Sheet
+from ScrapingTools import translater, analyze_text
 import time
 import re
 import requests
 from bs4 import BeautifulSoup
-import logging
 
 from Scrapers.base_scraper import BaseScraper
-
 
 class TED(BaseScraper):
     def __init__(self, end_page):
         super(TED, self).__init__(
             link="https://ted.europa.eu/TED/browse/browseByMap.do",
-            folder_id="",
             sheet_folder_id="1LoN1ufjKEGyMhEtC-cGdUqDDE465DDml",
+            doc_folder_id="",
             project="TED",
             header=["Link", "Date published", "Authority name", "Country", "Contact person", "E-mail", "Is duplicate",
                     "Website", "Title", "CPV", "Secondary CPV", "Total value", "Award criteria",
@@ -22,7 +19,7 @@ class TED(BaseScraper):
             end_opp=10,
             end_page=end_page)
         self.search = "PD=[{}] AND PC=[30231000 or 38652000 or 32551300 or 30214000 or 30213000 or 30213100 or " \
-                      "30213200 or 30213300 or 30213500] AND TD=[3]".format(searchdate)
+                      "30213200 or 30213300 or 30213500] AND TD=[3]".format("20200620 <> 20200626")
         self.rlv_cpv_codes = ["30231000", "30214000", "30213000", "30213100",
                               "30213200", "30213300", "30213500", "38652000", "32551300"]
         self.interesting_words = ["energy", "efficiency", "environment", "environmental", "tco", "sustainability",
@@ -34,15 +31,15 @@ class TED(BaseScraper):
 
     def go_to_start_page(self):
         time.sleep(5)
-        search_box = driver.find_element_by_xpath(
+        search_box = self.driver.find_element_by_xpath(
             '//*[@title="Go to the expert search form"]')
         search_box.click()
-        text_box = driver.find_element_by_id('expertSearchCriteria.query')
+        text_box = self.driver.find_element_by_id('expertSearchCriteria.query')
         time.sleep(5)
         text_box.send_keys(self.search)
 
         time.sleep(5)
-        search_button = driver.find_element_by_xpath(
+        search_button = self.driver.find_element_by_xpath(
             '//*[@title="Perform search"]')
         search_button.click()
         time.sleep(2)
@@ -54,7 +51,7 @@ class TED(BaseScraper):
         self.driver.get(new_address)
 
     def get_table(self):
-        return driver.find_elements_by_xpath("//*[@title='View this notice']")
+        return self.driver.find_elements_by_xpath("//*[@title='View this notice']")
 
     def click_links(self):
         links = self.get_table()
@@ -121,9 +118,12 @@ class TED(BaseScraper):
         # See if the contact is a duplicate
         is_duplicate = False
 
+
+        """
         for contact in contact_list:
             if e_mail[3:-3] in contact:
                 is_duplicate = True
+        """
 
         #new_contacts.append(e_mail)
 
@@ -177,7 +177,7 @@ class TED(BaseScraper):
 
         # Find total value and add it
         try:
-            total_value = get_sibling(info, 'Estimated total value')
+            total_value = self.get_sibling(info, 'Estimated total value')
             value = total_value.text
         except Exception:
             value = None
@@ -211,7 +211,7 @@ class TED(BaseScraper):
 
         # Find EU funds and add it
         try:
-            eu_funds = get_sibling(
+            eu_funds = self.get_sibling(
                 info, 'Information about European Union funds')
             funds = eu_funds.text.split(":")[1]
         except Exception:

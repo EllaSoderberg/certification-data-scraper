@@ -122,7 +122,7 @@ class BaseScraper:
         pass
 
     def purge(self):
-        file_deleter = HandleFiles(self.project, self.folder_id)
+        file_deleter = HandleFiles(self.project, self.doc_folder_id)
         file_deleter.delete_files(file_deleter.get_files("docx"))
         file_deleter.delete_files(file_deleter.get_files("pdf"))
         file_deleter.delete_files(file_deleter.get_files("zip"))
