@@ -9,7 +9,7 @@ def find_search_words(string):
     """
     no_case_sensitivity = ["energy", "efficiency", "environment", "environmental", "sustainability", "lifecycle",
                            "ergonomic", "ecological", "circular economy", "tco", "epeat", "nachhaltigkeit", "Umwelt",
-                           "Kreislaufwirtschaft", "Ergonomie"]
+                           "Kreislaufwirtschaft", "Ergonomie", "EU", "GPP"]
     check_after = ["epeat", "energy", "tco"]
     find_exact = ["ROHS", "EPR", "BEE star", "TCO"]
 

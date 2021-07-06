@@ -4,7 +4,7 @@ from DataUploader import Sheet
 from FileHandleler import HandleFiles
 from ScrapingTools import read_write
 from Scrapers.base_scraper import BaseScraper
-
+import logging
 
 class Evergabe(BaseScraper):
     def __init__(self, end_opp, end_page):
@@ -20,13 +20,14 @@ class Evergabe(BaseScraper):
                  "W5nUnVsZXMiOlsiVk9MIiwiVk9CIiwiVlNWR1YiLCJTRUtUVk8iLCJPVEhFUiJdLCJwdWJsaWNhdGlvblR5cGVzIjpbIlRlbmRlci"
                  "JdLCJkaXN0YW5jZSI6MCwicG9zdGFsQ29kZSI6IiIsIm9yZGVyIjoiMCIsInBhZ2UiOiIxIiwic2VhcmNoVGV4dCI6IiIsInNvcnR"
                  "GaWVsZCI6IlBST0pFQ1RfUFVCTElDQVRJT05fREFURV9MTkcifQ",
-            folder_id="1zVLDxvny4kr5ZopfnPI2ATATq9yu3AOc",
+            doc_folder_id="1zVLDxvny4kr5ZopfnPI2ATATq9yu3AOc",
             sheet_folder_id="1wfNNoTwJyXzCEIinJnRe8lLduMw1VAzd",
             project="Evergabe",
             header=["ID", "Title", "Offizielle Bezeichnung", "Kontaktstelle", "zu Händen von", "Telefon",
                     "E-Mail", "Internet-Adresse (URL)", "Keywords Found", "Link to folder"],
             end_opp=end_opp,
             end_page=end_page)
+        self.handles = None
 
     def try_extraction(self, xpath):
         try:
@@ -36,23 +37,24 @@ class Evergabe(BaseScraper):
         return extraction
 
     def get_table(self):
-        return self.driver.find_element_by_id("listTemplate")
+        table = self.driver.find_element_by_id("listTemplate")
+        documents = table.find_elements_by_class_name("noTextDecorationLink")
+        return documents
 
     def click_links(self):
-        table = self.get_table()
-        documents = table.find_elements_by_class_name("noTextDecorationLink")
+        documents = self.get_table()
         documents[self.at_opp].click()
-        handles = self.driver.window_handles
-        done, info_list = extract_info(handles)
+        self.handles = self.driver.window_handles
+        done, info_list = self.extract_info()
         while not done:
             time.sleep(15)
         return info_list
 
-    def extract_info(self, handles):
+    def extract_info(self):
         info_list = []
-        self.driver.switch_to.window(handles[-1])
-        title = try_extraction(self.driver, '//*[@id="projectRoomTitleText"]')
-        tenderid = try_extraction(self.driver, "//span[text()='Ausschreibungs-ID']/../../following-sibling::div")
+        self.driver.switch_to.window(self.handles[-1])
+        title = self.try_extraction('//*[@id="projectRoomTitleText"]')
+        tenderid = self.try_extraction("//span[text()='Ausschreibungs-ID']/../../following-sibling::div")
         time.sleep(5)
         try:
             self.driver.find_element_by_xpath("//*[@href='./processdata']").click()
@@ -61,12 +63,12 @@ class Evergabe(BaseScraper):
             logging.error("Exception occurred", exc_info=True)
             pass
         finally:
-            organization = try_extraction(self.driver, "//*[text()='Offizielle Bezeichnung']/following-sibling::div")
-            contact = try_extraction(self.driver, "//*[text()='Kontaktstelle']/following-sibling::div")
-            contact_person = try_extraction(self.driver, "//*[text()='zu Händen von']/following-sibling::div")
-            phone = try_extraction(self.driver, "//*[text()='Telefon']/following-sibling::div")
-            email = try_extraction(self.driver, "//*[text()='E-Mail']/following-sibling::div")
-            web_address = try_extraction(self.driver, "//*[text()='Internet-Adresse (URL)']/following-sibling::div")
+            organization = self.try_extraction("//*[text()='Offizielle Bezeichnung']/following-sibling::div")
+            contact = self.try_extraction("//*[text()='Kontaktstelle']/following-sibling::div")
+            contact_person = self.try_extraction("//*[text()='zu Händen von']/following-sibling::div")
+            phone = self.try_extraction("//*[text()='Telefon']/following-sibling::div")
+            email = self.try_extraction("//*[text()='E-Mail']/following-sibling::div")
+            web_address = self.try_extraction("//*[text()='Internet-Adresse (URL)']/following-sibling::div")
         try:
             self.driver.find_element_by_xpath("//*[@href='./documents']").click()
             time.sleep(3)
@@ -93,8 +95,9 @@ class Evergabe(BaseScraper):
         info_list.append(file_operator.upload_files())
         file_operator.delete_all_files()
 
+
         return True, info_list
 
     def go_back(self):
-        self.driver.switch_to.window(handles[0])
+        self.driver.switch_to.window(self.handles[0])
 

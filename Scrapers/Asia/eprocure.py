@@ -8,17 +8,19 @@ from Scrapers.base_scraper import BaseScraper
 
 
 class Eprocure(BaseScraper):
-    def __init__(self, end_opp, end_page):
+    def __init__(self, end_opp, end_page, at_page=0, at_opp=0, sheet_id=None):
         super(Eprocure, self).__init__(
-            link="https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2"
-                 "gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09",
-            folder_id="1ZiyNH8ADT4rQsOv0qaX9IY_-LgtwucIU",
+            link="https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09",
+            doc_folder_id="1ZiyNH8ADT4rQsOv0qaX9IY_-LgtwucIU",
             sheet_folder_id="1Q9dT-AaNlExuFZMtkn2WPRFWzdye0KWy",
             project="Eprocure-India",
             header=["Date published", "Organisation Name", "Tender Title", "Reference Number", "Product Category",
-                    "Product Sub-Category", "Description", "Keywords", "Found", "Link to folder"],
+                    "Product Sub-Category", "Description", "Keywords Found", "Link to folder"],
             end_opp=end_opp,
             end_page=end_page)
+        self.at_page = at_page
+        self.at_opp = at_opp
+        self.sheet_id = sheet_id
         self.new_link = self.link + "?page={}".format(self.at_page)
 
     def go_to_start_page(self):
@@ -33,8 +35,11 @@ class Eprocure(BaseScraper):
         t_rows = self.get_table()
         columns = t_rows[self.at_opp].find_elements_by_tag_name("td")
         columns[4].find_element_by_tag_name("a").click()
-        self.warning_sound()
-        time.sleep(20)
+        captcha = self.driver.find_element_by_xpath("//img[@title='Image CAPTCHA']").get_attribute("alt")
+        self.driver.find_element_by_id("edit-captcha-response").send_keys(captcha)
+        time.sleep(10)
+        self.driver.find_element_by_id("edit-save").click()
+        time.sleep(10)
         data = self.get_data()
         return data
 
@@ -66,7 +71,7 @@ class Eprocure(BaseScraper):
         link_text = soup.find('td', string="Tender Document").find_next_siblings(id="tenderDetailDivTd")[0].text.strip()
         if "FrontEndTenderDetailsExternal" in link_text:
             self.download(link_text)
-            file_operator = HandleFiles(reference_number, self.folder_id)
+            file_operator = HandleFiles(reference_number, self.doc_folder_id)
             file_operator.extract_files(["zip"])
             info_list.append(file_operator.read_pdfs())
             info_list.append(file_operator.upload_files())

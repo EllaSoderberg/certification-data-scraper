@@ -38,7 +38,10 @@ class HandleFiles:
         """
         os.chdir(self.path)
         for file in files:
-            os.remove(file)
+            try:
+                os.remove(file)
+            except FileNotFoundError:
+                pass
 
     def extract_files(self, filetypes):
         """
@@ -58,7 +61,8 @@ class HandleFiles:
         os.chdir(self.path)
 
         for folder in glob.glob('*\\'):
-            self.folder_list.append(folder[:-1])
+            if folder[:-1] not in self.folder_list:
+                self.folder_list.append(folder[:-1])
             os.chdir(self.path + "\\" + folder)
             for file in glob.glob("*." + file_format):
                 files.append(folder + file)
@@ -114,11 +118,15 @@ class HandleFiles:
         self.delete_files(self.ext_files)
         self.delete_files(self.file_list)
         self.delete_files(self.get_files("zip"))
+        print("files", glob.glob('*\\'))
         for folder in self.folder_list:
+            print(self.path + "\\" + folder)
             os.chdir(self.path + "\\" + folder)
             for file in glob.glob("*.*"):
                 os.remove(file)
             os.chdir(self.path)
+            #for folder in self.folder_list:
+                #os.rmdir(self.path + "\\" + folder)
             os.rmdir(self.path + "\\" + folder)
 
         self.file_list = []

@@ -5,13 +5,14 @@ import winsound
 from selenium import webdriver
 from datetime import date
 import logging
-
+import time
 
 class BaseScraper:
-    def __init__(self, link, doc_folder_id, sheet_folder_id, project, header, end_opp, end_page, username="", password=""):
+    def __init__(self, link, doc_folder_id, sheet_folder_id, project, header, end_opp, end_page, sheet_id=None, username="", password=""):
         self.link = link
         self.doc_folder_id = doc_folder_id
         self.sheet_folder_id = sheet_folder_id
+        self.sheet_id = sheet_id
         self.project = project
         self.header = header
         self.end_opp = end_opp
@@ -19,7 +20,7 @@ class BaseScraper:
         self.username = username
         self.password = password
 
-        self.data_list = []
+        self._data_list = []
         self.first_run = True
         self.table_len = 10
         self.at_opp = 0
@@ -29,18 +30,23 @@ class BaseScraper:
 
         self.retries = 0
 
-        self.driver = webdriver.Chrome(executable_path='C:/Users/Movie Computer/Desktop/drivers/chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='C:/Users/Movie Computer/Desktop/drivers/new/chromedriver.exe')
         self.today = date.today()
 
     def run(self):
         logging.info("Running {}....".format(self.project))
+        if not self.sheet_id:
+            sheet = self.create_sheet()
+        else:
+            sheet = self.init_sheet()
         # Start the scraper and run until 5 fails
         while self.retries < 5 and self.end_page >= self.at_page:
             try:
                 self.driver.get(self.link)
-                logging.info("Starting at:", self.link)
+                logging.info("Starting at: {}".format(self.link))
 
-                self.login()
+                if self.retries == 0:
+                    self.login()
 
                 self.opp_page()
 
@@ -55,25 +61,31 @@ class BaseScraper:
                         print(run_range)
                         # A function to click each element in the list
                         self.at_opp = tender_no
-                        self.data_list.append(self.click_links())
-                        self.go_back()
+                        data = self.click_links()
+                        if data is not None:
+                            print("this i will upload", data)
+                            self._data_list.append(data)
+                            self.go_back()
+
+                            logging.info("Number of datapoints: {}".format(len(self._data_list)))
+                            logging.info("Currently at {} of {}".format(tender_no+1, self.table_len))
+                            self.upload(sheet, [data])
+                            #read_write.save_pickle(self._data_list, "{}.p".format(self.project))
                         self.at_opp += 1
 
-                        logging.info("Number of datapoints:", len(self.data_list))
-                        logging.info("Currently at", tender_no + 1, "of", self.table_len)
-                        read_write.save_pickle(self.data_list, "{}.pickle".format(self.project))
-                        print(self.at_opp)
-                        print(self.at_page)
 
                     self.first_page = False
                     self.at_page += 1
                     self.pagination()
-                    print(self.at_page)
                     self.at_opp = 0
 
             except Exception:
+                self.warning_sound(1500)
+                time.sleep(5)
                 logging.error("Exception occurred", exc_info=True)
                 logging.info("Stopped at page {} and on opportunity {}".format(self.at_page, self.at_opp + 1))
+                logging.info("Sheet ID is {}".format(sheet.sheet_id))
+                #read_write.save_pickle(self._data_list, "{}.p".format(self.project))
                 self.retries += 1
                 self.purge()
                 self.start_page = self.at_page
@@ -81,16 +93,13 @@ class BaseScraper:
 
         if self.retries == 5:
             logging.warning("Maximum retries exceeded, quitting program and saving logs.")
-            read_write.save_pickle([self.at_opp, self.at_page], "stop.p")
+            #read_write.save_pickle([self.at_opp, self.at_page], "stop.p")
             self.purge()
             quit(1)
 
-        read_write.save_pickle(self.data_list, "{}.pickle".format(self.project))
-        print("closing driver")
-        self.driver.close()
-        print("uploading files")
-        print(self.data_list)
-        self.upload()
+        #read_write.save_pickle(self._data_list, "{}.p".format(self.project))
+        #self.driver.close()
+        self.close_files()
         logging.info("Done with {}!".format(self.project))
         self.purge()
 
@@ -128,13 +137,23 @@ class BaseScraper:
         file_deleter.delete_files(file_deleter.get_files("zip"))
         file_deleter.delete_files(file_deleter.get_files("doc"))
         file_deleter.delete_files(file_deleter.get_files("xlsx"))
+        file_deleter.delete_files(file_deleter.get_files("txt"))
 
-    def upload(self):
+    def init_sheet(self):
+        sheet = Sheet(self.sheet_folder_id, self.project, self.today, sheet_id=self.sheet_id)
+        return sheet
+
+    def create_sheet(self):
         sheet = Sheet(self.sheet_folder_id, self.project, self.today)
         sheet.init_sheet(self.header)
-        logging.info("Time to upload...")
-        sheet.append_row(self.data_list)
+        return sheet
+
+    def close_files(self):
         pass
+
+    def upload(self, sheet, data):
+        logging.info("Time to upload...")
+        sheet.append_row(data)
 
     def calc_range(self):
         if self.at_page == self.end_page:
@@ -144,7 +163,7 @@ class BaseScraper:
         return run_range
 
     @staticmethod
-    def warning_sound():
-        frequency = 2500  # Set Frequency To 2500 Hertz
+    def warning_sound(freq=2500):
+        frequency = freq  # Set Frequency To 2500 Hertz
         duration = 1000  # Set Duration To 1000 ms == 1 second
         winsound.Beep(frequency, duration)

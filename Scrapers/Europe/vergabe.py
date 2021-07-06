@@ -3,6 +3,8 @@ import os
 from DataUploader import Sheet
 from FileHandleler import HandleFiles
 from ScrapingTools import read_write
+import logging
+
 
 def try_extraction(driver, xpath):
     try:

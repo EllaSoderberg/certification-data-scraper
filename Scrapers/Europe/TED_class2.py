@@ -7,32 +7,27 @@ from bs4 import BeautifulSoup
 from Scrapers.base_scraper import BaseScraper
 
 
-class TED(BaseScraper):
+class TED2(BaseScraper):
     def __init__(self, end_page, date_range, at_opp=0, sheet_id=None):
-        super(TED, self).__init__(
+        super(TED2, self).__init__(
             link="https://ted.europa.eu/TED/browse/browseByMap.do",
-            sheet_folder_id="1LoN1ufjKEGyMhEtC-cGdUqDDE465DDml",
+            sheet_folder_id="1jsaSTs3XdfPxO5wSY0HQEERZY7vN6wfA",
             doc_folder_id="",
-            project="TED",
-            header=["Link", "Date published", "Authority name", "Country", "Contact person", "E-mail", "Is duplicate",
+            project="TED Expanded",
+            header=["Link", "Date published", "Authority name", "Country", "Contact person", "E-mail",
                     "Website", "Title", "CPV", "Secondary CPV", "Total value", "Award criteria",
                     "Found words", "EU funding", "Documents", "TCOC mentioned", "EPEAT mentioned"],
             end_opp=10,
             end_page=end_page)
-        self.search = "PD=[{}] AND PC=[30231000 or 38652000 or 32551300 or 30214000 or 30213000 or 30213100 or " \
-                      "30213200 or 30213300 or 30213500] AND TD=[3]".format(date_range)
+        self.search = "PD=[{}] AND PC=[30200000] AND TD=[3]".format(date_range)
         self.rlv_cpv_codes = ["30231000", "30214000", "30213000", "30213100",
                               "30213200", "30213300", "30213500", "38652000", "32551300"]
         self.interesting_words = ["energy", "efficiency", "environment", "environmental", "tco", "sustainability",
                                   "life", "cycle",
                                   "ergonomic", "ecological", "circular", "economy", "circulaire", "economie",
-                                  "certification", "EU GPP"
+                                  "certification", "EU GPP",
                                   "certificates"]
         self.address = ""
-        self.contact_list = []
-        with open("C:/Users/Movie Computer/Desktop/certification-data-scraper/nw_new_contacts.csv") as file:
-            self.contact_list = file.readlines()
-        self.new_contact_list = []
         self.sheet_id = sheet_id
 
     def go_to_start_page(self):
@@ -120,14 +115,6 @@ class TED(BaseScraper):
         email = soup.find("a", class_='ojsmailto').string
         e_mail = email
         info_list.append(email)
-
-        # See if the contact is a duplicate
-        is_duplicate = self.find_duplicates(e_mail)
-
-        if is_duplicate:
-            info_list.append("YES")
-        else:
-            info_list.append("NO")
 
         # Add website
         website = None
@@ -230,22 +217,3 @@ class TED(BaseScraper):
                 info_list[i] = info_list[i][:40000]
 
         return info_list
-
-    def find_duplicates(self, new_contact):
-        for contact in self.contact_list:
-            if new_contact.strip(" ")[3:-3] in contact:
-                return True
-
-        self.new_contact_list.append(new_contact)
-        return False
-
-    def close_files(self):
-        for contact in self.contact_list:
-            self.new_contact_list.append(contact)
-        print("Old list length:", len(self.contact_list))
-        unique = list(set(self.new_contact_list))
-        print("New list length:", len(unique))
-        new_file = open("C:/Users/Movie Computer/Desktop/certification-data-scraper/new_contacts.csv", "w")
-        for row in unique:
-            new_file.write(row + "\n")
-        new_file.close()

@@ -2,7 +2,7 @@ import re
 
 interesting_words = ["energy", "efficiency", "environment", "environmental", "tco", "sustainability", "sustainable",
                      "life", "cycle", "ergonomic", "eco", "ecological", "circular", "economy", "circulaire", "economie",
-                     "certification", "certificate"]
+                     "certification", "certificate", "EU", "GPP"]
 
 
 def analysis(string):

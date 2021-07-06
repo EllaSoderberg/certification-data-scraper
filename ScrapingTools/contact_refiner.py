@@ -12,7 +12,7 @@ new_file = open("TED_contacts.csv", "w")
 for row in unique:
     new_file.write(row)
 
-
+"""
 
 import pickle
 
@@ -31,3 +31,4 @@ for row in file.readlines():
 
 save_pickle(contact_list, "TED_contacts.p")
 
+"""

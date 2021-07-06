@@ -24,8 +24,8 @@ def read_csv(file_name):
 def save_pickle(to_save, file_name):
     os.chdir(proj_path)
     pickle_file = open(file_name, 'wb')
-    print(type(to_save))
     pickle.dump(to_save, pickle_file)
+    pickle_file.close()
 
 
 def read_pickle(file_name):
