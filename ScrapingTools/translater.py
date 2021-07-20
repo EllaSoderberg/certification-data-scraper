@@ -1,26 +1,30 @@
 
 from googletrans import Translator
-from textblob import TextBlob
 import goslate
 
+from textblob import TextBlob
 
-class Trans:
-    def __init__(self, lang=None, dest='en'):
+
+class Trans():
+    def __init__(self, lang = None, new_lang = 'eng'):
         self.lang = lang
-        self.dest = dest
-        self.translater = Translator()
+        self.new_lang = new_lang
 
     def identify_lang(self, to_translate):
-        self.lang = self.translater.detect(to_translate).lang
+        self.lang = TextBlob(to_translate).detect_language()
+        print("detecting " + self.lang)
 
     def translate(self, to_translate):
-        if self.lang is None:
+        if self.lang == None:
             self.identify_lang(to_translate)
         try:
-            translated_string = self.translater.translate(to_translate, src=self.lang, dest=self.dest).text
+            detected_string = TextBlob(to_translate)
+            translated = detected_string.translate(to=self.new_lang)
         except Exception:
-            translated_string = to_translate
-        return translated_string
+            translated = to_translate
+        return str(translated)
+
+
 
 """
 import goslate

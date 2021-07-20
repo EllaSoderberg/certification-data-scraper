@@ -1,0 +1,419 @@
+2021-05-11 11:33:47,248 - INFO - Running Bidsearch....
+2021-05-11 11:38:40,902 - INFO - Running Bidsearch....
+2021-05-11 11:40:16,267 - INFO - Running Bidsearch....
+2021-05-11 12:44:43,211 - INFO - Running Merx....
+2021-05-11 12:54:22,159 - INFO - Running Merx....
+2021-05-11 12:54:22,606 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 12:54:22,999 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-05-11 12:54:26,092 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 12:54:27,900 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU:batchUpdate?alt=json
+2021-05-11 12:54:28,785 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 12:54:30,733 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-05-11 12:54:31,467 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU:batchUpdate?alt=json
+2021-05-11 12:54:40,736 - INFO - Starting at: https://merx.com
+2021-05-11 12:55:37,014 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 49, in run
+    self.login()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\US\merx.py", line 42, in login
+    self.driver.find_element_by_name("ContinueButton").click()
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 496, in find_element_by_name
+    return self.find_element(by=By.NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="ContinueButton"]"}
+  (Session info: chrome=90.0.4430.93)
+
+2021-05-11 12:55:37,123 - INFO - Stopped at page 1 and on opportunity 6
+2021-05-11 12:55:37,123 - INFO - Sheet ID is 1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU
+2021-05-11 12:55:37,132 - WARNING - Retry no. 1
+2021-05-11 12:55:43,914 - INFO - Starting at: https://merx.com
+2021-05-11 12:56:57,665 - INFO - Number of datapoints: 1
+2021-05-11 12:56:57,666 - INFO - Currently at 6 of 0
+2021-05-11 12:56:57,666 - INFO - Time to upload...
+2021-05-11 12:56:57,672 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 12:56:59,224 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 12:58:11,984 - INFO - Number of datapoints: 2
+2021-05-11 12:58:11,985 - INFO - Currently at 7 of 0
+2021-05-11 12:58:11,985 - INFO - Time to upload...
+2021-05-11 12:58:11,992 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 12:58:13,573 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 12:59:25,659 - INFO - Number of datapoints: 3
+2021-05-11 12:59:25,660 - INFO - Currently at 8 of 0
+2021-05-11 12:59:25,661 - INFO - Time to upload...
+2021-05-11 12:59:25,669 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 12:59:27,201 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:00:39,733 - INFO - Number of datapoints: 4
+2021-05-11 13:00:39,733 - INFO - Currently at 9 of 0
+2021-05-11 13:00:39,734 - INFO - Time to upload...
+2021-05-11 13:00:39,739 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:00:41,393 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:01:57,698 - INFO - Number of datapoints: 5
+2021-05-11 13:01:57,698 - INFO - Currently at 10 of 0
+2021-05-11 13:01:57,699 - INFO - Time to upload...
+2021-05-11 13:01:57,706 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:01:59,411 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:03:15,863 - INFO - Number of datapoints: 6
+2021-05-11 13:03:15,864 - INFO - Currently at 11 of 0
+2021-05-11 13:03:15,864 - INFO - Time to upload...
+2021-05-11 13:03:15,871 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:03:17,399 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:04:30,936 - INFO - Number of datapoints: 7
+2021-05-11 13:04:30,936 - INFO - Currently at 12 of 0
+2021-05-11 13:04:30,937 - INFO - Time to upload...
+2021-05-11 13:04:30,945 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:04:32,482 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:05:45,995 - INFO - Number of datapoints: 8
+2021-05-11 13:05:45,995 - INFO - Currently at 13 of 0
+2021-05-11 13:05:45,996 - INFO - Time to upload...
+2021-05-11 13:05:46,009 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:05:47,474 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:07:00,154 - INFO - Number of datapoints: 9
+2021-05-11 13:07:00,154 - INFO - Currently at 14 of 0
+2021-05-11 13:07:00,155 - INFO - Time to upload...
+2021-05-11 13:07:00,165 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:07:01,619 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:08:13,552 - INFO - Number of datapoints: 10
+2021-05-11 13:08:13,552 - INFO - Currently at 15 of 0
+2021-05-11 13:08:13,553 - INFO - Time to upload...
+2021-05-11 13:08:13,564 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:08:15,191 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:09:26,871 - INFO - Number of datapoints: 11
+2021-05-11 13:09:26,871 - INFO - Currently at 16 of 0
+2021-05-11 13:09:26,872 - INFO - Time to upload...
+2021-05-11 13:09:26,880 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:09:28,372 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:10:42,694 - INFO - Number of datapoints: 12
+2021-05-11 13:10:42,694 - INFO - Currently at 17 of 0
+2021-05-11 13:10:42,695 - INFO - Time to upload...
+2021-05-11 13:10:42,706 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:10:44,273 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:11:57,671 - INFO - Number of datapoints: 13
+2021-05-11 13:11:57,671 - INFO - Currently at 18 of 0
+2021-05-11 13:11:57,672 - INFO - Time to upload...
+2021-05-11 13:11:57,679 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:11:59,382 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:13:11,169 - INFO - Number of datapoints: 14
+2021-05-11 13:13:11,169 - INFO - Currently at 19 of 0
+2021-05-11 13:13:11,170 - INFO - Time to upload...
+2021-05-11 13:13:11,181 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:13:12,656 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:14:24,987 - INFO - Number of datapoints: 15
+2021-05-11 13:14:24,987 - INFO - Currently at 20 of 0
+2021-05-11 13:14:24,988 - INFO - Time to upload...
+2021-05-11 13:14:24,996 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 13:14:26,683 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1lxQoQVFi48THRoG0J--04GEWlrsX5czNmbuCywHOixU/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 13:14:27,143 - INFO - Done with Merx!
+2021-05-11 18:29:36,288 - INFO - Running Bidsearch....
+2021-05-11 18:29:36,717 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 18:29:37,118 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-05-11 18:29:39,861 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 18:29:42,012 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg:batchUpdate?alt=json
+2021-05-11 18:29:43,005 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 18:29:45,425 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-05-11 18:29:46,278 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg:batchUpdate?alt=json
+2021-05-11 18:29:52,851 - INFO - Starting at: https://app.bidsearch.com/bids?alertId=601040e8bdfada0021033605&title=Search20210126
+2021-05-11 18:32:35,332 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 57, in run
+    self.table_len = len(self.get_table())
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\US\bidsearch.py", line 42, in get_table
+    table_parent = self.driver.find_element_by_class_name("chakra-table")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 564, in find_element_by_class_name
+    return self.find_element(by=By.CLASS_NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".chakra-table"}
+  (Session info: chrome=90.0.4430.93)
+
+2021-05-11 18:32:35,482 - INFO - Stopped at page 1 and on opportunity 2
+2021-05-11 18:32:35,482 - INFO - Sheet ID is 1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg
+2021-05-11 18:32:35,490 - WARNING - Retry no. 1
+2021-05-11 18:32:36,928 - INFO - Starting at: https://app.bidsearch.com/bids?alertId=601040e8bdfada0021033605&title=Search20210126
+2021-05-11 18:33:13,062 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 57, in run
+    self.table_len = len(self.get_table())
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\US\bidsearch.py", line 42, in get_table
+    table_parent = self.driver.find_element_by_class_name("chakra-table")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 564, in find_element_by_class_name
+    return self.find_element(by=By.CLASS_NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".chakra-table"}
+  (Session info: chrome=90.0.4430.93)
+
+2021-05-11 18:33:13,065 - INFO - Stopped at page 1 and on opportunity 2
+2021-05-11 18:33:13,065 - INFO - Sheet ID is 1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg
+2021-05-11 18:33:13,070 - WARNING - Retry no. 2
+2021-05-11 18:33:14,727 - INFO - Starting at: https://app.bidsearch.com/bids?alertId=601040e8bdfada0021033605&title=Search20210126
+2021-05-11 18:41:24,439 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 18:41:24,823 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 18:41:26,418 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 18:42:19,226 - INFO - Number of datapoints: 1
+2021-05-11 18:42:19,227 - INFO - Currently at 11 of 102
+2021-05-11 18:42:19,227 - INFO - Time to upload...
+2021-05-11 18:42:19,237 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 18:42:21,487 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 18:49:51,926 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 18:49:52,278 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 18:49:53,467 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 18:50:46,618 - INFO - Number of datapoints: 2
+2021-05-11 18:50:46,619 - INFO - Currently at 14 of 102
+2021-05-11 18:50:46,619 - INFO - Time to upload...
+2021-05-11 18:50:46,628 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 18:50:48,926 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 18:56:51,545 - INFO - Number of datapoints: 3
+2021-05-11 18:56:51,547 - INFO - Currently at 23 of 102
+2021-05-11 18:56:51,548 - INFO - Time to upload...
+2021-05-11 18:56:51,562 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 18:56:53,841 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 18:59:01,630 - INFO - Number of datapoints: 4
+2021-05-11 18:59:01,631 - INFO - Currently at 24 of 102
+2021-05-11 18:59:01,631 - INFO - Time to upload...
+2021-05-11 18:59:01,640 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 18:59:03,700 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:00:51,644 - INFO - Number of datapoints: 5
+2021-05-11 19:00:51,645 - INFO - Currently at 25 of 102
+2021-05-11 19:00:51,646 - INFO - Time to upload...
+2021-05-11 19:00:51,654 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:00:53,680 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:08:07,459 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:08:07,826 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:08:09,197 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:09:02,142 - INFO - Number of datapoints: 6
+2021-05-11 19:09:02,143 - INFO - Currently at 34 of 102
+2021-05-11 19:09:02,143 - INFO - Time to upload...
+2021-05-11 19:09:02,154 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:09:05,060 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:13:34,477 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:13:34,733 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:13:35,876 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:14:27,990 - INFO - Number of datapoints: 7
+2021-05-11 19:14:27,991 - INFO - Currently at 38 of 102
+2021-05-11 19:14:27,991 - INFO - Time to upload...
+2021-05-11 19:14:28,000 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:14:30,215 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:17:23,449 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:17:23,692 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:17:24,666 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:18:16,489 - INFO - Number of datapoints: 8
+2021-05-11 19:18:16,490 - INFO - Currently at 39 of 102
+2021-05-11 19:18:16,490 - INFO - Time to upload...
+2021-05-11 19:18:16,499 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:18:18,277 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:21:10,859 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:21:11,100 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:21:12,015 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:22:03,854 - INFO - Number of datapoints: 9
+2021-05-11 19:22:03,856 - INFO - Currently at 40 of 102
+2021-05-11 19:22:03,856 - INFO - Time to upload...
+2021-05-11 19:22:03,863 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:22:05,438 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:24:23,884 - INFO - Number of datapoints: 10
+2021-05-11 19:24:23,885 - INFO - Currently at 42 of 102
+2021-05-11 19:24:23,885 - INFO - Time to upload...
+2021-05-11 19:24:23,895 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:24:25,342 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:27:49,505 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:27:49,755 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:27:50,809 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:28:42,498 - INFO - Number of datapoints: 11
+2021-05-11 19:28:42,498 - INFO - Currently at 44 of 102
+2021-05-11 19:28:42,499 - INFO - Time to upload...
+2021-05-11 19:28:42,505 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:28:44,317 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:33:10,615 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:33:10,845 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:33:12,161 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:34:04,894 - INFO - Number of datapoints: 12
+2021-05-11 19:34:04,894 - INFO - Currently at 48 of 102
+2021-05-11 19:34:04,895 - INFO - Time to upload...
+2021-05-11 19:34:04,903 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:34:06,692 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:39:03,742 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:39:04,035 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:39:05,037 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:39:57,418 - INFO - Number of datapoints: 13
+2021-05-11 19:39:57,419 - INFO - Currently at 53 of 102
+2021-05-11 19:39:57,419 - INFO - Time to upload...
+2021-05-11 19:39:57,426 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:39:59,129 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:42:12,483 - INFO - Number of datapoints: 14
+2021-05-11 19:42:12,484 - INFO - Currently at 55 of 102
+2021-05-11 19:42:12,484 - INFO - Time to upload...
+2021-05-11 19:42:12,492 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:42:14,201 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:45:06,895 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:45:07,162 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:45:08,371 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:46:00,495 - INFO - Number of datapoints: 15
+2021-05-11 19:46:00,495 - INFO - Currently at 56 of 102
+2021-05-11 19:46:00,496 - INFO - Time to upload...
+2021-05-11 19:46:00,504 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:46:02,194 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:52:01,666 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:52:01,962 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:52:02,949 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:52:54,756 - INFO - Number of datapoints: 16
+2021-05-11 19:52:54,757 - INFO - Currently at 63 of 102
+2021-05-11 19:52:54,757 - INFO - Time to upload...
+2021-05-11 19:52:54,763 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:52:57,529 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:55:49,548 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 19:55:49,725 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 19:55:50,866 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 19:56:42,685 - INFO - Number of datapoints: 17
+2021-05-11 19:56:42,686 - INFO - Currently at 64 of 102
+2021-05-11 19:56:42,686 - INFO - Time to upload...
+2021-05-11 19:56:42,695 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:56:44,445 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 19:59:32,498 - INFO - Number of datapoints: 18
+2021-05-11 19:59:32,498 - INFO - Currently at 67 of 102
+2021-05-11 19:59:32,499 - INFO - Time to upload...
+2021-05-11 19:59:32,508 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 19:59:34,366 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:01:32,163 - INFO - Number of datapoints: 19
+2021-05-11 20:01:32,163 - INFO - Currently at 68 of 102
+2021-05-11 20:01:32,164 - INFO - Time to upload...
+2021-05-11 20:01:32,172 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:01:33,820 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:04:21,652 - INFO - Number of datapoints: 20
+2021-05-11 20:04:21,653 - INFO - Currently at 71 of 102
+2021-05-11 20:04:21,653 - INFO - Time to upload...
+2021-05-11 20:04:21,662 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:04:23,478 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:07:37,994 - INFO - Number of datapoints: 21
+2021-05-11 20:07:37,994 - INFO - Currently at 75 of 102
+2021-05-11 20:07:37,995 - INFO - Time to upload...
+2021-05-11 20:07:38,006 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:07:39,809 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:10:06,767 - INFO - undefined: <PDFType1Font: basefont='Times-Roman'>, 9
+2021-05-11 20:10:06,771 - INFO - undefined: <PDFType1Font: basefont='Times-Roman'>, 9
+2021-05-11 20:10:14,342 - INFO - undefined: <PDFType1Font: basefont='Times-Roman'>, 9
+2021-05-11 20:10:45,528 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:10:45,769 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:10:46,839 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:10:48,020 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:10:49,421 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:11:41,047 - INFO - Number of datapoints: 22
+2021-05-11 20:11:41,048 - INFO - Currently at 76 of 102
+2021-05-11 20:11:41,048 - INFO - Time to upload...
+2021-05-11 20:11:41,056 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:11:42,634 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:16:57,172 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:16:57,408 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:16:58,459 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:17:50,326 - INFO - Number of datapoints: 23
+2021-05-11 20:17:50,327 - INFO - Currently at 81 of 102
+2021-05-11 20:17:50,327 - INFO - Time to upload...
+2021-05-11 20:17:50,335 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:17:52,151 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:20:57,140 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:20:57,355 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:20:58,501 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:21:51,347 - INFO - Number of datapoints: 24
+2021-05-11 20:21:51,347 - INFO - Currently at 82 of 102
+2021-05-11 20:21:51,348 - INFO - Time to upload...
+2021-05-11 20:21:51,355 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:21:52,929 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:24:05,298 - INFO - Number of datapoints: 25
+2021-05-11 20:24:05,299 - INFO - Currently at 84 of 102
+2021-05-11 20:24:05,300 - INFO - Time to upload...
+2021-05-11 20:24:05,307 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:24:07,076 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:27:31,997 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:27:32,217 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:27:33,273 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:28:25,441 - INFO - Number of datapoints: 26
+2021-05-11 20:28:25,441 - INFO - Currently at 86 of 102
+2021-05-11 20:28:25,442 - INFO - Time to upload...
+2021-05-11 20:28:25,448 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:28:27,120 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:31:10,696 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:31:11,122 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:31:12,092 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:32:04,003 - INFO - Number of datapoints: 27
+2021-05-11 20:32:04,003 - INFO - Currently at 87 of 102
+2021-05-11 20:32:04,004 - INFO - Time to upload...
+2021-05-11 20:32:04,012 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:32:05,954 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:35:46,842 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:35:47,210 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:35:48,353 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:36:40,726 - INFO - Number of datapoints: 28
+2021-05-11 20:36:40,727 - INFO - Currently at 88 of 102
+2021-05-11 20:36:40,728 - INFO - Time to upload...
+2021-05-11 20:36:40,738 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:36:43,705 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:39:57,947 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:39:58,262 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:39:59,363 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:40:52,283 - INFO - Number of datapoints: 29
+2021-05-11 20:40:52,284 - INFO - Currently at 89 of 102
+2021-05-11 20:40:52,285 - INFO - Time to upload...
+2021-05-11 20:40:52,293 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:40:54,266 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:43:56,880 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:43:57,274 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:43:58,358 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:44:50,299 - INFO - Number of datapoints: 30
+2021-05-11 20:44:50,299 - INFO - Currently at 90 of 102
+2021-05-11 20:44:50,300 - INFO - Time to upload...
+2021-05-11 20:44:50,308 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:44:52,905 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:47:57,660 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:47:58,065 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:47:59,264 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:48:52,387 - INFO - Number of datapoints: 31
+2021-05-11 20:48:52,388 - INFO - Currently at 91 of 102
+2021-05-11 20:48:52,388 - INFO - Time to upload...
+2021-05-11 20:48:52,397 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:48:54,708 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:51:51,940 - INFO - Number of datapoints: 32
+2021-05-11 20:51:51,941 - INFO - Currently at 94 of 102
+2021-05-11 20:51:51,941 - INFO - Time to upload...
+2021-05-11 20:51:51,948 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:51:53,783 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:53:36,285 - INFO - Number of datapoints: 33
+2021-05-11 20:53:36,286 - INFO - Currently at 95 of 102
+2021-05-11 20:53:36,286 - INFO - Time to upload...
+2021-05-11 20:53:36,296 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:53:38,321 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 20:57:09,335 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 20:57:09,540 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 20:57:10,628 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 20:58:02,947 - INFO - Number of datapoints: 34
+2021-05-11 20:58:02,948 - INFO - Currently at 97 of 102
+2021-05-11 20:58:02,948 - INFO - Time to upload...
+2021-05-11 20:58:02,956 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 20:58:05,058 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 21:02:01,685 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 21:02:01,929 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 21:02:02,906 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 21:02:55,621 - INFO - Number of datapoints: 35
+2021-05-11 21:02:55,622 - INFO - Currently at 99 of 102
+2021-05-11 21:02:55,622 - INFO - Time to upload...
+2021-05-11 21:02:55,631 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 21:02:58,054 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 21:06:10,140 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-05-11 21:06:10,483 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-05-11 21:06:11,471 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-05-11 21:07:03,619 - INFO - Number of datapoints: 36
+2021-05-11 21:07:03,619 - INFO - Currently at 100 of 102
+2021-05-11 21:07:03,620 - INFO - Time to upload...
+2021-05-11 21:07:03,629 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-05-11 21:07:05,968 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1gIzkIUCoPRk_lF07JEUGk-5yXOvX2qJgMDBLyq2Mcxg/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-05-11 21:07:06,631 - INFO - Done with Bidsearch!

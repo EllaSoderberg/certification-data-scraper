@@ -1,7 +1,7 @@
 import patoolib
 
 
-def extract_files(files, path="C:\\Users\\Ella\\Downloads"):
+def extract_files(files, path="C:\\Users\\Movie Computer\\Downloads"):
     """
     Function to extract files of almost any file format.
     :param files: A list of files that can be extracted

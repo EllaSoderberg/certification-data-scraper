@@ -2,8 +2,8 @@ from FileHandleler import HandleFiles
 from DataUploader import Sheet
 from ScrapingTools import read_write
 import time
-import pickle
 import winsound
+import logging
 
 doc_folder_id = "1ckD74zWxLjDJSpNuJYu1MAQT1KtwlPrG"
 
@@ -16,19 +16,20 @@ def pagination(driver):
     time.sleep(20)
 
 
-def enter_gebiz(driver, link, username, password, is_rerun, num_pages, stop_opp, start_opp=1):
+def enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_page, stop_opp, start_opp=1):
     if is_rerun:
-        data_list = read_write.read_pickle("gebiz.pickle")
+        data_list = read_write.read_pickle("gebiz_temp.pickle")
     else:
         data_list = []
 
     driver.get(link)
+    logging.info("Starting at:", link)
 
     # Login part
     time.sleep(5)
-    user_box = driver.find_element_by_id("contentForm:j_idt139_inputText")
+    user_box = driver.find_element_by_xpath("//*[@name='contentForm:j_idt140_inputText']")
     user_box.send_keys(username)
-    password_box = driver.find_element_by_id('contentForm:j_idt140_inputText')
+    password_box = driver.find_element_by_id('contentForm:password_inputText')
     password_box.send_keys(password)
     time.sleep(5)
     driver.find_element_by_id("contentForm:buttonSubmit").click()
@@ -42,14 +43,18 @@ def enter_gebiz(driver, link, username, password, is_rerun, num_pages, stop_opp,
     at_page = 1
     at_opp = start_opp
 
+    while start_page > at_page:
+        pagination(driver)
+        at_page += 1
+
     while num_pages >= at_page:
         tenders = len(driver.find_elements_by_class_name("commandLink_TITLE-BLUE"))
         if first_page and num_pages == at_page:
-            run_range = range(start_opp-1, stop_opp-1)
+            run_range = range(start_opp-1, stop_opp)
         elif first_page:
             run_range = range(start_opp-1, tenders)
         elif num_pages == at_page:
-            run_range = range(stop_opp-1)
+            run_range = range(stop_opp)
         else:
             run_range = range(tenders)
 
@@ -58,22 +63,28 @@ def enter_gebiz(driver, link, username, password, is_rerun, num_pages, stop_opp,
                 tenders = driver.find_elements_by_class_name("commandLink_TITLE-BLUE")
                 reference = driver.find_elements_by_class_name("formSectionHeader6_TEXT")[tender_no].text
                 title = tenders[tender_no].text
+                driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
                 tenders[tender_no].click()
                 time.sleep(10)
                 data = extract_gebiz_info(driver, title, reference)
                 data_list.append(data)
                 time.sleep(10)
                 at_opp += 1
-                print(tender_no, "of", range(tenders), "done")
+                logging.info("Number of datapoints:", len(data_list))
+                logging.info("Currently at", tender_no+1, "of 10")
+                read_write.save_pickle(data_list, "gebiz_temp.pickle")
             except Exception as e:
-                print(e)
+                logging.error("Exception occurred", exc_info=True)
                 print("Stopped at page {} and on opportunity {}".format(at_page, at_opp))
-                read_write.save_pickle(data_list, "gebiz.pickle")
+                read_write.save_pickle(data_list, "gebiz_temp.pickle")
+                quit(1)
 
         pagination(driver)
         first_page = False
         at_page += 1
+        read_write.save_pickle(data_list, "gebiz_temp.pickle")
 
+    read_write.save_pickle(data_list, "gebiz_temp.pickle")
     driver.close()
     return data_list
 
@@ -82,12 +93,9 @@ def try_extraction(driver, xpath):
     try:
         extraction = driver.find_element_by_xpath(xpath).find_element_by_class_name("formOutputText_VALUE-DIV ").text
     except Exception as e:
-        print(e)
+        logging.error("Exception occurred", exc_info=True)
         extraction = None
     return extraction
-
-
-start_height = 1000
 
 
 def extract_gebiz_info(driver, title, reference):
@@ -98,9 +106,10 @@ def extract_gebiz_info(driver, title, reference):
                  try_extraction(driver, "//span[text()='Procurement Category']/../../../../..")]
 
     try:
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         driver.find_element_by_class_name("formAttachmentsList_DOWNLOAD-BUTTON").click()
     except Exception as e:
-        print(e)
+        logging.error("Exception occurred", exc_info=True)
         frequency = 2500  # Set Frequency To 2500 Hertz
         duration = 1000  # Set Duration To 1000 ms == 1 second
         winsound.Beep(frequency, duration)
@@ -131,22 +140,31 @@ def extract_gebiz_info(driver, title, reference):
     info_list.append(words)
     info_list.append(drive_link)
 
-    driver.find_element_by_class_name("commandButton_BACK-BLUE-TEXT").click()
-
-    pickle_file = open("gebiz_data_extra.p", "wb")
-    pickle.dump(info_list, pickle_file)
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    driver.find_element_by_xpath("//input[@value='Back to Search Results']").click()
 
     return info_list
 
 
-def run_gebiz(driver, link, date, is_rerun, num_pages, stop_opp, start_opp):
+def run_gebiz(driver, link, date, is_rerun, num_pages, start_page, stop_opp, start_opp):
     username = "301776080"
     password = "TcoDevelopment"
     header = ["Title", "Reference",	"Reference number", "Agency", "Published", "Procurement type", "Category",
               "Contact person", "Email", "Mobile phone number", "Address", "Found words", "Link to files"]
 
-    request_list = enter_gebiz(driver, link, username, password, is_rerun, num_pages, stop_opp, start_opp)
+    request_list = enter_gebiz(driver, link, username, password, is_rerun, num_pages, start_page, stop_opp, start_opp)
     gebiz_sheet = Sheet("1_3CkwtS6EMUdD3WRUQ7B3jhgUn3T1v-y", "Gebiz", date)
     gebiz_sheet.init_sheet(header)
-    print("time to upload...")
+    logging.info("Time to upload...")
     gebiz_sheet.append_row(request_list)
+
+
+def save_gebiz():
+    data_list = read_write.read_pickle("gebiz_temp.pickle")
+    header = ["Title", "Reference", "Reference number", "Agency", "Published", "Procurement type", "Category",
+              "Contact person", "Email", "Mobile phone number", "Address", "Found words", "Link to files"]
+
+    gebiz_sheet = Sheet("1_3CkwtS6EMUdD3WRUQ7B3jhgUn3T1v-y", "Gebiz", "2020-06-26")
+    gebiz_sheet.init_sheet(header)
+    print("time to upload...")
+    gebiz_sheet.append_row(data_list)

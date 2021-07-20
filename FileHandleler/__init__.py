@@ -4,9 +4,11 @@ import os
 from FileHandleler import extractor, readPDF, analysePDF, drive_upload, read_doc
 import patoolib
 
+downloads_path = "C:\\Users\\Movie Computer\\Downloads"
+
 
 class HandleFiles:
-    def __init__(self, project_name, dest_folder, path="C:\\Users\\Ella\\Downloads"):
+    def __init__(self, project_name, dest_folder, path=downloads_path):
         self.path = path
         self.project_name = project_name
         self.dest_folder = dest_folder
@@ -36,7 +38,10 @@ class HandleFiles:
         """
         os.chdir(self.path)
         for file in files:
-            os.remove(file)
+            try:
+                os.remove(file)
+            except FileNotFoundError:
+                pass
 
     def extract_files(self, filetypes):
         """
@@ -56,7 +61,8 @@ class HandleFiles:
         os.chdir(self.path)
 
         for folder in glob.glob('*\\'):
-            self.folder_list.append(folder[:-1])
+            if folder[:-1] not in self.folder_list:
+                self.folder_list.append(folder[:-1])
             os.chdir(self.path + "\\" + folder)
             for file in glob.glob("*." + file_format):
                 files.append(folder + file)
@@ -78,10 +84,10 @@ class HandleFiles:
             if words is not None:
                 if len(words) != 0:
                     self.found_words += words
-        return self.found_words
+        return str(self.found_words)
 
     def read_docx(self):
-        read_doc.convert_doc_to_docx()
+        #read_doc.convert_doc_to_docx()
         doc_list = self.get_files("docx")
         doc_list = doc_list + self.get_folder_files("docx")
         self.file_list = self.file_list + doc_list
@@ -92,7 +98,7 @@ class HandleFiles:
             if words is not None:
                 if len(words) != 0:
                     self.found_words += words
-        return self.found_words
+        return str(self.found_words)
 
     def upload_files(self):
         """
@@ -112,13 +118,18 @@ class HandleFiles:
         self.delete_files(self.ext_files)
         self.delete_files(self.file_list)
         self.delete_files(self.get_files("zip"))
+        print("files", glob.glob('*\\'))
         for folder in self.folder_list:
+            print(self.path + "\\" + folder)
             os.chdir(self.path + "\\" + folder)
             for file in glob.glob("*.*"):
                 os.remove(file)
             os.chdir(self.path)
+            #for folder in self.folder_list:
+                #os.rmdir(self.path + "\\" + folder)
             os.rmdir(self.path + "\\" + folder)
 
         self.file_list = []
         self.ext_files = []
         self.folder_list = []
+

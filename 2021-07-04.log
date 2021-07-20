@@ -1,0 +1,908 @@
+2021-07-04 21:29:50,260 - INFO - Running Eprocure-India....
+2021-07-04 21:29:50,839 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:29:51,119 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-07-04 21:29:54,248 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:29:56,289 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk:batchUpdate?alt=json
+2021-07-04 21:29:56,892 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:29:58,732 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-07-04 21:29:59,369 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk:batchUpdate?alt=json
+2021-07-04 21:30:04,817 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-07-04 21:31:50,917 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:31:51,169 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:31:52,774 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:32:22,536 - INFO - Number of datapoints: 1
+2021-07-04 21:32:22,537 - INFO - Currently at 2 of 10
+2021-07-04 21:32:22,537 - INFO - Time to upload...
+2021-07-04 21:32:22,546 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:32:24,700 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:36:35,779 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:36:36,015 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:36:37,075 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:36:38,844 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:37:07,715 - INFO - Number of datapoints: 2
+2021-07-04 21:37:07,715 - INFO - Currently at 3 of 10
+2021-07-04 21:37:07,716 - INFO - Time to upload...
+2021-07-04 21:37:07,724 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:37:09,255 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:38:31,985 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:38:32,142 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:38:33,552 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:38:34,969 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:39:03,241 - INFO - Number of datapoints: 3
+2021-07-04 21:39:03,242 - INFO - Currently at 4 of 10
+2021-07-04 21:39:03,243 - INFO - Time to upload...
+2021-07-04 21:39:03,253 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:39:04,811 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:39:39,297 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:40:01,573 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:40:01,719 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:40:02,754 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:40:05,235 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:40:33,636 - INFO - Number of datapoints: 4
+2021-07-04 21:40:33,637 - INFO - Currently at 5 of 10
+2021-07-04 21:40:33,638 - INFO - Time to upload...
+2021-07-04 21:40:33,643 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:40:35,186 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:41:08,447 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:41:35,444 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:41:35,588 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:41:36,534 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:41:37,850 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:42:06,457 - INFO - Number of datapoints: 5
+2021-07-04 21:42:06,458 - INFO - Currently at 6 of 10
+2021-07-04 21:42:06,458 - INFO - Time to upload...
+2021-07-04 21:42:06,466 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:42:08,097 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:42:42,360 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:43:09,102 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:43:09,307 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:43:10,259 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:43:11,649 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:43:40,142 - INFO - Number of datapoints: 6
+2021-07-04 21:43:40,143 - INFO - Currently at 7 of 10
+2021-07-04 21:43:40,143 - INFO - Time to upload...
+2021-07-04 21:43:40,153 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:43:41,920 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:45:05,099 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,103 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:05,107 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:05,178 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7021
+2021-07-04 21:45:05,200 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,205 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 876
+2021-07-04 21:45:05,213 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:05,216 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 581
+2021-07-04 21:45:05,220 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 232
+2021-07-04 21:45:05,232 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:05,236 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 232
+2021-07-04 21:45:05,242 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,242 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 219
+2021-07-04 21:45:05,247 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:05,253 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 200
+2021-07-04 21:45:05,257 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:05,262 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,266 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,271 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 221
+2021-07-04 21:45:05,276 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:05,314 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7016
+2021-07-04 21:45:05,318 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7271
+2021-07-04 21:45:05,334 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 467
+2021-07-04 21:45:05,337 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 874
+2021-07-04 21:45:05,348 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,352 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 201
+2021-07-04 21:45:05,356 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 876
+2021-07-04 21:45:05,360 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:05,370 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 257
+2021-07-04 21:45:05,374 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:05,379 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:05,387 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 292
+2021-07-04 21:45:05,422 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7004
+2021-07-04 21:45:05,429 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:05,434 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7298
+2021-07-04 21:45:05,437 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:05,480 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 330
+2021-07-04 21:45:05,487 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 336
+2021-07-04 21:45:05,491 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 304
+2021-07-04 21:45:05,492 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 624
+2021-07-04 21:45:05,524 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 721
+2021-07-04 21:45:05,529 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 366
+2021-07-04 21:45:05,533 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 641
+2021-07-04 21:45:05,563 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 554
+2021-07-04 21:45:05,568 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 729
+2021-07-04 21:45:05,568 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 700
+2021-07-04 21:45:05,574 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 366
+2021-07-04 21:45:05,578 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 641
+2021-07-04 21:45:05,609 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 554
+2021-07-04 21:45:05,614 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 729
+2021-07-04 21:45:05,614 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 700
+2021-07-04 21:45:05,660 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 366
+2021-07-04 21:45:05,663 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 641
+2021-07-04 21:45:05,760 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 651
+2021-07-04 21:45:05,797 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 517
+2021-07-04 21:45:06,170 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:06,173 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:06,176 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:06,229 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7059
+2021-07-04 21:45:06,253 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7399
+2021-07-04 21:45:06,257 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6990
+2021-07-04 21:45:06,277 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6990
+2021-07-04 21:45:06,281 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7399
+2021-07-04 21:45:06,302 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7059
+2021-07-04 21:45:06,330 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7074
+2021-07-04 21:45:06,365 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7008
+2021-07-04 21:45:06,372 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7408
+2021-07-04 21:45:06,376 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7287
+2021-07-04 21:45:06,414 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7008
+2021-07-04 21:45:06,432 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7288
+2021-07-04 21:45:06,486 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7288
+2021-07-04 21:45:06,521 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:06,524 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7021
+2021-07-04 21:45:06,528 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7272
+2021-07-04 21:45:06,565 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:06,569 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7021
+2021-07-04 21:45:06,574 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7074
+2021-07-04 21:45:06,624 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7079
+2021-07-04 21:45:06,628 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7390
+2021-07-04 21:45:06,633 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7334
+2021-07-04 21:45:06,638 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7278
+2021-07-04 21:45:06,642 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:06,646 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7334
+2021-07-04 21:45:06,650 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7079
+2021-07-04 21:45:06,654 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7272
+2021-07-04 21:45:06,685 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7059
+2021-07-04 21:45:06,690 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:06,773 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7286
+2021-07-04 21:45:06,778 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7277
+2021-07-04 21:45:06,811 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7008
+2021-07-04 21:45:06,839 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:06,894 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7275
+2021-07-04 21:45:06,954 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7008
+2021-07-04 21:45:06,958 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7289
+2021-07-04 21:45:07,021 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7021
+2021-07-04 21:45:07,037 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7079
+2021-07-04 21:45:07,042 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:07,083 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:07,087 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7414
+2021-07-04 21:45:07,090 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:07,094 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7079
+2021-07-04 21:45:07,211 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7079
+2021-07-04 21:45:07,211 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7004
+2021-07-04 21:45:07,217 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:07,249 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7079
+2021-07-04 21:45:07,256 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7408
+2021-07-04 21:45:07,262 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:07,278 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:07,686 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:07,689 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:07,692 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:08,556 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:08,560 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:08,563 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:09,347 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:09,351 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:09,354 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:10,239 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:10,243 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:10,247 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:11,109 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:11,112 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:11,116 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:11,524 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:11,528 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:11,532 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:12,224 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:12,227 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:12,231 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:13,173 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:13,177 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:13,180 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:14,035 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:14,039 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:14,042 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:14,813 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:14,816 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:14,820 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:15,667 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:15,671 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:15,674 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:16,499 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:16,503 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:16,506 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:17,412 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:17,416 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:17,419 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:17,688 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:17,691 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:17,695 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:18,490 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:18,494 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:18,497 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:19,443 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:19,446 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:19,450 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:20,303 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:20,306 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:20,310 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:21,202 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:21,206 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:21,210 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:22,059 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:22,063 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:22,066 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:22,879 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:22,883 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:22,887 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:23,464 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:23,468 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:23,471 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:24,196 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:24,200 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:24,203 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:25,076 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:25,080 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:25,083 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:25,864 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:25,868 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:25,872 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:26,607 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:26,610 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:26,614 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:27,449 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:27,453 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:27,457 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:28,463 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:28,467 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:28,471 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:28,685 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:28,689 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:28,693 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:29,666 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:29,670 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:29,673 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:30,713 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:30,716 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:30,720 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:31,663 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:31,667 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:31,671 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:32,500 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:32,504 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:32,508 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:33,054 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:33,057 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:33,061 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:33,803 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:33,807 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:33,811 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:34,329 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:34,333 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:34,337 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:34,806 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:34,810 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:34,813 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:35,479 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:35,483 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:35,486 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:37,104 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:37,107 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:37,111 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:37,692 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:37,696 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:37,701 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:38,270 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:38,274 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:38,278 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:38,743 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:38,746 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:38,750 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:39,314 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:39,318 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:39,321 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:40,107 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:40,111 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:40,115 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:40,831 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:40,835 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:40,839 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:42,942 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:42,946 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:42,949 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:43,157 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:43,161 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:43,164 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:43,506 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:43,509 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:43,513 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:44,514 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:44,518 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:44,522 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:44,966 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:44,970 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:44,973 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:45,698 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:45,701 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:45,706 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:46,032 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:46,035 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:46,039 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:47,090 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:47,094 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:47,097 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:47,695 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:47,699 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:47,702 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:47,931 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:47,934 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:47,937 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:48,625 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:48,628 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:48,632 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:49,254 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:49,258 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:49,261 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:49,716 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:49,720 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:49,723 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:50,293 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:50,297 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:50,300 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:51,195 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:51,199 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:51,202 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:53,791 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:53,795 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:53,800 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:53,889 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7021
+2021-07-04 21:45:53,923 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:53,928 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 876
+2021-07-04 21:45:53,940 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:53,946 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 581
+2021-07-04 21:45:53,951 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 232
+2021-07-04 21:45:53,963 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:53,968 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 232
+2021-07-04 21:45:53,973 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:53,974 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 219
+2021-07-04 21:45:53,979 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:53,988 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 200
+2021-07-04 21:45:53,992 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:53,997 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:54,004 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:54,013 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 221
+2021-07-04 21:45:54,020 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:54,065 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7016
+2021-07-04 21:45:54,069 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7271
+2021-07-04 21:45:54,085 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 467
+2021-07-04 21:45:54,089 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 874
+2021-07-04 21:45:54,103 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:54,107 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 201
+2021-07-04 21:45:54,111 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 876
+2021-07-04 21:45:54,119 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 547
+2021-07-04 21:45:54,134 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 257
+2021-07-04 21:45:54,139 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:54,143 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:54,151 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F13', cidcoding='Adobe-Identity'>, 292
+2021-07-04 21:45:54,189 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7004
+2021-07-04 21:45:54,195 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 6981
+2021-07-04 21:45:54,203 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7298
+2021-07-04 21:45:54,206 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F9', cidcoding='Adobe-Identity'>, 7409
+2021-07-04 21:45:54,266 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 330
+2021-07-04 21:45:54,273 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 336
+2021-07-04 21:45:54,277 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 304
+2021-07-04 21:45:54,278 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 624
+2021-07-04 21:45:54,323 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 721
+2021-07-04 21:45:54,330 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 366
+2021-07-04 21:45:54,336 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 641
+2021-07-04 21:45:54,375 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 554
+2021-07-04 21:45:54,379 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 729
+2021-07-04 21:45:54,380 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 700
+2021-07-04 21:45:54,385 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 366
+2021-07-04 21:45:54,389 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 641
+2021-07-04 21:45:54,423 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 554
+2021-07-04 21:45:54,428 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 729
+2021-07-04 21:45:54,428 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 700
+2021-07-04 21:45:54,486 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 366
+2021-07-04 21:45:54,492 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 641
+2021-07-04 21:45:54,606 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 651
+2021-07-04 21:45:54,646 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F12', cidcoding='Adobe-Identity'>, 517
+2021-07-04 21:45:55,096 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:55,100 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:55,104 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:56,201 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:56,204 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:56,208 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:57,080 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:57,084 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:57,088 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:58,013 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:58,017 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:58,020 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:58,831 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 91
+2021-07-04 21:45:58,835 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:58,839 - INFO - undefined: <PDFCIDFont: basefont='CIDFont+F2', cidcoding='Adobe-Identity'>, 871
+2021-07-04 21:45:59,275 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:45:59,434 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:46:00,552 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:46:01,966 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:46:30,051 - INFO - Number of datapoints: 7
+2021-07-04 21:46:30,052 - INFO - Currently at 8 of 10
+2021-07-04 21:46:30,052 - INFO - Time to upload...
+2021-07-04 21:46:30,062 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:46:31,419 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:47:05,006 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:47:35,633 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:47:35,781 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:47:37,143 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:47:39,320 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:48:08,050 - INFO - Number of datapoints: 8
+2021-07-04 21:48:08,050 - INFO - Currently at 9 of 10
+2021-07-04 21:48:08,051 - INFO - Time to upload...
+2021-07-04 21:48:08,065 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:48:09,383 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:48:43,946 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:49:07,569 - INFO - undefined: <PDFCIDFont: basefont='TimesNewRoman', cidcoding='Adobe-Identity'>, 3
+2021-07-04 21:49:10,547 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:49:10,708 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:49:11,704 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:49:39,972 - INFO - Number of datapoints: 9
+2021-07-04 21:49:39,972 - INFO - Currently at 10 of 10
+2021-07-04 21:49:39,973 - INFO - Time to upload...
+2021-07-04 21:49:39,983 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:49:41,728 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:50:19,397 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:51:17,808 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:51:17,980 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:51:18,879 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:51:47,920 - INFO - Number of datapoints: 10
+2021-07-04 21:51:47,921 - INFO - Currently at 1 of 10
+2021-07-04 21:51:47,922 - INFO - Time to upload...
+2021-07-04 21:51:47,930 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:51:49,463 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:52:22,222 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:53:22,268 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:53:22,411 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:53:25,194 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:53:55,717 - INFO - Number of datapoints: 11
+2021-07-04 21:53:55,718 - INFO - Currently at 2 of 10
+2021-07-04 21:53:55,719 - INFO - Time to upload...
+2021-07-04 21:53:55,735 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:53:57,095 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:54:25,522 - INFO - This tender does not have any files
+2021-07-04 21:54:52,714 - INFO - Number of datapoints: 12
+2021-07-04 21:54:52,714 - INFO - Currently at 3 of 10
+2021-07-04 21:54:52,715 - INFO - Time to upload...
+2021-07-04 21:54:52,724 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:54:54,011 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:55:27,376 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:57:07,261 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:57:07,408 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:57:08,349 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:57:09,873 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:57:13,179 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:57:45,185 - INFO - Number of datapoints: 13
+2021-07-04 21:57:45,186 - INFO - Currently at 4 of 10
+2021-07-04 21:57:45,186 - INFO - Time to upload...
+2021-07-04 21:57:45,200 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:57:46,572 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 21:58:20,295 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 21:58:55,952 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 21:58:56,113 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 21:58:57,021 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:58:58,193 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 21:59:26,382 - INFO - Number of datapoints: 14
+2021-07-04 21:59:26,383 - INFO - Currently at 5 of 10
+2021-07-04 21:59:26,383 - INFO - Time to upload...
+2021-07-04 21:59:26,391 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 21:59:27,954 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:00:01,730 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 22:00:33,379 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:00:33,525 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:00:34,361 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:00:35,655 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:01:03,812 - INFO - Number of datapoints: 15
+2021-07-04 22:01:03,813 - INFO - Currently at 6 of 10
+2021-07-04 22:01:03,814 - INFO - Time to upload...
+2021-07-04 22:01:03,832 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:01:05,204 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:01:39,808 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 22:02:01,764 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:02:01,889 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:02:02,829 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:02:31,139 - INFO - Number of datapoints: 16
+2021-07-04 22:02:31,140 - INFO - Currently at 7 of 10
+2021-07-04 22:02:31,141 - INFO - Time to upload...
+2021-07-04 22:02:31,159 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:02:32,577 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:03:06,504 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 22:04:14,489 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:04:14,683 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:04:16,197 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:04:17,943 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:04:46,201 - INFO - Number of datapoints: 17
+2021-07-04 22:04:46,201 - INFO - Currently at 8 of 10
+2021-07-04 22:04:46,202 - INFO - Time to upload...
+2021-07-04 22:04:46,213 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:04:47,554 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:05:21,705 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 22:06:36,298 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:06:36,463 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:06:37,308 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:06:38,797 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:07:22,744 - INFO - Number of datapoints: 18
+2021-07-04 22:07:22,745 - INFO - Currently at 9 of 10
+2021-07-04 22:07:22,746 - INFO - Time to upload...
+2021-07-04 22:07:22,754 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:07:24,202 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:07:53,080 - INFO - This tender does not have any files
+2021-07-04 22:08:20,452 - INFO - Number of datapoints: 19
+2021-07-04 22:08:20,452 - INFO - Currently at 10 of 10
+2021-07-04 22:08:20,453 - INFO - Time to upload...
+2021-07-04 22:08:20,464 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:08:21,849 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:08:57,871 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 22:10:22,968 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:10:23,116 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:10:24,095 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:10:26,217 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:10:56,373 - INFO - Number of datapoints: 20
+2021-07-04 22:10:56,374 - INFO - Currently at 1 of 10
+2021-07-04 22:10:56,374 - INFO - Time to upload...
+2021-07-04 22:10:56,389 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:10:57,930 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:11:32,037 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.124)
+
+2021-07-04 22:12:06,352 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:12:06,516 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:12:07,316 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:12:08,452 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:12:36,693 - INFO - Number of datapoints: 21
+2021-07-04 22:12:36,693 - INFO - Currently at 2 of 10
+2021-07-04 22:12:36,695 - INFO - Time to upload...
+2021-07-04 22:12:36,699 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:12:38,069 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1o6n560PrKeeOmu0-VwGAwG_tOvHjGU_UpplGr1sJBjk/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:12:41,303 - INFO - Done with Eprocure-India!
+2021-07-04 22:19:15,932 - INFO - Running Gebiz....
+2021-07-04 22:19:15,956 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:19:16,192 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-07-04 22:19:18,180 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:19:19,837 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc:batchUpdate?alt=json
+2021-07-04 22:19:20,603 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:19:22,105 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-07-04 22:19:22,700 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc:batchUpdate?alt=json
+2021-07-04 22:19:27,864 - INFO - Starting at: https://www.gebiz.gov.sg/ptn/loginGeBIZID.xhtml
+2021-07-04 22:21:57,557 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:21:57,696 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:21:58,650 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:22:34,062 - INFO - Number of datapoints: 1
+2021-07-04 22:22:34,062 - INFO - Currently at 2 of 10
+2021-07-04 22:22:34,062 - INFO - Time to upload...
+2021-07-04 22:22:34,072 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:22:35,688 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:24:19,616 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:24:19,774 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:24:20,607 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:24:55,903 - INFO - Number of datapoints: 2
+2021-07-04 22:24:55,903 - INFO - Currently at 3 of 10
+2021-07-04 22:24:55,904 - INFO - Time to upload...
+2021-07-04 22:24:55,918 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:24:57,216 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:27:30,313 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:27:30,459 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:27:31,245 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:32,381 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:33,661 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:34,913 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:36,186 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:37,475 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:38,625 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:39,915 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:27:41,267 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:28:16,222 - INFO - Number of datapoints: 3
+2021-07-04 22:28:16,222 - INFO - Currently at 4 of 10
+2021-07-04 22:28:16,223 - INFO - Time to upload...
+2021-07-04 22:28:16,229 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:28:17,651 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:30:02,531 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:30:02,681 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:30:03,914 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:30:39,733 - INFO - Number of datapoints: 4
+2021-07-04 22:30:39,734 - INFO - Currently at 5 of 10
+2021-07-04 22:30:39,734 - INFO - Time to upload...
+2021-07-04 22:30:39,740 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:30:40,970 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:32:31,724 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:32:31,864 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:32:32,652 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:32:33,845 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:33:08,959 - INFO - Number of datapoints: 5
+2021-07-04 22:33:08,959 - INFO - Currently at 6 of 10
+2021-07-04 22:33:08,959 - INFO - Time to upload...
+2021-07-04 22:33:08,972 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:33:10,178 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:35:36,270 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:35:36,423 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:35:37,231 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:38,303 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:39,592 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:40,765 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:41,946 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:43,366 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:44,565 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:45,763 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:46,942 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:48,140 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:49,427 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:50,556 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:51,792 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:53,136 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:35:54,239 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:36:30,199 - INFO - Number of datapoints: 6
+2021-07-04 22:36:30,199 - INFO - Currently at 7 of 10
+2021-07-04 22:36:30,199 - INFO - Time to upload...
+2021-07-04 22:36:30,204 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:36:31,578 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:38:31,658 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:38:31,811 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:38:32,558 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:38:33,693 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:38:34,889 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:38:36,431 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:38:37,660 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:39:12,859 - INFO - Number of datapoints: 7
+2021-07-04 22:39:12,860 - INFO - Currently at 8 of 10
+2021-07-04 22:39:12,860 - INFO - Time to upload...
+2021-07-04 22:39:12,865 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:39:14,084 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:41:10,544 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:41:10,693 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:41:11,542 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:41:46,935 - INFO - Number of datapoints: 8
+2021-07-04 22:41:46,936 - INFO - Currently at 9 of 10
+2021-07-04 22:41:46,937 - INFO - Time to upload...
+2021-07-04 22:41:46,946 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:41:48,323 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:43:31,500 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:43:31,650 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:43:32,474 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:44:07,682 - INFO - Number of datapoints: 9
+2021-07-04 22:44:07,683 - INFO - Currently at 10 of 10
+2021-07-04 22:44:07,684 - INFO - Time to upload...
+2021-07-04 22:44:07,690 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:44:08,938 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:46:32,179 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:46:32,336 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:46:33,243 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:47:08,836 - INFO - Number of datapoints: 10
+2021-07-04 22:47:08,836 - INFO - Currently at 1 of 10
+2021-07-04 22:47:08,837 - INFO - Time to upload...
+2021-07-04 22:47:08,851 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:47:10,255 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:48:53,527 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:48:53,683 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:48:54,591 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:49:29,986 - INFO - Number of datapoints: 11
+2021-07-04 22:49:29,987 - INFO - Currently at 2 of 10
+2021-07-04 22:49:29,987 - INFO - Time to upload...
+2021-07-04 22:49:29,992 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:49:31,272 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:51:18,002 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-07-04 22:51:18,138 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-07-04 22:51:18,903 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:51:20,108 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:51:21,294 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:51:22,505 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:51:23,883 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:51:25,138 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-07-04 22:52:00,173 - INFO - Number of datapoints: 12
+2021-07-04 22:52:00,175 - INFO - Currently at 3 of 10
+2021-07-04 22:52:00,176 - INFO - Time to upload...
+2021-07-04 22:52:00,191 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-07-04 22:52:01,404 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1O85AP9j1uV4VlK_nLujBIV3anCwwjb71V8Whni9MQZc/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-07-04 22:52:27,274 - INFO - Done with Gebiz!

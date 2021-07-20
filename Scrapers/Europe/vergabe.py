@@ -1,10 +1,9 @@
 import time
+import os
 from DataUploader import Sheet
 from FileHandleler import HandleFiles
 from ScrapingTools import read_write
-
-
-# ausschreibungen_folder_ID = "18agl3lrZSmynIWAvdAiIMPcgGayPyLcL"
+import logging
 
 
 def try_extraction(driver, xpath):
@@ -16,13 +15,18 @@ def try_extraction(driver, xpath):
     return extraction
 
 
+proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
+
+
 def evergabe(driver, link, is_rerun, stop_opp, start_opp=1):
+
     if is_rerun:
         all_info = read_write.read_pickle("evergabe.pickle")
     else:
         all_info = []
 
     driver.get(link)
+    logging.info("Starting at:", link)
 
     time.sleep(3)
     table = driver.find_element_by_id("listTemplate")
@@ -42,14 +46,19 @@ def evergabe(driver, link, is_rerun, stop_opp, start_opp=1):
             while not done:
                 time.sleep(15)
             driver.switch_to.window(handles[0])
-            print(at_opp, "of", len(doc_range), "done")
+            logging.info("Currently at", at_opp + 1, "of", len(doc_range))
             at_opp += 1
-        except Exception as e:
-            print(e)
-            print("Stopped at opportunity {}".format(at_opp))
+            os.chdir(proj_path)
             read_write.save_pickle(all_info, "evergabe.pickle")
+        except Exception as e:
+            logging.error("Exception occurred", exc_info=True)
+            print("Stopped at opportunity {}".format(at_opp))
+            os.chdir(proj_path)
+            read_write.save_pickle(all_info, "evergabe.pickle")
+            quit(1)
 
     driver.close()
+    read_write.save_pickle(all_info, "evergabe.pickle")
     return all_info
 
 
@@ -63,6 +72,7 @@ def extract_info(driver, handles):
         driver.find_element_by_xpath("//*[@href='./processdata']").click()
         time.sleep(3)
     except Exception:
+        logging.error("Exception occurred", exc_info=True)
         pass
     finally:
         organization = try_extraction(driver, "//*[text()='Offizielle Bezeichnung']/following-sibling::div")
@@ -75,6 +85,7 @@ def extract_info(driver, handles):
         driver.find_element_by_xpath("//*[@href='./documents']").click()
         time.sleep(3)
     except Exception:
+        logging.error("Exception occurred", exc_info=True)
         pass
     else:
         driver.find_element_by_xpath("//*[@title='Alle Dokumente als ZIP-Datei herunterladen']").click()
@@ -108,5 +119,5 @@ def run_evergabe(driver, date, link, is_rerun, stop_opp, start_opp):
     request_list = evergabe(driver, link, is_rerun, stop_opp, start_opp)
     evergabe_sheet = Sheet("1wfNNoTwJyXzCEIinJnRe8lLduMw1VAzd", "Evergabe", date)
     evergabe_sheet.init_sheet(header)
-    print("time to upload...")
+    logging.info("time to upload...")
     evergabe_sheet.append_row(request_list)

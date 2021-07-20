@@ -8,7 +8,8 @@ def find_search_words(string):
     :return: found words
     """
     no_case_sensitivity = ["energy", "efficiency", "environment", "environmental", "sustainability", "lifecycle",
-                           "ergonomic", "ecological", "circular economy", "tco", "epeat"]
+                           "ergonomic", "ecological", "circular economy", "tco", "epeat", "nachhaltigkeit", "Umwelt",
+                           "Kreislaufwirtschaft", "Ergonomie", "EU", "GPP"]
     check_after = ["epeat", "energy", "tco"]
     find_exact = ["ROHS", "EPR", "BEE star", "TCO"]
 

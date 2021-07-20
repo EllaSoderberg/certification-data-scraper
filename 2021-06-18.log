@@ -1,0 +1,509 @@
+2021-06-18 09:36:06,016 - INFO - Running Eprocure-India....
+2021-06-18 09:36:06,631 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 09:36:06,959 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-06-18 09:36:10,933 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 09:36:15,902 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1nI21cJfzQtMjW7oHZyeaXqPlHE1d2dywNOBlRaI0HqU:batchUpdate?alt=json
+2021-06-18 09:36:21,542 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 09:36:24,480 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1nI21cJfzQtMjW7oHZyeaXqPlHE1d2dywNOBlRaI0HqU/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-06-18 09:36:25,355 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1nI21cJfzQtMjW7oHZyeaXqPlHE1d2dywNOBlRaI0HqU:batchUpdate?alt=json
+2021-06-18 09:36:32,509 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 09:40:27,543 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 09:40:27,879 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 09:40:29,232 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 09:41:35,261 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 43, in click_links
+    data = self.get_data()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 77, in get_data
+    info_list.append(file_operator.upload_files())
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\FileHandleler\__init__.py", line 108, in upload_files
+    self.folder_link = drive_upload.upload_to_drive(self.project_name, self.dest_folder, self.file_list, self.path)
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\FileHandleler\drive_upload.py", line 95, in upload_to_drive
+    upload_files(service, folder_id, paths)
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\FileHandleler\drive_upload.py", line 72, in upload_files
+    service.files().create(body=file_metadata,
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\_helpers.py", line 134, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\http.py", line 892, in execute
+    resp, content = _retry_request(
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\http.py", line 204, in _retry_request
+    raise exception
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\googleapiclient\http.py", line 177, in _retry_request
+    resp, content = http.request(uri, method, *args, **kwargs)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\google_auth_httplib2.py", line 197, in request
+    response, content = self.http.request(
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\httplib2\__init__.py", line 1982, in request
+    (response, content) = self._request(
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\httplib2\__init__.py", line 1650, in _request
+    (response, content) = self._conn_request(
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\httplib2\__init__.py", line 1558, in _conn_request
+    conn.request(method, request_uri, body, headers)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1230, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1276, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1225, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 1043, in _send_output
+    self.send(chunk)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\http\client.py", line 965, in send
+    self.sock.sendall(data)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\ssl.py", line 1204, in sendall
+    v = self.send(byte_view[count:])
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\ssl.py", line 1173, in send
+    return self._sslobj.write(data)
+socket.timeout: The write operation timed out
+2021-06-18 09:41:35,799 - INFO - Stopped at page 1 and on opportunity 2
+2021-06-18 09:41:35,800 - INFO - Sheet ID is 1nI21cJfzQtMjW7oHZyeaXqPlHE1d2dywNOBlRaI0HqU
+2021-06-18 09:50:45,710 - INFO - Running Eprocure-India....
+2021-06-18 09:50:45,782 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 09:50:46,366 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-06-18 09:50:49,141 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 09:50:51,117 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1U6bCcyRqV7BaaVxSIGyENueP63M6Ihtebh_ll_fmLDg:batchUpdate?alt=json
+2021-06-18 09:51:10,383 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 09:51:28,504 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1U6bCcyRqV7BaaVxSIGyENueP63M6Ihtebh_ll_fmLDg/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-06-18 09:51:29,411 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1U6bCcyRqV7BaaVxSIGyENueP63M6Ihtebh_ll_fmLDg:batchUpdate?alt=json
+2021-06-18 09:51:36,287 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 09:53:43,505 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 38, in click_links
+    captcha = self.driver.find_element_by_xpath("//img[@title='Image CAPTCHA']").get_attribute("alt")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//img[@title='Image CAPTCHA']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 09:53:43,583 - INFO - Stopped at page 1 and on opportunity 2
+2021-06-18 09:53:43,583 - INFO - Sheet ID is 1U6bCcyRqV7BaaVxSIGyENueP63M6Ihtebh_ll_fmLDg
+2021-06-18 09:53:43,583 - WARNING - Retry no. 1
+2021-06-18 09:54:35,171 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 09:56:26,890 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 38, in click_links
+    captcha = self.driver.find_element_by_xpath("//img[@title='Image CAPTCHA']").get_attribute("alt")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//img[@title='Image CAPTCHA']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 09:56:26,893 - INFO - Stopped at page 1 and on opportunity 2
+2021-06-18 09:56:26,894 - INFO - Sheet ID is 1U6bCcyRqV7BaaVxSIGyENueP63M6Ihtebh_ll_fmLDg
+2021-06-18 09:56:26,897 - WARNING - Retry no. 2
+2021-06-18 09:56:54,830 - INFO - Running Eprocure-India....
+2021-06-18 09:56:54,857 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 09:57:52,422 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-06-18 09:58:27,108 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 09:59:54,997 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/1brg4iwd3ncRJJO7VpgUrW4D5jNPiSRLM6VvESPInQ2I:batchUpdate?alt=json
+2021-06-18 10:00:32,368 - INFO - Running Eprocure-India....
+2021-06-18 10:00:32,400 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:00:42,436 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-06-18 10:00:57,818 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:01:06,149 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/14sMUCL430EDsTP9PTkm5efv1iXopG9PsYaJmA88Wzr8:batchUpdate?alt=json
+2021-06-18 10:01:08,071 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:01:21,946 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/14sMUCL430EDsTP9PTkm5efv1iXopG9PsYaJmA88Wzr8/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-06-18 10:01:36,582 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/14sMUCL430EDsTP9PTkm5efv1iXopG9PsYaJmA88Wzr8:batchUpdate?alt=json
+2021-06-18 10:02:04,289 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 45, in run
+    self.driver.get(self.link)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:02:04,289 - INFO - Stopped at page 1 and on opportunity 2
+2021-06-18 10:02:04,289 - INFO - Sheet ID is 14sMUCL430EDsTP9PTkm5efv1iXopG9PsYaJmA88Wzr8
+2021-06-18 10:02:04,289 - WARNING - Retry no. 1
+2021-06-18 10:02:22,565 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 45, in run
+    self.driver.get(self.link)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: chrome not reachable
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:02:22,565 - INFO - Stopped at page 1 and on opportunity 2
+2021-06-18 10:02:22,565 - INFO - Sheet ID is 14sMUCL430EDsTP9PTkm5efv1iXopG9PsYaJmA88Wzr8
+2021-06-18 10:02:22,565 - WARNING - Retry no. 2
+2021-06-18 10:02:48,006 - INFO - Running Eprocure-India....
+2021-06-18 10:02:48,035 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:02:52,912 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=id&alt=json
+2021-06-18 10:02:55,559 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:02:58,683 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I:batchUpdate?alt=json
+2021-06-18 10:02:59,512 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:03:02,402 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=USER_ENTERED&alt=json
+2021-06-18 10:03:03,433 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I:batchUpdate?alt=json
+2021-06-18 10:03:16,093 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 10:05:55,795 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:05:56,626 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:05:58,290 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:06:39,619 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:07:53,391 - INFO - Number of datapoints: 1
+2021-06-18 10:07:53,392 - INFO - Currently at 2 of 10
+2021-06-18 10:07:53,392 - INFO - Time to upload...
+2021-06-18 10:07:53,402 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:07:59,967 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:08:56,453 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:09:26,732 - INFO - undefined: <PDFTrueTypeFont: basefont='ABCDEE+Calibri'>, 10
+2021-06-18 10:09:26,812 - INFO - undefined: <PDFTrueTypeFont: basefont='ABCDEE+Calibri'>, 10
+2021-06-18 10:09:27,969 - INFO - undefined: <PDFTrueTypeFont: basefont='ABCDEE+Calibri'>, 10
+2021-06-18 10:09:45,511 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:09:46,159 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:09:47,760 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:10:24,693 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:11:01,649 - INFO - Number of datapoints: 2
+2021-06-18 10:11:01,650 - INFO - Currently at 3 of 10
+2021-06-18 10:11:01,650 - INFO - Time to upload...
+2021-06-18 10:11:01,660 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:11:04,153 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:11:53,285 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:14:00,072 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:14:00,601 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:14:02,259 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:14:34,522 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:15:57,767 - INFO - Number of datapoints: 3
+2021-06-18 10:15:57,768 - INFO - Currently at 4 of 10
+2021-06-18 10:15:57,768 - INFO - Time to upload...
+2021-06-18 10:15:57,776 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:16:13,589 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:16:31,326 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 35, in click_links
+    t_rows = self.get_table()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 30, in get_table
+    table = self.driver.find_element_by_tag_name("tbody")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 530, in find_element_by_tag_name
+    return self.find_element(by=By.TAG_NAME, value=name)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"tbody"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:16:31,357 - INFO - Stopped at page 1 and on opportunity 5
+2021-06-18 10:16:31,357 - INFO - Sheet ID is 178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I
+2021-06-18 10:16:31,357 - WARNING - Retry no. 1
+2021-06-18 10:17:04,556 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 10:19:35,787 - INFO - This tender does not have any files
+2021-06-18 10:20:50,036 - INFO - Number of datapoints: 4
+2021-06-18 10:20:50,037 - INFO - Currently at 5 of 10
+2021-06-18 10:20:50,037 - INFO - Time to upload...
+2021-06-18 10:20:50,045 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:20:55,224 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:21:54,625 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:22:17,994 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:22:20,671 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:22:21,771 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:24:00,252 - INFO - Number of datapoints: 5
+2021-06-18 10:24:00,252 - INFO - Currently at 6 of 10
+2021-06-18 10:24:00,253 - INFO - Time to upload...
+2021-06-18 10:24:00,264 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:24:24,306 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:26:10,435 - INFO - This tender does not have any files
+2021-06-18 10:27:21,564 - INFO - Number of datapoints: 6
+2021-06-18 10:27:21,565 - INFO - Currently at 7 of 10
+2021-06-18 10:27:21,566 - INFO - Time to upload...
+2021-06-18 10:27:21,574 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:27:26,780 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:28:12,417 - INFO - This tender does not have any files
+2021-06-18 10:28:40,771 - INFO - Number of datapoints: 7
+2021-06-18 10:28:40,771 - INFO - Currently at 8 of 10
+2021-06-18 10:28:40,772 - INFO - Time to upload...
+2021-06-18 10:28:40,781 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:28:42,730 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:29:16,678 - INFO - This tender does not have any files
+2021-06-18 10:29:50,849 - INFO - Number of datapoints: 8
+2021-06-18 10:29:50,850 - INFO - Currently at 9 of 10
+2021-06-18 10:29:50,851 - INFO - Time to upload...
+2021-06-18 10:29:50,866 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:29:52,605 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:30:51,884 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:31:25,978 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:31:26,674 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:31:28,014 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:31:49,871 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:33:17,757 - INFO - Number of datapoints: 9
+2021-06-18 10:33:17,758 - INFO - Currently at 10 of 10
+2021-06-18 10:33:17,759 - INFO - Time to upload...
+2021-06-18 10:33:17,770 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:33:19,663 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:35:00,221 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:35:00,755 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:35:02,102 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:35:12,869 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:35:49,998 - INFO - Number of datapoints: 10
+2021-06-18 10:35:49,999 - INFO - Currently at 1 of 10
+2021-06-18 10:35:49,999 - INFO - Time to upload...
+2021-06-18 10:35:50,009 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:35:51,848 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:36:47,674 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:37:35,488 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:37:44,813 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:37:47,618 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:38:25,303 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:39:03,937 - INFO - Number of datapoints: 11
+2021-06-18 10:39:03,937 - INFO - Currently at 2 of 10
+2021-06-18 10:39:03,937 - INFO - Time to upload...
+2021-06-18 10:39:03,948 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:39:05,637 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:39:43,916 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:40:07,062 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:40:07,285 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:40:08,282 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:40:46,060 - INFO - Number of datapoints: 12
+2021-06-18 10:40:46,061 - INFO - Currently at 3 of 10
+2021-06-18 10:40:46,062 - INFO - Time to upload...
+2021-06-18 10:40:46,071 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:40:47,722 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:41:23,025 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:41:52,397 - INFO - undefined: <PDFCIDFont: basefont='BNBBNI+Wingdings-Regular', cidcoding='Adobe-Identity'>, 190
+2021-06-18 10:41:52,413 - INFO - undefined: <PDFCIDFont: basefont='BNBBNI+Wingdings-Regular', cidcoding='Adobe-Identity'>, 190
+2021-06-18 10:42:19,351 - INFO - undefined: <PDFCIDFont: basefont='BNBBNI+Wingdings-Regular', cidcoding='Adobe-Identity'>, 190
+2021-06-18 10:42:19,363 - INFO - undefined: <PDFCIDFont: basefont='BNBBNI+Wingdings-Regular', cidcoding='Adobe-Identity'>, 190
+2021-06-18 10:42:38,304 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:42:38,831 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:42:40,022 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:42:42,658 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:43:18,216 - INFO - Number of datapoints: 13
+2021-06-18 10:43:18,217 - INFO - Currently at 4 of 10
+2021-06-18 10:43:18,217 - INFO - Time to upload...
+2021-06-18 10:43:18,227 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:43:19,898 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:43:57,310 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 93, in download
+    self.driver.find_element_by_xpath("//button[@id='captcha']")
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//button[@id='captcha']"}
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:45:33,409 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-06-18 10:45:36,226 - INFO - URL being requested: POST https://www.googleapis.com/drive/v3/files?fields=webViewLink%2C+id&alt=json
+2021-06-18 10:45:41,810 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:47:06,672 - INFO - URL being requested: POST https://www.googleapis.com/upload/drive/v3/files?fields=id&alt=json&uploadType=multipart
+2021-06-18 10:48:00,924 - INFO - Number of datapoints: 14
+2021-06-18 10:48:00,925 - INFO - Currently at 5 of 10
+2021-06-18 10:48:00,926 - INFO - Time to upload...
+2021-06-18 10:48:00,937 - INFO - URL being requested: GET https://www.googleapis.com/discovery/v1/apis/sheets/v4/rest
+2021-06-18 10:48:03,932 - INFO - URL being requested: POST https://sheets.googleapis.com/v4/spreadsheets/178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I/values/Blad1:append?valueInputOption=RAW&fields=tableRange&alt=json
+2021-06-18 10:48:12,418 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 37, in click_links
+    columns[4].find_element_by_tag_name("a").click()
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (584, 640)
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:48:12,534 - INFO - Stopped at page 2 and on opportunity 6
+2021-06-18 10:48:12,535 - INFO - Sheet ID is 178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I
+2021-06-18 10:48:12,542 - WARNING - Retry no. 2
+2021-06-18 10:48:16,315 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 10:48:32,472 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 37, in click_links
+    columns[4].find_element_by_tag_name("a").click()
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (584, 640)
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:48:32,476 - INFO - Stopped at page 2 and on opportunity 6
+2021-06-18 10:48:32,476 - INFO - Sheet ID is 178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I
+2021-06-18 10:48:32,483 - WARNING - Retry no. 3
+2021-06-18 10:48:36,465 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 10:48:49,002 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 37, in click_links
+    columns[4].find_element_by_tag_name("a").click()
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (584, 640)
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:48:49,007 - INFO - Stopped at page 2 and on opportunity 6
+2021-06-18 10:48:49,007 - INFO - Sheet ID is 178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I
+2021-06-18 10:48:49,015 - WARNING - Retry no. 4
+2021-06-18 10:48:53,562 - INFO - Starting at: https://eprocure.gov.in/cppp/searchbyproduct/byUjI5dlpITT1BMTNoMVEyOXRjSFYwWlhJZ1NHRnlaSGRoY21VPUExM2gxY0hWaWJHbHphR1ZrWDJSaGRHVT1BMTNoMWMyRnNkQT09
+2021-06-18 10:49:05,123 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Movie Computer\Desktop\certification-data-scraper\Scrapers\Asia\eprocure.py", line 37, in click_links
+    columns[4].find_element_by_tag_name("a").click()
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Movie Computer\AppData\Local\Programs\Python\Python38\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (584, 640)
+  (Session info: chrome=91.0.4472.106)
+
+2021-06-18 10:49:05,126 - INFO - Stopped at page 2 and on opportunity 6
+2021-06-18 10:49:05,127 - INFO - Sheet ID is 178Bej_6qPClNhwfOzESmHGYOhtelNujtPYuLbfWyb9I
+2021-06-18 10:49:05,132 - WARNING - Retry no. 5
+2021-06-18 10:49:05,133 - WARNING - Maximum retries exceeded, quitting program and saving logs.
