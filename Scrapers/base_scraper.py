@@ -30,7 +30,7 @@ class BaseScraper:
 
         self.retries = 0
 
-        self.driver = webdriver.Chrome(executable_path='C:/Users/Movie Computer/Desktop/drivers/new/chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path='C:/Users/Ella_/Desktop/Drivers/chromedriver.exe')
         self.today = date.today()
 
     def run(self):

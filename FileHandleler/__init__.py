@@ -4,7 +4,7 @@ import os
 from FileHandleler import extractor, readPDF, analysePDF, drive_upload, read_doc
 import patoolib
 
-downloads_path = "C:\\Users\\Movie Computer\\Downloads"
+downloads_path = "C:\\Users\\Ella_\\Downloads"
 
 
 class HandleFiles:

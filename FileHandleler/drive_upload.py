@@ -10,7 +10,7 @@ import io
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets']
-proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
+proj_path = "C:\\Users\\Ella_\\Desktop\\certification-data-scraper"
 
 
 def check_creds(creds=None):

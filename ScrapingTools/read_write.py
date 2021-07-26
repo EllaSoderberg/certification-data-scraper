@@ -1,7 +1,7 @@
 import pickle
 import os
 
-proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
+proj_path = "C:\\Users\\Ella_\\Desktop\\certification-data-scraper"
 
 
 def save_csv(link_list, file_name):

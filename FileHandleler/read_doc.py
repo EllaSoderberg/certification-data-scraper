@@ -25,7 +25,7 @@ def save_as_docx(path):
 
 
 def convert_doc_to_docx():
-    paths = glob('C:\\Users\\Movie Computer\\Downloads\\**\\*.doc', recursive=True)
+    paths = glob('C:\\Users\\Ella_\\Downloads\\**\\*.doc', recursive=True)
     for file in paths:
         print(file)
         save_as_docx(file)
@@ -33,7 +33,7 @@ def convert_doc_to_docx():
     print("done converting")
 
 
-def read_docx_files(filename, path="C:\\Users\\Movie Computer\\Downloads"):
+def read_docx_files(filename, path="C:\\Users\\Ella_\\Downloads"):
     text = docx2txt.process(path + "\\" + filename)
     print("done reading, returning string...")
     return text

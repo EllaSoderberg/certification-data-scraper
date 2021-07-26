@@ -1,0 +1,133 @@
+2021-07-16 16:28:55,432 - INFO - Running Merx....
+2021-07-16 16:29:00,706 - INFO - Starting at: https://merx.com
+2021-07-16 16:29:59,624 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\base_scraper.py", line 49, in run
+    self.login()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 42, in login
+    self.driver.find_element_by_name("ContinueButton").click()
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 496, in find_element_by_name
+    return self.find_element(by=By.NAME, value=name)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[name="ContinueButton"]"}
+  (Session info: chrome=91.0.4472.164)
+
+2021-07-16 16:29:59,673 - INFO - Stopped at page 1 and on opportunity 6
+2021-07-16 16:29:59,674 - INFO - Sheet ID is 114evang1GNgl3pgmKIvtlhjPYkBY5cmtK_r22iW2ZC4
+2021-07-16 16:29:59,681 - WARNING - Retry no. 1
+2021-07-16 16:30:02,867 - INFO - Starting at: https://merx.com
+2021-07-16 16:31:08,893 - INFO - Number of datapoints: 1
+2021-07-16 16:31:08,893 - INFO - Currently at 6 of 0
+2021-07-16 16:31:08,893 - INFO - Time to upload...
+2021-07-16 16:32:15,836 - INFO - Number of datapoints: 2
+2021-07-16 16:32:15,836 - INFO - Currently at 7 of 0
+2021-07-16 16:32:15,836 - INFO - Time to upload...
+2021-07-16 16:33:22,147 - INFO - Number of datapoints: 3
+2021-07-16 16:33:22,147 - INFO - Currently at 8 of 0
+2021-07-16 16:33:22,147 - INFO - Time to upload...
+2021-07-16 16:34:30,025 - INFO - Number of datapoints: 4
+2021-07-16 16:34:30,025 - INFO - Currently at 9 of 0
+2021-07-16 16:34:30,025 - INFO - Time to upload...
+2021-07-16 16:35:37,748 - INFO - Number of datapoints: 5
+2021-07-16 16:35:37,748 - INFO - Currently at 10 of 0
+2021-07-16 16:35:37,748 - INFO - Time to upload...
+2021-07-16 16:36:44,498 - INFO - Number of datapoints: 6
+2021-07-16 16:36:44,498 - INFO - Currently at 11 of 0
+2021-07-16 16:36:44,498 - INFO - Time to upload...
+2021-07-16 16:37:11,935 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 56, in click_links
+    start, end = self.extract_info()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 66, in extract_info
+    reference = self.driver.find_element_by_xpath('//span[contains(string(), "Reference")]/following-sibling::div').text
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(string(), "Reference")]/following-sibling::div"}
+  (Session info: chrome=91.0.4472.164)
+
+2021-07-16 16:37:11,938 - INFO - Stopped at page 1 and on opportunity 12
+2021-07-16 16:37:11,938 - INFO - Sheet ID is 114evang1GNgl3pgmKIvtlhjPYkBY5cmtK_r22iW2ZC4
+2021-07-16 16:37:11,942 - WARNING - Retry no. 2
+2021-07-16 16:37:15,477 - INFO - Starting at: https://merx.com
+2021-07-16 16:37:42,354 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 56, in click_links
+    start, end = self.extract_info()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 66, in extract_info
+    reference = self.driver.find_element_by_xpath('//span[contains(string(), "Reference")]/following-sibling::div').text
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(string(), "Reference")]/following-sibling::div"}
+  (Session info: chrome=91.0.4472.164)
+
+2021-07-16 16:37:42,355 - INFO - Stopped at page 1 and on opportunity 12
+2021-07-16 16:37:42,355 - INFO - Sheet ID is 114evang1GNgl3pgmKIvtlhjPYkBY5cmtK_r22iW2ZC4
+2021-07-16 16:37:42,355 - WARNING - Retry no. 3
+2021-07-16 16:37:45,380 - INFO - Starting at: https://merx.com
+2021-07-16 16:38:12,354 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 56, in click_links
+    start, end = self.extract_info()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 66, in extract_info
+    reference = self.driver.find_element_by_xpath('//span[contains(string(), "Reference")]/following-sibling::div').text
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(string(), "Reference")]/following-sibling::div"}
+  (Session info: chrome=91.0.4472.164)
+
+2021-07-16 16:38:12,356 - INFO - Stopped at page 1 and on opportunity 12
+2021-07-16 16:38:12,356 - INFO - Sheet ID is 114evang1GNgl3pgmKIvtlhjPYkBY5cmtK_r22iW2ZC4
+2021-07-16 16:38:12,356 - WARNING - Retry no. 4
+2021-07-16 16:38:15,685 - INFO - Starting at: https://merx.com
+2021-07-16 16:38:42,783 - ERROR - Exception occurred
+Traceback (most recent call last):
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\base_scraper.py", line 64, in run
+    data = self.click_links()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 56, in click_links
+    start, end = self.extract_info()
+  File "C:\Users\Ella_\Desktop\Kod\certification-data-scraper\Scrapers\US\merx.py", line 66, in extract_info
+    reference = self.driver.find_element_by_xpath('//span[contains(string(), "Reference")]/following-sibling::div').text
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 976, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Ella_\AppData\Local\Programs\Python\Python39\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[contains(string(), "Reference")]/following-sibling::div"}
+  (Session info: chrome=91.0.4472.164)
+
+2021-07-16 16:38:42,785 - INFO - Stopped at page 1 and on opportunity 12
+2021-07-16 16:38:42,786 - INFO - Sheet ID is 114evang1GNgl3pgmKIvtlhjPYkBY5cmtK_r22iW2ZC4
+2021-07-16 16:38:42,789 - WARNING - Retry no. 5
+2021-07-16 16:38:42,790 - WARNING - Maximum retries exceeded, quitting program and saving logs.

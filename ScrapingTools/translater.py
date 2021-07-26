@@ -1,5 +1,5 @@
 
-from googletrans import Translator
+'''from googletrans import Translator
 import goslate
 
 from textblob import TextBlob
@@ -82,5 +82,4 @@ class Translator:
             translated = to_translate
         return translated
 """
-
-
+'''

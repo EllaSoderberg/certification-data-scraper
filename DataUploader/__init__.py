@@ -7,7 +7,7 @@ from google.auth.transport.requests import Request
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets']
-proj_path = "C:\\Users\\Movie Computer\\Desktop\\certification-data-scraper"
+proj_path = "C:\\Users\\Ella_\\Desktop\\Kod\\certification-data-scraper"
 
 
 class Sheet:

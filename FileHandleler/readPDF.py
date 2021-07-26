@@ -8,7 +8,7 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 
 
-def read_pdf(filename, path="C:\\Users\\Movie Computer\\Downloads"):
+def read_pdf(filename, path="C:\\Users\\Ella_\\Downloads"):
     """
     Reads a PDF file
     :param filename: the name of a PDF file
