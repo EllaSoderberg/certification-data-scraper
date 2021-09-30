@@ -20,7 +20,6 @@ class SamGov(ScrapingMachine):
                   "Phone number": None, "Email address": None, "TCOC mentioned": "", "EPEAT mentioned": "",
                   "Keywords in description": "", "Keywords in documents": "", "Link to documents": None}
         )
-        self.current_link = "https://sam.gov/search/?index=opp&page={}&sort=-relevance&sfm%5Bstatus%5D%5Bis_active%5D=true&sfm%5Bkeywords%5D%5B0%5D%5Bkey%5D=%22All-in-one%22&sfm%5Bkeywords%5D%5B0%5D%5Bvalue%5D=%22All-in-one%22&sfm%5Bkeywords%5D%5B1%5D%5Bkey%5D=laptop&sfm%5Bkeywords%5D%5B1%5D%5Bvalue%5D=laptop&sfm%5Bkeywords%5D%5B2%5D%5Bkey%5D=laptops&sfm%5Bkeywords%5D%5B2%5D%5Bvalue%5D=laptops&sfm%5Bkeywords%5D%5B3%5D%5Bkey%5D=hp&sfm%5Bkeywords%5D%5B3%5D%5Bvalue%5D=hp&sfm%5Bkeywords%5D%5B4%5D%5Bkey%5D=lenovo&sfm%5Bkeywords%5D%5B4%5D%5Bvalue%5D=lenovo&sfm%5Bkeywords%5D%5B5%5D%5Bkey%5D=acer&sfm%5Bkeywords%5D%5B5%5D%5Bvalue%5D=acer&sfm%5Bkeywords%5D%5B6%5D%5Bkey%5D=asus&sfm%5Bkeywords%5D%5B6%5D%5Bvalue%5D=asus&sfm%5Bkeywords%5D%5B7%5D%5Bkey%5D=epeat&sfm%5Bkeywords%5D%5B7%5D%5Bvalue%5D=epeat&sfm%5Bkeywords%5D%5B8%5D%5Bkey%5D=notebook&sfm%5Bkeywords%5D%5B8%5D%5Bvalue%5D=notebook&sfm%5Bkeywords%5D%5B9%5D%5Bkey%5D=aoc&sfm%5Bkeywords%5D%5B9%5D%5Bvalue%5D=aoc&sfm%5Bkeywords%5D%5B10%5D%5Bkey%5D=dell&sfm%5Bkeywords%5D%5B10%5D%5Bvalue%5D=dell&sfm%5Bkeywords%5D%5B11%5D%5Bkey%5D=casio&sfm%5Bkeywords%5D%5B11%5D%5Bvalue%5D=casio&sfm%5Bkeywords%5D%5B12%5D%5Bkey%5D=epson&sfm%5Bkeywords%5D%5B12%5D%5Bvalue%5D=epson&sfm%5Bkeywords%5D%5B13%5D%5Bkey%5D=headset&sfm%5Bkeywords%5D%5B13%5D%5Bvalue%5D=headset&sfm%5Bkeywords%5D%5B14%5D%5Bkey%5D=projectors&sfm%5Bkeywords%5D%5B14%5D%5Bvalue%5D=projectors&sfm%5Bkeywords%5D%5B15%5D%5Bkey%5D=notebooks&sfm%5Bkeywords%5D%5B15%5D%5Bvalue%5D=notebooks&sfm%5Bdates%5D%5BpublishedDate%5D%5BpublishedDateSelect%5D=pastWeek".format(str(self.at_page + 1))
 
     def login(self):
         """
@@ -173,13 +172,16 @@ class SamGov(ScrapingMachine):
         """
         Go back to database page
         """
-        self.driver.get(self.current_link)
+        self.driver.get(self.get_current_link())
         time.sleep(10)
 
     def pagination(self):
         """
         Paginate trough the pages
         """
-        print(self.current_link)
-        self.driver.get(self.current_link)
+        self.driver.get(self.get_current_link())
         time.sleep(10)
+
+    def get_current_link(self):
+        return "https://sam.gov/search/?index=opp&page={}&sort=-relevance&sfm%5Bstatus%5D%5Bis_active%5D=true&sfm%5Bkeywords%5D%5B0%5D%5Bkey%5D=%22All-in-one%22&sfm%5Bkeywords%5D%5B0%5D%5Bvalue%5D=%22All-in-one%22&sfm%5Bkeywords%5D%5B1%5D%5Bkey%5D=laptop&sfm%5Bkeywords%5D%5B1%5D%5Bvalue%5D=laptop&sfm%5Bkeywords%5D%5B2%5D%5Bkey%5D=laptops&sfm%5Bkeywords%5D%5B2%5D%5Bvalue%5D=laptops&sfm%5Bkeywords%5D%5B3%5D%5Bkey%5D=hp&sfm%5Bkeywords%5D%5B3%5D%5Bvalue%5D=hp&sfm%5Bkeywords%5D%5B4%5D%5Bkey%5D=lenovo&sfm%5Bkeywords%5D%5B4%5D%5Bvalue%5D=lenovo&sfm%5Bkeywords%5D%5B5%5D%5Bkey%5D=acer&sfm%5Bkeywords%5D%5B5%5D%5Bvalue%5D=acer&sfm%5Bkeywords%5D%5B6%5D%5Bkey%5D=asus&sfm%5Bkeywords%5D%5B6%5D%5Bvalue%5D=asus&sfm%5Bkeywords%5D%5B7%5D%5Bkey%5D=epeat&sfm%5Bkeywords%5D%5B7%5D%5Bvalue%5D=epeat&sfm%5Bkeywords%5D%5B8%5D%5Bkey%5D=notebook&sfm%5Bkeywords%5D%5B8%5D%5Bvalue%5D=notebook&sfm%5Bkeywords%5D%5B9%5D%5Bkey%5D=aoc&sfm%5Bkeywords%5D%5B9%5D%5Bvalue%5D=aoc&sfm%5Bkeywords%5D%5B10%5D%5Bkey%5D=dell&sfm%5Bkeywords%5D%5B10%5D%5Bvalue%5D=dell&sfm%5Bkeywords%5D%5B11%5D%5Bkey%5D=casio&sfm%5Bkeywords%5D%5B11%5D%5Bvalue%5D=casio&sfm%5Bkeywords%5D%5B12%5D%5Bkey%5D=epson&sfm%5Bkeywords%5D%5B12%5D%5Bvalue%5D=epson&sfm%5Bkeywords%5D%5B13%5D%5Bkey%5D=headset&sfm%5Bkeywords%5D%5B13%5D%5Bvalue%5D=headset&sfm%5Bkeywords%5D%5B14%5D%5Bkey%5D=projectors&sfm%5Bkeywords%5D%5B14%5D%5Bvalue%5D=projectors&sfm%5Bkeywords%5D%5B15%5D%5Bkey%5D=notebooks&sfm%5Bkeywords%5D%5B15%5D%5Bvalue%5D=notebooks&sfm%5Bdates%5D%5BpublishedDate%5D%5BpublishedDateSelect%5D=pastWeek".format(str(self.at_page + 1))
+

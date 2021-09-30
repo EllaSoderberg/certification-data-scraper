@@ -15,11 +15,11 @@ def read(file):
 
 def write_to_cache(file):
     dict = {
-        'last_run': '2021-09-16',
+        'last_run': '2021-09-21',
          'run_successful': True,
          'sheet_id': None,
-         'last_tender_title': 'INVITATION TO QUOTE (ITQ) FOR THE SUPPLY AND DELIVERY OF IPAD PRO 11” CASES & SCREEN PROTECTORS',
-         'last_tender_published': '2021-09-15',
+         'last_tender_title': 'Combined Synopsis/Solicitation (Updated)',
+         'last_tender_published': '2021-09-13',
          'first_tender_title': None,
          'first_tender_published': None,
          'at_page': 0,
@@ -31,7 +31,7 @@ def write_to_cache(file):
 
 def update_cache(file):
     dict = read(file)
-    dict.update({"sheet_id": None})
+    dict.update({'first_tender_title': None, 'first_tender_published': None })
     read_write_cache.write_cache(file, dict)
 
 
@@ -41,10 +41,10 @@ if __name__ == '__main__':
     #Gebiz().run()
     #Eprocure().run()
     #Tendium().run()
-    #SamGov().run()
-    Merx().run()
+    SamGov().run()
+    #Merx().run()
     #Evergabe().run()
 
-    #write_to_cache("Gebiz")
-    #update_cache("Eprocure")
-    print(read("Evergabe"))
+    #write_to_cache("SamGov")
+    #update_cache("SamGov")
+    print(read("SamGov"))
