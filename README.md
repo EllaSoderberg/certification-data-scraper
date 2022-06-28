@@ -13,8 +13,8 @@
 4. Create a .env file based upon .env.example and change the PROJECT_PATH variable to point to the root folder of the project and DRIVER_PATH to point to the chromedriver execution file.
 5. Create a folder in the root directory named "temp"
 6. Create a google cloud account and add the credentials file to the root folder
-7. run 'py pipenv shell' to start the virtual environment
-8. go to the folder "tender_data_scraping" and run main.py 
+7. Run 'py pipenv shell' to start the virtual environment
+8. Go to the folder "tender_data_scraping" and run "py main.py" 
 
 
 # Todo
