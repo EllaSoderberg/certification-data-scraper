@@ -38,7 +38,7 @@ class Sheet:
             'values': [header]
         }
         service.spreadsheets().values().append(
-            spreadsheetId=self.sheet_id, range="Blad1", valueInputOption="USER_ENTERED", body=sheet_header).execute()
+            spreadsheetId=self.sheet_id, range="Sheet1", valueInputOption="USER_ENTERED", body=sheet_header).execute()
 
         requests = [{
             "updateSheetProperties":

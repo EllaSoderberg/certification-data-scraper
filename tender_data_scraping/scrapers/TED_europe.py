@@ -163,7 +163,7 @@ class TED(ScrapingMachine):
         self.data["Country"] = country
 
         # Add email
-        email = None
+        email = Nonepy 
         email = soup.find("a", class_='ojsmailto').string
         e_mail = email
         #self.data["email"] = email
