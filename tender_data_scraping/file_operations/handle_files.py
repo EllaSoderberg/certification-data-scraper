@@ -30,9 +30,9 @@ def handle_files():
     time.sleep(10)
 
     print("converting")
-    read_files.convert_doc_to_docx(get_files("doc"))
-    docx_files = get_files("docx")
-    text_dict.update(read_files.read_docx_files(docx_files))
+    #read_files.convert_doc_to_docx(get_files("doc"))
+    word_files = get_files("docx") + get_files('doc')
+    text_dict.update(read_files.read_word_files(word_files))
     time.sleep(10)
 
     pdf_files = get_files("pdf")

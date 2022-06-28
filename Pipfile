@@ -14,7 +14,9 @@ beautifulsoup4 = "*"
 docx2txt = "*"
 patool = "*"
 pdfminer = "*"
-pywin32 = "*"
+requests = "*"
+pyobjc = "*"
+textract = "*"
 
 [dev-packages]
 

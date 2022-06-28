@@ -2,7 +2,7 @@ import os
 import sys
 import time
 import traceback
-import winsound
+#import Appkit
 
 import drive_operations.google_sheets as sheets
 from file_operations import delete_files, handle_files
@@ -39,6 +39,7 @@ class ScrapingMachine:
         self.first_tender_title = None
         self.first_tender_published = None
         self.last_run = date.today()
+
 
         self.driver = new_chrome_browser(executable_path=os.environ.get("DRIVER_PATH"),
                                          download_path=os.environ.get("TEMP_FOLDER"))
@@ -300,4 +301,5 @@ class ScrapingMachine:
         """
         frequency = freq  # Set Frequency To 2500 Hertz
         duration = 1000  # Set Duration To 1000 ms == 1 second
-        winsound.Beep(frequency, duration)
+        #winsound.Beep(frequency, duration)
+        AppKit.NSBeep()

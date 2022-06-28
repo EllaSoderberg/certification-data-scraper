@@ -10,8 +10,9 @@ from pdfminer.pdfparser import PDFParser
 
 import docx2txt
 import re
-import win32com.client as win32
-from win32com.client import constants
+#import win32com.client as win32
+#from win32com.client import constants
+import textract
 
 from dotenv import load_dotenv
 
@@ -51,16 +52,16 @@ def read_pdf(filename):
     return output_string.getvalue()
 
 
-def convert_doc_to_docx(filenames):
+"""def convert_doc_to_docx(filenames):
     for file in filenames:
         file_path = file
         print(file_path)
         save_as_docx(file_path)
         os.remove(file_path)
-    print("done converting")
+    print("done converting")"""
 
 
-def save_as_docx(path):
+"""def save_as_docx(path):
     # Opening MS Word
     word = win32.gencache.EnsureDispatch('Word.Application')
     doc = word.Documents.Open(path)
@@ -74,13 +75,13 @@ def save_as_docx(path):
     word.ActiveDocument.SaveAs(
         new_file_abs, FileFormat=constants.wdFormatXMLDocument
     )
-    doc.Close(False)
+    doc.Close(False)"""
 
 
-def read_docx_files(files):
+def read_word_files(files):
     text_dict = {}
     for file in files:
-        text = docx2txt.process(file)
+        text = textract.process(file)
         text_dict[file] = text
         print("done reading, returning string...")
     return text_dict
