@@ -122,3 +122,6 @@ token.pickle
 Pipfile.lock
 temp/
 *.lock
+credentials.json
+Pipfile
+token.pickle
