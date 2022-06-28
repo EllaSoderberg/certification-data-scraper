@@ -16,7 +16,6 @@
 7. run 'py pipenv shell' to start the virtual environment
 8. go to the folder "tender_data_scraping" and run main.py 
 
-
 # Todo
 - Explain step five better
 - Add todos in bitbucket

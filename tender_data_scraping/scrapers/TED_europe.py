@@ -3,6 +3,7 @@ import time
 import re
 import requests
 from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
 
 from scraping_operations.scraping_machine import ScrapingMachine
 
@@ -35,18 +36,19 @@ class TED(ScrapingMachine):
         # Wait for page to load
         time.sleep(5)
         # Go to the expert search page
-        expert_search = self.driver.find_element_by_xpath('//*[@title="Go to the expert search form"]')
+        expert_search = self.driver.find_element(By.XPATH, '//*[@title="Go to the expert search form"]')
+        # expert_search = self.driver.find_element_by_xpath('//*[@title="Go to the expert search form"]')
         expert_search.click()
         # Wait for page to load
         time.sleep(5)
         # Find the text box and type in the search string
-        text_box = self.driver.find_element_by_id('expertSearchCriteria.query')
+        text_box = self.driver.find_element(By.ID, 'expertSearchCriteria.query')
         text_box.send_keys(self.search)
         print(self.search)
         # Ensure all keys have been sent
         time.sleep(5)
         # Click search button
-        search_button = self.driver.find_element_by_xpath('//*[@title="Perform search"]')
+        search_button = self.driver.find_element(By.XPATH, '//*[@title="Perform search"]')
         search_button.click()
         time.sleep(2)
         # Save the current address
@@ -66,8 +68,8 @@ class TED(ScrapingMachine):
         """
         try:
             # Find the banner with all the page numbers
-            page_links = self.driver.find_element_by_class_name("pagelinks")
-            page_numbers = page_links.find_elements_by_class_name("pager-number")
+            page_links = self.driver.find_element(By.CLASS_NAME, "pagelinks")
+            page_numbers = page_links.find_elements(By.CLASS_NAME, "pager-number")
             # Return the last page number
             final_page = page_numbers[-1].text
         except Exception:
@@ -75,7 +77,7 @@ class TED(ScrapingMachine):
         return final_page
 
     def get_table(self):
-        return self.driver.find_elements_by_xpath("//*[@title='View this notice']")
+        return self.driver.find_elements(By.XPATH, "//*[@title='View this notice']")
 
     def documents_exist(self):
         """
