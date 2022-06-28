@@ -131,7 +131,7 @@ class Sheet:
             'values': values
         }
         service.spreadsheets().values().append(
-            spreadsheetId=self.sheet_id, range="Blad1", valueInputOption="RAW", body=sheet_header,
+            spreadsheetId=self.sheet_id, range="Sheet1", valueInputOption="RAW", body=sheet_header,
             fields="tableRange").execute()
 
 
