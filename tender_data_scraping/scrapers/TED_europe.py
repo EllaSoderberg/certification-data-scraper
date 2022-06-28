@@ -35,6 +35,12 @@ class TED(ScrapingMachine):
     def go_to_database(self):
         # Wait for page to load
         time.sleep(5)
+        # Click to accept cookies button
+        cookie_button = self.driver.find_element(By.XPATH, '//*[@class="wt-link cck-actions-button"]')
+        cookie_button.click()
+        close_button = self.driver.find_element(By.XPATH, '//*[@href="#close"]')
+        close_button.click()
+        time.sleep(5)
         # Go to the expert search page
         expert_search = self.driver.find_element(By.XPATH, '//*[@title="Go to the expert search form"]')
         # expert_search = self.driver.find_element_by_xpath('//*[@title="Go to the expert search form"]')
