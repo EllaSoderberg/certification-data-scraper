@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/certification-data-scraper.iml" filepath="$PROJECT_DIR$/.idea/certification-data-scraper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tender-data-scraping.iml" filepath="$PROJECT_DIR$/.idea/tender-data-scraping.iml" />
     </modules>
   </component>
 </project>
