@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 import time
 import logging
 from datetime import datetime
@@ -24,21 +25,21 @@ class Eavrop(ScrapingMachine):
         """
         Function to use the driver to log in to the database
         """
-        self.driver.find_element_by_id("loginButton").click()
-        login_fields = self.driver.find_element_by_id("loginPrompt")
-        login_fields.find_element_by_xpath("*/input[@aria-label='Username']").send_keys(self.username)
-        login_fields.find_element_by_id("Header1_LoginControl1_ctl04_password").send_keys(self.password)
-        login_fields.find_element_by_id("verify").click()
+        self.driver.find_element(By.ID, "loginButton").click()
+        login_fields = self.driver.find_element(By.ID, "loginPrompt")
+        login_fields.find_element(By.XPATH, "*/input[@aria-label='Username']").send_keys(self.username)
+        login_fields.find_element(By.ID, "Header1_LoginControl1_ctl04_password").send_keys(self.password)
+        login_fields.find_element(By.ID, "verify").click()
         time.sleep(10)
 
     def go_to_database(self):
         """
         Function to go to the page where the database is found
         """
-        self.driver.find_element_by_id("navigationContent_tenders").click()
+        self.driver.find_element(By.ID, "navigationContent_tenders").click()
         time.sleep(10)
-        self.driver.find_element_by_class_name("cpvSearch").send_keys("30200000")
-        self.driver.find_element_by_id("navigationContent_searchButton").click()
+        self.driver.find_element(By.CLASS_NAME, "cpvSearch").send_keys("30200000")
+        self.driver.find_element(By.ID, "navigationContent_searchButton").click()
         time.sleep(10)
 
     def navigate_to_current_page(self):
@@ -59,7 +60,7 @@ class Eavrop(ScrapingMachine):
         Function to retrieve the table and return its elements
         :return: The elements of the table as a webdriver object
         """
-        return self.driver.find_elements_by_class_name("rowline")
+        return self.driver.find_elements(By.CLASS_NAME, "rowline")
 
     def go_to_tender(self, tender):
         """
@@ -69,28 +70,28 @@ class Eavrop(ScrapingMachine):
         date_published:,
         }
         """
-        self.data["Title"] = self.driver.find_element_by_tag_name("a").text
-        tender.find_element_by_tag_name("a").click()
+        self.data["Title"] = self.driver.find_element(By.TAG_NAME, "a").text
+        tender.find_element(By.TAG_NAME, "a").click()
         time.sleep(10)
 
-        type = self.driver.find_element_by_class_name("navNodeCurrent").text
+        type = self.driver.find_element(By.CLASS_NAME, "navNodeCurrent").text
         if type == "RFI":
             self.data["Reference"] = self.data["Title"]
-            self.data["Agency"] = self.driver.find_element_by_id("mainContent_RfiHead_Datalist1").text
-            self.data["Published"] = self.driver.find_element_by_id("mainContent_RfiHead_UpdatedLabel").text.split("(")[0]
-            self.data["Procurement type"] = self.driver.find_element_by_id("mainContent_RfiHead_SpecificationLabel").text
-            self.data["Main CPV"] = self.driver.find_element_by_xpath("*/form/table/tbody/tr[6]/td").text
-            full_text = self.driver.find_element_by_tag_name("body").text
+            self.data["Agency"] = self.driver.find_element(By.ID, "mainContent_RfiHead_Datalist1").text
+            self.data["Published"] = self.driver.find_element(By.ID, "mainContent_RfiHead_UpdatedLabel").text.split("(")[0]
+            self.data["Procurement type"] = self.driver.find_element(By.ID, "mainContent_RfiHead_SpecificationLabel").text
+            self.data["Main CPV"] = self.driver.find_element(By.XPATH, "*/form/table/tbody/tr[6]/td").text
+            full_text = self.driver.find_element(By.TAG_NAME, "body").text
 
         else:
-            main_box = self.driver.find_element_by_id("container_mainContent_ContractNotice")
-            self.data["Reference"] = main_box.find_element_by_xpath("*/form/div[5]/div/div/div/div[1]/span[1]/div/span").text
-            self.data["Agency"] = main_box.find_element_by_xpath("*/form/div[5]/div/div/div/div[1]/span[2]/div/h3/span").text
-            self.data["Published"] = main_box.find_element_by_xpath("*/form/div[5]/div/div/div/div[1]/span[4]/div[2]/div/div/span").text
-            self.data["Procurement type"] = main_box.find_element_by_xpath("*/form/div[5]/div/div/div/div[1]/span[4]/div[1]/span").text
-            self.data["Main CPV"] = main_box.find_element_by_class_name("cpv-code").text
+            main_box = self.driver.find_element(By.ID, "container_mainContent_ContractNotice")
+            self.data["Reference"] = main_box.find_element(By.XPATH, "*/form/div[5]/div/div/div/div[1]/span[1]/div/span").text
+            self.data["Agency"] = main_box.find_element(By.XPATH, "*/form/div[5]/div/div/div/div[1]/span[2]/div/h3/span").text
+            self.data["Published"] = main_box.find_element(By.XPATH, "*/form/div[5]/div/div/div/div[1]/span[4]/div[2]/div/div/span").text
+            self.data["Procurement type"] = main_box.find_element(By.XPATH, "*/form/div[5]/div/div/div/div[1]/span[4]/div[1]/span").text
+            self.data["Main CPV"] = main_box.find_element(By.CLASS_NAME, "cpv-code").text
             second_cpv = ""
-            for cpv in main_box.find_elements_by_class_name("cpv-code")[1:]:
+            for cpv in main_box.find_elements(By.CLASS_NAME, "cpv-code")[1:]:
                 second_cpv += cpv
                 second_cpv += " "
             self.data["Secondary CPV"] = second_cpv
@@ -104,7 +105,7 @@ class Eavrop(ScrapingMachine):
         :return: True or False
         """
         try:
-            self.driver.find_element_by_id("navigationContent_subscribeBtn")
+            self.driver.find_element(By.ID, "navigationContent_subscribeBtn")
             return False
         except Exception:
             return True
@@ -114,7 +115,7 @@ class Eavrop(ScrapingMachine):
         Download documents
         :return:
         """
-        self.driver.find_element_by_id("mainContent_createZip").click()
+        self.driver.find_element(By.ID, "mainContent_createZip").click()
         time.sleep(10)
 
     def go_back(self):
