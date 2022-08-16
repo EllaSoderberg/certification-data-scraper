@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 import datetime
 import time
 import re
@@ -16,13 +17,13 @@ class TED(ScrapingMachine):
             project=project,
             data={"Link": None, "Published": None, "Authority name": None, "Country": None,
                   # "Contact person", "E-mail", "Is duplicate",
-                  "Website": None, "Title": None, "CPV": None, "Secondary CPV": None, "Total value": None,
+                  "Website": None, "Title": None, "CPV": None, "Secondary CPV": None, "Type": None, "Total value": None,
                   "Award criteria": None, "EU funding": None, "Documents": None, "TCOC mentioned": "", "EPEAT mentioned": "",
                   "Keywords in description": "", "Keywords in documents": "", "Link to documents": None}
         )
         self.address = ""
         self.search = "PD=[{} <> {}] AND PC=[30231000 or 38652000 or 32551300 or 30214000 or 30213000 or 30213100 or " \
-                      "30213200 or 30213300 or 30213500] AND TD=[3]".format((self.last_run + datetime.timedelta(days=1))
+                      "30213200 or 30213300 or 30213500 or 32252000] AND TD=[3]".format((self.last_run + datetime.timedelta(days=1))
                                                                             .strftime("%Y%m%d"),
                                                                             self.today.strftime("%Y%m%d"))
         self.rlv_cpv_codes = ["30231000", "30214000", "30213000", "30213100",
@@ -35,17 +36,18 @@ class TED(ScrapingMachine):
         # Wait for page to load
         time.sleep(5)
         # Go to the expert search page
-        expert_search = self.driver.find_element_by_xpath('//*[@title="Go to the expert search form"]')
+        expert_search = self.driver.find_element(By.XPATH, '//*[@title="Go to the expert search form"]')
         expert_search.click()
         # Wait for page to load
         time.sleep(5)
         # Find the text box and type in the search string
-        text_box = self.driver.find_element_by_id('expertSearchCriteria.query')
+        text_box = self.driver.find_element(By.ID, 'expertSearchCriteria.query')
         text_box.send_keys(self.search)
+        print(self.search)
         # Ensure all keys have been sent
         time.sleep(5)
         # Click search button
-        search_button = self.driver.find_element_by_xpath('//*[@title="Perform search"]')
+        search_button = self.driver.find_element(By.XPATH, '//*[@title="Perform search"]')
         search_button.click()
         time.sleep(2)
         # Save the current address
@@ -63,14 +65,18 @@ class TED(ScrapingMachine):
         Function to find where the final page is.
         :return: final page as an int
         """
-        # Find the banner with all the page numbers
-        page_links = self.driver.find_element_by_class_name("pagelinks")
-        page_numbers = page_links.find_elements_by_class_name("pager-number")
-        # Return the last page number
-        return page_numbers[-1].text
+        try:
+            # Find the banner with all the page numbers
+            page_links = self.driver.find_element(By.CLASS_NAME, "pagelinks")
+            page_numbers = page_links.find_elements(By.CLASS_NAME, "pager-number")
+            # Return the last page number
+            final_page = page_numbers[-1].text
+        except Exception:
+            final_page = 1
+        return final_page
 
     def get_table(self):
-        return self.driver.find_elements_by_xpath("//*[@title='View this notice']")
+        return self.driver.find_elements(By.XPATH, "//*[@title='View this notice']")
 
     def documents_exist(self):
         """
@@ -108,19 +114,25 @@ class TED(ScrapingMachine):
         }
         """
         # links = self.get_table()
+        print("going to tender")
         return self.get_data(tender.get_attribute("href"))
         # return self.get_data(links[self.at_opp].get_attribute("href"))
 
     def get_data(self, link):
 
         # Get the link
+        print("Getting link", link)
         link_html = requests.get(link)
+        time.sleep(3)
         soup = BeautifulSoup(link_html.content, 'html.parser')
+        print(soup)
         self.data["Link"] = link
+        print(link)
 
         # Find date published
         self.data["Published"] = soup.find('span', class_="date").text
 
+        print(self.data["Published"])
         # Get the info under headline Name and addresses
         try:
             contact_info = soup.find("span", string='Name and addresses').next_sibling.strings
@@ -167,9 +179,13 @@ class TED(ScrapingMachine):
 
         # Add website
         website = None
+        try:
+            website = soup.find('a', class_="ojshref").text
+        except AttributeError:
+            pass
 
-        website = soup.find('a', class_="ojshref").text
         self.data["Website"] = website
+
 
         # Find section two
         info = soup.find("span", id='id1-II.').parent.parent
@@ -194,6 +210,9 @@ class TED(ScrapingMachine):
         for cpv in cpv_codes[1:]:
             add_cpv += cpv.text + ","
         self.data["Secondary CPV"] = add_cpv
+
+        self.data["Type"] = soup.find("div", class_="DocumentBody").find("div", class_="stdoc").text
+        print(self.data["Type"])
 
         # Find total value and add it
         try:

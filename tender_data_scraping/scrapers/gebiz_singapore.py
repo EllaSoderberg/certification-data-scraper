@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 import time
 import logging
 from datetime import datetime
@@ -17,22 +18,22 @@ class Gebiz(ScrapingMachine):
                   "Mobile phone number": None, "Address": None, "TCOC mentioned": "", "EPEAT mentioned": "",
                   "Keywords in description": "", "Keywords in documents": "", "Link to documents": None},
             username="301776080",
-            password="TcoDevelopment2021",
+            password="TcoDevelopment2022",
         )
         self.start_page = 0
 
     def login(self):
         time.sleep(5)
-        user_box = self.driver.find_element_by_xpath("//*[@name='contentForm:j_idt145_inputText']")
+        user_box = self.driver.find_element(By.XPATH, "//*[@name='contentForm:j_idt146_inputText']")
         user_box.send_keys(self.username)
-        password_box = self.driver.find_element_by_id('contentForm:password_inputText')
+        password_box = self.driver.find_element(By.ID, 'contentForm:password_inputText')
         password_box.send_keys(self.password)
         time.sleep(5)
-        self.driver.find_element_by_id("contentForm:buttonSubmit").click()
+        self.driver.find_element(By.ID, "contentForm:buttonSubmit").click()
         time.sleep(10)
 
     def go_to_database(self):
-        self.driver.find_element_by_id("contentForm:j_id58").click()
+        self.driver.find_element(By.ID, "contentForm:j_id58").click()
         time.sleep(5)
 
     def navigate_to_current_page(self):
@@ -52,7 +53,7 @@ class Gebiz(ScrapingMachine):
         return None
 
     def get_table(self):
-        return self.driver.find_elements_by_class_name("commandLink_TITLE-BLUE")
+        return self.driver.find_elements(By.CLASS_NAME, "commandLink_TITLE-BLUE")
 
     def go_to_tender(self, tender):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
@@ -66,13 +67,13 @@ class Gebiz(ScrapingMachine):
     def pagination(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(5)
-        nav = self.driver.find_element_by_class_name("formRepeatPagination2_NAVIGATION-BUTTONS-DIV")
-        nav.find_element_by_xpath("//*[@value='Next']").click()
+        nav = self.driver.find_element(By.CLASS_NAME, "formRepeatPagination2_NAVIGATION-BUTTONS-DIV")
+        nav.find_element(By.XPATH, "//*[@value='Next']").click()
         time.sleep(20)
 
     def try_extraction(self, xpath):
         try:
-            extraction = self.driver.find_element_by_xpath(xpath).find_element_by_class_name(
+            extraction = self.driver.find_element(By.XPATH, xpath).find_element(By.CLASS_NAME,
                 "formOutputText_VALUE-DIV ").text
         except Exception:
             logging.error("Exception occurred", exc_info=True)
@@ -84,12 +85,15 @@ class Gebiz(ScrapingMachine):
         self.data["Reference"] = self.try_extraction("//span[text()='Quotation No.']/../../../../..")
         self.data["Reference number"] = self.try_extraction("//span[text()='Reference No.']/../../../../..")
         self.data["Agency"] = self.try_extraction("//span[text()='Agency']/../../../../..")
-        self.data["Published"] = datetime.strptime(self.try_extraction("//span[text()='Published']/../../../../.."),
-                                                   '%d %b %Y %I:%M%p').strftime("%Y-%m-%d")
+        time = self.try_extraction("//span[text()='Published']/../../../../..")
+        try:
+            self.data["Published"] = datetime.strptime(time, '%d %b %Y %I:%M%p').strftime("%Y-%m-%d")
+        except Exception:
+            self.data["Published"] = datetime.strptime(time, '%d %b %Y %I:%M %p').strftime("%Y-%m-%d")
         self.data["Procurement type"] = self.try_extraction("//span[text()='Procurement Type']/../../../../..")
         self.data["Category"] = self.try_extraction("//span[text()='Procurement Category']/../../../../..")
 
-        contact_info = self.driver.find_element_by_xpath(
+        contact_info = self.driver.find_element(By.XPATH,
             "//*[text()='WHO TO CONTACT']/../../../../../../following-sibling::div").text.split("\n")
         i = 0
         if "PRIMARY" in contact_info[0]:
@@ -106,7 +110,7 @@ class Gebiz(ScrapingMachine):
         """
         try:
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            self.driver.find_element_by_class_name("formAttachmentsList_DOWNLOAD-BUTTON")
+            self.driver.find_element(By.CLASS_NAME, "formAttachmentsList_DOWNLOAD-BUTTON")
             return True
         except Exception as e:
             print(e)
@@ -116,7 +120,7 @@ class Gebiz(ScrapingMachine):
         """
         Download documents
         """
-        files = self.driver.find_elements_by_class_name("formAttachmentsList_DOCUMENT-LINK")
+        files = self.driver.find_elements(By.CLASS_NAME, "formAttachmentsList_DOCUMENT-LINK")
         for file in files:
             file.click()
         print("just clicked download")
@@ -124,4 +128,4 @@ class Gebiz(ScrapingMachine):
 
     def go_back(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        self.driver.find_element_by_xpath("//input[@value='Back to Search Results']").click()
+        self.driver.find_element(By.XPATH, "//input[@value='Back to Search Results']").click()
