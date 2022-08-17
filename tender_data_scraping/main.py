@@ -45,8 +45,8 @@ def check_doneness():
 if __name__ == '__main__':
     #TED().run()
     #TedExpanded().run()
-    TedPriorNotice().run()
-    #Gebiz().run()
+    #TedPriorNotice().run()
+    Gebiz().run()
     #Eprocure().run()
     #SamGov().run()
     #Evergabe().run()
