@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 import logging
 import time
 from datetime import datetime
@@ -55,8 +56,8 @@ class Eprocure(ScrapingMachine):
         Function to retrieve the table and return its elements
         :return: The elements of the table as a webdriver object
         """
-        table = self.driver.find_element_by_tag_name("tbody")
-        t_rows = table.find_elements_by_tag_name("tr")
+        table = self.driver.find_element(By.TAG_NAME, "tbody")
+        t_rows = table.find_elements(By.TAG_NAME, "tr")
         return t_rows
 
     def go_to_tender(self, tender):
@@ -67,12 +68,12 @@ class Eprocure(ScrapingMachine):
         date_published:,
         }
         """
-        columns = tender.find_elements_by_tag_name("td")
-        columns[4].find_element_by_tag_name("a").click()
-        captcha = self.driver.find_element_by_xpath("//img[@title='Image CAPTCHA']").get_attribute("alt")
-        self.driver.find_element_by_id("edit-captcha-response").send_keys(captcha)
+        columns = tender.find_elements(By.TAG_NAME, "td")
+        columns[4].find_element(By.TAG_NAME, "a").click()
+        captcha = self.driver.find_element(By.XPATH, "//img[@title='Image CAPTCHA']").get_attribute("alt")
+        self.driver.find_element(By.ID, "edit-captcha-response").send_keys(captcha)
         time.sleep(10)
-        self.driver.find_element_by_id("edit-save").click()
+        self.driver.find_element(By.ID, "edit-save").click()
         time.sleep(10)
         data = self.get_data()
         return data, ""
@@ -82,17 +83,17 @@ class Eprocure(ScrapingMachine):
         Check if there are any documents to download
         :return: True or False
         """
-        details = self.driver.find_elements_by_id("tenderDetailDivTd")
+        details = self.driver.find_elements(By.ID, "tenderDetailDivTd")
         for detail in details:
             try:
-                doc_link = detail.find_element_by_tag_name("a").click()
+                doc_link = detail.find_element(By.TAG_NAME, "a").click()
             except Exception:
                 pass
 
         time.sleep(20)
 
         try:
-            self.driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]")
+            self.driver.find_element(By.XPATH, "//*[contains(text(), 'Download as zip file')]")
             return True
         except Exception:
             return False
@@ -103,16 +104,16 @@ class Eprocure(ScrapingMachine):
         :return:
         """
 
-        self.driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]").click()
+        self.driver.find_element(By.XPATH, "//*[contains(text(), 'Download as zip file')]").click()
 
         try:
-            self.driver.find_element_by_xpath("//button[@id='captcha']")
+            self.driver.find_element(By.XPATH, "//button[@id='captcha']")
         except Exception:
             pass
         else:
             self.warning_sound()
             time.sleep(20)
-            self.driver.find_element_by_xpath("//*[contains(text(), 'Download as zip file')]").click()
+            self.driver.find_element(By.XPATH, "//*[contains(text(), 'Download as zip file')]").click()
 
     def go_back(self):
         """
