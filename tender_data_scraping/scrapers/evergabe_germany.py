@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
 import logging
@@ -58,9 +59,9 @@ class Evergabe(ScrapingMachine):
         Function to retrieve the table and return its elements
         :return: The elements of the table as a webdriver object
         """
-        table = self.driver.find_element_by_id("listTemplate")
-        tbody = table.find_element_by_tag_name("tbody")
-        row = tbody.find_elements_by_tag_name("tr")
+        table = self.driver.find_element(By.ID, "listTemplate")
+        tbody = table.find_element(By.TAG_NAME, "tbody")
+        row = tbody.find_elements(By.TAG_NAME, "tr")
         return row
 
     def go_to_tender(self, tender):
@@ -71,10 +72,10 @@ class Evergabe(ScrapingMachine):
         date_published:,
         }
         """
-        td = tender.find_elements_by_tag_name("td")
+        td = tender.find_elements(By.TAG_NAME, "td")
         published = datetime.strptime(td[0].text, "%d.%m.%Y").strftime("%Y-%m-%d")
         title = td[2].text
-        tender.find_element_by_class_name("noTextDecorationLink").click()
+        tender.find_element(By.CLASS_NAME, "noTextDecorationLink").click()
         time.sleep(5)
         self.handles = self.driver.window_handles
         done, to_analyze = self.extract_info()
@@ -88,7 +89,7 @@ class Evergabe(ScrapingMachine):
         tenderid = self.try_extraction("//span[text()='Ausschreibungs-ID']/../../following-sibling::div")
         time.sleep(5)
         try:
-            self.driver.find_element_by_xpath("//*[@href='./processdata']").click()
+            self.driver.find_element(By.XPATH, "//*[@href='./processdata']").click()
             time.sleep(5)
         except Exception:
             logging.error("Exception occurred", exc_info=True)
@@ -100,7 +101,7 @@ class Evergabe(ScrapingMachine):
             phone = self.try_extraction("//*[text()='Telefon']/following-sibling::div")
             email = self.try_extraction("//*[text()='E-Mail']/following-sibling::div")
             web_address = self.try_extraction("//*[text()='Internet-Adresse (URL)']/following-sibling::div")
-            to_analyze = self.driver.find_element_by_id("content").text
+            to_analyze = self.driver.find_element(By.ID, "content").text
 
         self.data.update({"Reference": tenderid, "Offizielle Bezeichnung": organization, "Kontaktstelle": contact,
                           "zu Händen von": contact_person, "Telefon": phone, "E-Mail": email,
@@ -109,7 +110,7 @@ class Evergabe(ScrapingMachine):
 
     def try_extraction(self, xpath):
         try:
-            extraction = self.driver.find_element_by_xpath(xpath).text
+            extraction = self.driver.find_element(By.XPATH, xpath).text
         except Exception as e:
             extraction = None
         return extraction
@@ -119,7 +120,7 @@ class Evergabe(ScrapingMachine):
         Check if there are any documents to download
         """
         try:
-            self.driver.find_element_by_xpath("//*[@href='./documents']").click()
+            self.driver.find_element(By.XPATH, "//*[@href='./documents']").click()
             time.sleep(5)
         except Exception:
             return False
@@ -129,7 +130,7 @@ class Evergabe(ScrapingMachine):
         """
         Download documents
         """
-        self.driver.find_element_by_xpath("//*[@title='Alle Dokumente als ZIP-Datei herunterladen']").click()
+        self.driver.find_element(By.XPATH, "//*[@title='Alle Dokumente als ZIP-Datei herunterladen']").click()
 
     def go_back(self):
         self.driver.switch_to.window(self.handles[0])

@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from datetime import datetime
 import time
 from scraping_operations.scraping_machine import ScrapingMachine

@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
 
@@ -23,18 +24,18 @@ class Merx(ScrapingMachine):
         """
         Function to use the driver to log in to the database
         """
-        self.driver.find_element_by_id("menu_mobileAvatarToggle").click()
+        self.driver.find_element(By.ID, "menu_mobileAvatarToggle").click()
         time.sleep(2)
-        self.driver.find_element_by_id("mainHeader_btnLogin_mobile").click()
+        self.driver.find_element(By.ID, "mainHeader_btnLogin_mobile").click()
         time.sleep(10)
-        user_box = self.driver.find_element_by_id('j_username')
+        user_box = self.driver.find_element(By.ID, 'j_username')
         user_box.send_keys(self.username)
-        password_box = self.driver.find_element_by_id('j_password')
+        password_box = self.driver.find_element(By.ID, 'j_password')
         password_box.send_keys(self.password)
         time.sleep(5)
-        self.driver.find_element_by_id('loginButton').click()
+        self.driver.find_element(By.ID, 'loginButton').click()
         time.sleep(10)
-        #self.driver.find_element_by_name("ContinueButton").click()
+        #self.driver.find_element(By.NAME, "ContinueButton").click()
         #time.sleep(10)
 
     def go_to_database(self):
@@ -56,7 +57,7 @@ class Merx(ScrapingMachine):
         Function to find where the final page is.
         :return: final page as an int
         """
-        return int(self.driver.find_element_by_xpath("//a[@class='last mets-pagination-page-icon']")
+        return int(self.driver.find_element(By.XPATH, "//a[@class='last mets-pagination-page-icon']")
                    .get_attribute("data-page-number"))
 
     def get_table(self):
@@ -64,8 +65,8 @@ class Merx(ScrapingMachine):
         Function to retrieve the table and return its elements
         :return: The elements of the table as a webdriver object
         """
-        table = self.driver.find_element_by_id("solicitationsTable")
-        return table.find_elements_by_tag_name("tr")
+        table = self.driver.find_element(By.ID, "solicitationsTable")
+        return table.find_elements(By.TAG_NAME, "tr")
 
     def go_to_tender(self, tender):
         """
@@ -75,29 +76,30 @@ class Merx(ScrapingMachine):
         date_published:,
         }
         """
-        title = tender.find_element_by_class_name("solicitationTitle").text
-        organisation = tender.find_element_by_class_name("buyerIdentification").text
-        closing_date = tender.find_element_by_class_name("dateValue").text
-        pub_date = datetime.strptime(tender.find_element_by_class_name("publicationDate").text.split(" ")[-1],
+        title = tender.find_element(By.CLASS_NAME, "solicitationTitle").text
+        organisation = tender.find_element(By.CLASS_NAME, "buyerIdentification").text
+        closing_date = tender.find_element(By.CLASS_NAME, "dateValue").text
+        pub_date = datetime.strptime(tender.find_element(By.CLASS_NAME, "publicationDate").text.split(" ")[-1],
                                      '%Y/%m/%d').strftime("%Y-%m-%d")
-        location = tender.find_element_by_class_name("regionValue").text
+        location = tender.find_element(By.CLASS_NAME, "regionValue").text
 
         print("clicking tender!!")
-        tender.find_element_by_class_name("solicitationTitle").click()
+        tender.find_element(By.CLASS_NAME, "solicitationTitle").click()
         time.sleep(10)
 
         link = self.driver.current_url
         try:
-            reference = self.driver.find_element_by_xpath(
-                '//span[contains(string(), "Reference")]/following-sibling::div').text
-            contact = self.driver.find_element_by_xpath('//h3[contains(string(), "Contact")]/following-sibling::div').text
+            reference = self.driver.find_element(By.XPATH,
+                                                 '//span[contains(string(), "Reference")]/following-sibling::div').text
+            contact = self.driver.find_element(By.XPATH,
+                                               '//span[contains(string(), "Contact")]/following-sibling::div').text
 
             try:
-                self.driver.find_element_by_id("descriptionTextReadMore").click()
+                self.driver.find_element(By.ID, "descriptionTextReadMore").click()
             except Exception:
                 pass
 
-            description = self.driver.find_element_by_id("descriptionText").text
+            description = self.driver.find_element(By.ID, "descriptionText").text
         except Exception:
             time.sleep(60)
 
@@ -113,10 +115,10 @@ class Merx(ScrapingMachine):
         :return: True or False
         """
         try:
-            self.driver.find_element_by_xpath("//a[@title='Documents']").click()
+            self.driver.find_element(By.XPATH, "//a[@title='Documents']").click()
             time.sleep(5)
-            document_table = self.driver.find_element_by_class_name("solicitationDocumentsTable")
-            document_table.find_elements_by_tag_name("a")
+            document_table = self.driver.find_element(By.CLASS_NAME, "solicitationDocumentsTable")
+            document_table.find_elements(By.TAG_NAME, "a")
         except Exception:
             return False
         return True
@@ -126,8 +128,8 @@ class Merx(ScrapingMachine):
         Download documents
         :return:
         """
-        document_table = self.driver.find_element_by_class_name("solicitationDocumentsTable")
-        for doc in document_table.find_elements_by_tag_name("a"):
+        document_table = self.driver.find_element(By.CLASS_NAME, "solicitationDocumentsTable")
+        for doc in document_table.find_elements(By.TAG_NAME, "a"):
             doc.click()
 
     def go_back(self):
@@ -141,4 +143,4 @@ class Merx(ScrapingMachine):
         """
         Paginate trough the pages
         """
-        self.driver.find_element_by_xpath('//a[@class ="next mets-pagination-page-icon"]').click()
+        self.driver.find_element(By.XPATH, "next mets-pagination-page-icon").click()

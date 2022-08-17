@@ -118,6 +118,7 @@ class ScrapingMachine:
                     tender = self.get_table()
 
                     # Get all the data, all values, text on the page etc. return as a dictionary.
+                    print(tender[tender_no])
                     data, text_to_analyze = self.go_to_tender(tender[tender_no])
 
                     # If the first opportunity is scraped, save this to the cache.
@@ -147,7 +148,7 @@ class ScrapingMachine:
                             sys.exit("Finished successfully")
 
                     else:
-                        if int(self.end_page) + 1 == self.at_page:
+                        if int(self.end_page) + 1 <= self.at_page:
                             self.new_cache.update({
                                 "last_run": self.today.strftime("%Y-%m-%d"),
                                 "run_successful": True,
@@ -155,6 +156,8 @@ class ScrapingMachine:
                                 "at_page": 0,
                                 "at_opp": 0
                             })
+                            self.finish_scraping()
+                            sys.exit("Finished successfully")
 
                     # Analyze text
                     mention = analyze.analyze(text_to_analyze)

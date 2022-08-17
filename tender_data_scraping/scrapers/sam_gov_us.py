@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
 import time
@@ -32,7 +33,7 @@ class SamGov(ScrapingMachine):
         Function to go to the page where the database is found
         """
         time.sleep(10)
-        self.driver.find_element_by_xpath("//button[@aria-label='Close Modal']").click()
+        self.driver.find_element(By.XPATH, "//button[@aria-label='Close Modal']").click()
         time.sleep(10)
 
     def navigate_to_current_page(self):
@@ -46,7 +47,7 @@ class SamGov(ScrapingMachine):
         Function to find where the final page is.
         :return: final page as an int
         """
-        page_count = self.driver.find_element_by_id("bottomPagination-currentPage")
+        page_count = self.driver.find_element(By.ID, "bottomPagination-currentPage")
         max_page = int(page_count.get_attribute("max"))
         return max_page
 
@@ -56,8 +57,8 @@ class SamGov(ScrapingMachine):
         :return: The elements of the table as a webdriver object
         """
         time.sleep(5)
-        result = self.driver.find_element_by_tag_name("search-list-layout")
-        return result.find_elements_by_tag_name("app-opportunity-result")
+        result = self.driver.find_element(By.TAG_NAME, "search-list-layout")
+        return result.find_elements(By.TAG_NAME, "app-opportunity-result")
 
     def go_back(self):
         self.driver.get(self.current_link)
@@ -71,18 +72,18 @@ class SamGov(ScrapingMachine):
         date_published:,
         }
         """
-        self.driver.get(tender.find_element_by_tag_name("a").get_attribute("href"))
+        self.driver.get(tender.find_element(By.TAG_NAME, "a").get_attribute("href"))
         time.sleep(10)
         info = self.extract_sam_info()
         return self.data, info
 
     def extract_sam_info(self):
-        title = self.try_extraction(self.driver.find_element_by_xpath('//h1[@class="\'sam-ui-header"]'))
+        title = self.try_extraction(self.driver.find_element(By.XPATH, "\'sam-ui-header"))
         reference_id = self.try_extraction(self.try_by_id("header-solicitation-number")
-                                      .find_element_by_class_name("description"))
+                                      .find_element(By.CLASS_NAME, "description"))
         try:
             description = self.try_extraction(
-                self.try_by_id("description").find_element_by_class_name("ng-star-inserted"))
+                self.try_by_id("description").find_element(By.CLASS_NAME, "ng-star-inserted"))
         except Exception:
             logging.error("Exception occurred", exc_info=True)
             description = ""
@@ -90,8 +91,8 @@ class SamGov(ScrapingMachine):
         published = datetime.strptime(self.split_text(self.try_extraction(
             self.try_by_id("general-original-published-date"))), ' %b %d, %Y %H').strftime("%Y-%m-%d")
         gen_type = self.split_text(self.try_extraction(self.try_by_id("general-type")))
-        agency = self.try_extraction(self.driver.find_element_by_xpath(
-            "//*[text()=' Department/Ind. Agency ']/following-sibling::div"))
+        agency = self.try_extraction(self.driver.find_element(By.XPATH,
+                                                    "//*[text()=' Department/Ind. Agency ']/following-sibling::div"))
         naics = self.split_text(self.try_extraction(self.try_by_id("classification-naics-code")))
         pcs = self.split_text(self.try_extraction(self.try_by_id("classification-classification-code")))
         name = self.try_by_id("contact-primary-poc-full-name")
@@ -104,7 +105,7 @@ class SamGov(ScrapingMachine):
         phone = self.try_extraction(self.try_by_id("contact-primary-poc-phone"))
         contractor = self.try_by_id("-contracting-office")
         if contractor is not None:
-            contractor = contractor.find_element_by_class_name("ng-star-inserted").text
+            contractor = contractor.find_element(By.CLASS_NAME, "ng-star-inserted").text
         else:
             contractor = None
 
@@ -117,7 +118,7 @@ class SamGov(ScrapingMachine):
 
     def try_by_id(self, id):
         try:
-            result = self.driver.find_element_by_id(id)
+            result = self.driver.find_element(By.ID, id)
         except NoSuchElementException:
             logging.error("Exception occurred", exc_info=True)
             result = None
@@ -154,7 +155,7 @@ class SamGov(ScrapingMachine):
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight/10*{});".format(height))
             time.sleep(2)
         try:
-            self.driver.find_element_by_xpath("//a[@class='file-link ng-star-inserted']")
+            self.driver.find_element(By.XPATH, "//a[@class='file-link ng-star-inserted']")
         except Exception:
             return False
         return True
@@ -164,7 +165,7 @@ class SamGov(ScrapingMachine):
         Download documents
         :return:
         """
-        file_links = self.driver.find_elements_by_xpath("//a[@class='file-link ng-star-inserted']")
+        file_links = self.driver.find_elements(By.XPATH, "//a[@class='file-link ng-star-inserted']")
         for file in file_links:
             file.click()
 
@@ -172,6 +173,7 @@ class SamGov(ScrapingMachine):
         """
         Go back to database page
         """
+        self.driver.get(self.get_current_link())
         self.driver.get(self.get_current_link())
         time.sleep(10)
 

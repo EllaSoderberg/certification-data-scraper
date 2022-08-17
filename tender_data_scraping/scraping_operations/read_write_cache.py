@@ -23,7 +23,6 @@ proj_path = os.environ.get("PROJECT_PATH")
 def read_cache(project_name):
     os.chdir(proj_path)
     file_path = "cache/{}.p".format(project_name)
-    print(file_path)
     if not os.path.exists(file_path):
         file_path = "cache/template_cache.p"
     with open(file_path, "rb") as cache_file:

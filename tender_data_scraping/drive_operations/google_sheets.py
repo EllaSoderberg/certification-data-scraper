@@ -120,6 +120,12 @@ class Sheet:
 
     def append_row(self, values):
         print("uploadign", values)
+
+        for i in range(len(values[0])):
+            if values[0][i] and len(values[0][i]) > 40000:
+                values[0][i] = values[0][i][:40000]
+
+
         service = build('sheets', 'v4', credentials=self.creds)
         sheet_header = {
             'values': values

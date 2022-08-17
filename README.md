@@ -23,8 +23,26 @@
 
 # Procedure
 1. Each script for each database in the main.py file is run (about) once per week (TED, Gebiz, eprocure..)
-2. Send PEG an email with the links to the scraped files
+2. Look at all the sheets from the scraping. Check for duplicates. 
+3. Send PEG an email with the links to the scraped files
 
 # To think about
 - When adding a new database and a login is required, read the terms and conditions. If it says scraping is not allowed, don't scrape the database. 
-
+- SamGov has a bug - it does not stop automatically. Therefore it has to be stopped after running for a while (2-3 hours) and the cache has to be manually updated. The procedure is: 
+  1. uncomment the line `print(read("SamGov"))` and run the script.
+  2. Look at the "write_to_cache" function, and set it to
+     
+            'last_run': '2022-05-26', # Date of the previous run
+            'run_successful': True,
+            'sheet_id': None,
+            'last_tender_title': "Title of first_tender_title from previous run in terminal",  
+            'last_tender_published': "Date of first_tender_published from previous run in terminal",
+            'first_tender_title': None,
+            'first_tender_published': None,
+            'at_page': 0,
+            'at_opp': 0}
+     
+    3. uncomment the line `write_to_cache("SamGov")` and run the script
+    4. uncomment the line `SamGov().run()` and run the script
+    5. Fix the bug :(
+- There are duplicates sometimes. Would be great to have a function to remove them ;)
